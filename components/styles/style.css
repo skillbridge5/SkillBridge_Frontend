@@ -1,0 +1,39 @@
+@media(width < 425px) {
+   .search {
+      margin-left: -12px !important;
+   }
+}
+
+@media (width >=425px) {
+   .explore {
+      display: block;
+   }
+
+   .spacing {
+      gap: 6
+   }
+
+   .mobile_explore {
+      display: none;
+   }
+}
+
+@media(width >= 580px) and (width < 1023px) {
+   .signed_up {
+      display: flex !important;
+   }
+   .mobile_signup {
+      display: none;
+   }
+}
+
+@media (width >= 880px ) and (width < 1023px) {
+   .signed_up {
+      margin-left: 2rem !important;
+   }
+
+   .search_bar {
+      width: 320px !important;
+   }
+
+}
