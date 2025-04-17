@@ -4,7 +4,26 @@
    }
 }
 
-@media (width >=425px) {
+@media(width >= 280px) and (width < 400px) {
+   .search_bar {
+      width: 160px !important;
+   }
+ 
+
+   .logo_width {
+      width: 40px !important;
+      height: 40px !important;
+   }
+}
+
+@media (width < 330px) {
+   .search_bar {
+      width: 100px !important;
+   }
+ 
+}
+
+@media (width >=280px) {
    .explore {
       display: block;
    }
