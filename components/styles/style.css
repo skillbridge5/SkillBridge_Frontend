@@ -46,13 +46,10 @@
    }
 }
 
-@media (width >= 880px ) and (width < 1023px) {
-   .signed_up {
-      margin-left: 2rem !important;
-   }
+@media (width >= 920px ) and (width < 1023px) {
 
    .search_bar {
-      width: 320px !important;
+      width: 280px !important;
    }
 
 }

@@ -37,8 +37,8 @@ export function Navbar() {
   const closeMobileMenu = () => setMobileOpen(false);
   return (
     <>
-      <header className='sticky top-0 z-40 border-b border-gray-200 bg-white/50 backdrop-blur-xl dark:border-gray-800 dark:bg-gray-950/50 px-2 xl:px-4 py-1 flex items-center justify-center lg:gap-4 xl:gap-8 '>
-        <div className='flex items-center justify-between gap-4 sm:gap-6 md:gap-8 lg:gap-2 xl:gap-8 2xl:gap-10'>
+      <header className='container mx-auto sticky top-0 z-40 border-b border-gray-200 bg-white/50 backdrop-blur-xl dark:border-gray-800 dark:bg-gray-950/50 px-2 xl:px-4 py-1 flex items-center justify-center lg:gap-4 xl:gap-8 '>
+        <div className='flex items-center justify-between gap-4 sm:gap-6 md:gap-4 lg:gap-2 xl:gap-8 2xl:gap-10'>
           <div className='spacing flex justify-evenly items-center gap-4 sm:gap-6 md:gap-8 lg:gap-2 xl:gap-8 2xl:gap-10 '>
             <Link href='/' className='logo_width flex items-center mt-2'>
               <img
@@ -68,8 +68,8 @@ export function Navbar() {
                 </Button>
               </div>
             </div>
-            <div className='signed_up hidden relative items-center right-0 '>
-              <div className='hidden md:block lg:hidden px-8 '>
+            <div className='signed_up hidden relative items-center right-0 gap-3'>
+              <div className='hidden md:block lg:hidden ml-0'>
                 <ThemeToggle />
               </div>
               <Button
@@ -94,7 +94,7 @@ export function Navbar() {
               <Link
                 key={index}
                 href={item.path}
-                className={`font-medium text-sm lg:text-xs xl:text-sm 2xl:text-lg ${
+                className={`font-medium text-sm lg:text-xs xl:text-sm 2xl:text-[16px] ${
                   isActive(item.path)
                     ? "text-[#2196F3]"
                     : "text-gray-700 dark:text-gray-300 hover:text-[#2196F3]"
@@ -111,7 +111,7 @@ export function Navbar() {
               >
                 <DropdownMenuTrigger asChild>
                   <button
-                    className={`flex items-center gap-1 font-medium text-sm lg:text-xs xl:text-sm 2xl:text-lg ${
+                    className={`flex items-center gap-1 font-medium text-sm lg:text-xs xl:text-sm 2xl:text-[16px] ${
                       isActive(item.path) ||
                       item.items?.some((subItem) => isActive(subItem.path))
                         ? "text-[#2196F3]"
