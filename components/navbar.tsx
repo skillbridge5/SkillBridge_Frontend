@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useState } from "react";
 import "./styles/style.css";
-import { navbarItems } from "@/data/navbarItems";
+import { navbarItems } from "@/data/navbar-items";
 import { usePathname } from "next/navigation";
 
 export function Navbar() {
