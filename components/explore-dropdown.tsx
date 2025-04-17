@@ -102,13 +102,13 @@ export function ExploreDropdown() {
                 >
                   <span
                     className={`${
-                      category.name === activeCategory ? "text-blue-500" : "text-gray-800"
+                      category.name === activeCategory ? "text-[#2196F3]" : "text-gray-800"
                     } font-light text-[12px] sm:text-xs`}
                   >
                     {category.name}
                   </span>
                   {category.name === activeCategory ? (
-                    <ChevronDown className="h-3 w-3 sm:h-4 sm:w-4 text-blue-500" />
+                    <ChevronDown className="h-3 w-3 sm:h-4 sm:w-4 text-[#2196F3]" />
                   ) : (
                     <ChevronRight className="h-3 w-3 sm:h-4 sm:w-4 text-gray-400" />
                   )}
@@ -121,7 +121,7 @@ export function ExploreDropdown() {
               <div className="w-full sm:w-[250px] md:w-[300px] max-h-[60vh] sm:max-h-[80vh] overflow-y-auto border-t sm:border-t-0 sm:border-l">
                 {/* Back button for mobile */}
                 <div
-                  className="px-3 py-2 sm:px-4 sm:py-3 sm:hidden flex items-center text-blue-500 cursor-pointer"
+                  className="px-3 py-2 sm:px-4 sm:py-3 sm:hidden flex items-center text-[#2196F3] cursor-pointer"
                   onClick={() => setActiveCategory(null)}
                 >
                   <ChevronLeft className="h-4 w-4 mr-2" />
@@ -140,13 +140,13 @@ export function ExploreDropdown() {
                     >
                       <span
                         className={`${
-                          subcategory.name === activeSubcategory ? "text-blue-500" : "text-gray-800"
+                          subcategory.name === activeSubcategory ? "text-[#2196F3]" : "text-gray-800"
                         } font-light text-[12px] sm:text-xs`}
                       >
                         {subcategory.name}
                       </span>
                       {subcategory.name === activeSubcategory ? (
-                        <ChevronDown className="h-3 w-3 sm:h-4 sm:w-4 text-blue-500" />
+                        <ChevronDown className="h-3 w-3 sm:h-4 sm:w-4 text-[#2196F3]" />
                       ) : (
                         <ChevronRight className="h-3 w-3 sm:h-4 sm:w-4 text-gray-400" />
                       )}
@@ -160,7 +160,7 @@ export function ExploreDropdown() {
               <div className="w-full sm:w-[250px] md:w-[300px] max-h-[60vh] sm:max-h-[80vh] overflow-y-auto border-t sm:border-t-0 sm:border-l">
                 {/* Back button for mobile */}
                 <div
-                  className="p-3 sm:hidden flex items-center text-blue-500 cursor-pointer"
+                  className="p-3 sm:hidden flex items-center text-[#2196F3] cursor-pointer"
                   onClick={() => setActiveSubcategory(null)}
                 >
                   <ChevronLeft className="h-4 w-4 mr-2" />
