@@ -3,16 +3,10 @@
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { ChevronRight } from "lucide-react";
-import { servicesData } from "@/data/services";
 import { AnimatedCard } from "@/components/ui/animated-card";
 import { SectionHeading } from "@/components/ui/section-heading";
 import React from "react";
-
-export interface Service {
-  icon: React.ReactElement<{ className?: string }>;
-  title: string;
-  description: string;
-}
+import { Service } from "@/types";
 
 export interface ServicesGridProps {
   services: Service[];
