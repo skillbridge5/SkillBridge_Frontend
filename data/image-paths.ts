@@ -3,7 +3,7 @@
 export const imagePaths = {
    // Hero section images
    hero: {
-     studentsLearning: "images/hero/students-learning.png",
+     studentsLearning: "images/hero/students-learning.jpg",
    },
  
    // Course images
