@@ -26,9 +26,9 @@ export const imagePaths = {
  
    // Testimonial images
    testimonials: {
-     danielSemach: "images/testimonials/pp1.png",
-     deboraGraham: "images/testimonials/pp2.png",
-     lukgawtAbera: "images/testimonials/pp3.png",
+     danielSemagn: "images/testimonials/pp1.png",
+     deboraResimul: "images/testimonials/pp2.png",
+     lualawitAbera: "images/testimonials/pp3.png",
    },
  
    // Placeholder images
