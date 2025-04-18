@@ -1,7 +1,7 @@
 # Skillbridge Learning — Landing Page
 
 <div align="center">
-  <img src="public/images/readme/heroPage.jpg" alt="Skillbridge Banner" width="100%" />
+  <img src="images/readme/heroPage.jpg" alt="Skillbridge Banner" width="100%" />
   
   <p align="center">
     A modern, responsive education platform landing page built with Next.js, TypeScript, and Tailwind CSS
@@ -50,15 +50,15 @@ SkillBridge is a feature-rich, responsive landing page for an educational platfo
   <details>
     <summary><strong>Click to see all screenshots</strong></summary>
     <h3>Home Page - Light Mode</h3>
-    <img src="public/images/readme/homePage.jpg" alt="Homepage Light Mode" width="80%" />
+    <img src="images/readme/homePage.jpg" alt="Homepage Light Mode" width="80%" />
     <h3>Home Page - Dark Mode</h3>
-    <img src="public/images/readme/homepage-dark.jpg" alt="Homepage Dark Mode" width="80%" />
+    <img src="images/readme/homepage-dark.jpg" alt="Homepage Dark Mode" width="80%" />
     <h3>Mobile View</h3>
-    <img src="public/images/readme/mobile-view.jpg" alt="Mobile View" width="40%" />
+    <img src="images/readme/mobile-view.jpg" alt="Mobile View" width="40%" />
     <h3>Course Section</h3>
-    <img src="public/images/readme/features.jpg" alt="Course Section" width="80%" />
+    <img src="images/readme/features.jpg" alt="Course Section" width="80%" />
     <h3>Dropdown Menus</h3>
-    <img src="public/images/readme/dropdown.jpg" alt="Dropdown Menus" width="80%" />
+    <img src="images/readme/dropdown.jpg" alt="Dropdown Menus" width="80%" />
   </details>
 </div>
 
