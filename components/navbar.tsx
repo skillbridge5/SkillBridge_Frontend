@@ -37,7 +37,9 @@ export function Navbar() {
   const closeMobileMenu = () => setMobileOpen(false);
   return (
     <>
-      <header className='container mx-auto sticky top-0 z-40 border-b border-gray-200 bg-white/50 backdrop-blur-xl dark:border-gray-800 dark:bg-gray-950/50 px-2 xl:px-4 py-1 flex items-center justify-center lg:gap-4 xl:gap-8 '>
+    
+      <header className='sticky top-0 z-40 border-b border-gray-200 bg-white/50 backdrop-blur-xl dark:border-gray-800 dark:bg-gray-950/50'>
+      <section className="container mx-auto  px-2 xl:px-4 py-1 flex items-center justify-center lg:gap-4 xl:gap-8 ">
         <div className='flex items-center justify-between gap-4 sm:gap-6 md:gap-4 lg:gap-2 xl:gap-8 2xl:gap-10'>
           <div className='spacing flex justify-evenly items-center gap-4 sm:gap-6 md:gap-8 lg:gap-2 xl:gap-8 2xl:gap-10 '>
             <Link href='/' className='logo_width flex items-center mt-2'>
@@ -154,6 +156,7 @@ export function Navbar() {
             </Button>
           </div>
         </nav>
+        </section>
       </header>
       {/* <MobileMenu /> */}
 
@@ -291,6 +294,7 @@ export function Navbar() {
           </div>
         </div>
       </div>
+      
     </>
   );
 }

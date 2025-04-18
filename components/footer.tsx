@@ -9,7 +9,7 @@ export function Footer() {
   return (
     <footer className="bg-[#EEF4FF] text-[#2396F3] pt-16 pb-6">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 justify-center gap-8 mb-12">
           {footerSections.map((section, sectionIndex) => (
             <motion.div
               key={section.title}
@@ -46,9 +46,9 @@ export function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
           viewport={{ once: true }}
-          className="bg-[#2396F3] border border-blue-400 py-16 px-8 flex flex-col md:flex-row justify-between items-center"
+          className=" bg-[#2396F3] border border-blue-40 py-6 sm:py-10 md:py-14 lg:py-16 px-3 sm:px-4 md:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center"
         >
-          <p className="text-sm 2xl:text-base text-white mb-4 md:mb-0">
+          <p className="text-xs lg:text-sm 2xl:text-base text-white mb-4 md:mb-0">
             © 2025 SkillBridge All Rights Reserved | Privacy Policy | Terms of Service | Cookie Policy | Site Map
           </p>
           <div className="flex gap-4">
