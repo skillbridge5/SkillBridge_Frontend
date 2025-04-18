@@ -53,7 +53,7 @@ export function HeroSection() {
             </Button>
             <Button
               variant='outline'
-              className='bg-[#B5C4E6] text-[#2196F3] border-blue-100 hover:bg-blue-100 hover:text-blue-500 h-11 px-8 dark:bg-blue-900/20 dark:border-blue-800/30 dark:text-blue-400 dark:hover:bg-blue-500/30 transition-transform hover:scale-105 scale-96 sm:scale-100 2xl:scale-110'
+              className='bg-[#B5C4E6] text-[#2196F3] border-blue-100 hover:bg-blue-100 hover:text-blue-500 h-11 px-8 dark:bg-blue-800/20 dark:border-blue-800/30 dark:text-blue-400 dark:hover:bg-blue-700/30 transition-transform hover:scale-105 scale-96 sm:scale-100 2xl:scale-110'
             >
               Get free trial
             </Button>
