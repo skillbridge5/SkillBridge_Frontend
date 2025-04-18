@@ -136,7 +136,7 @@ export function CoursesSection() {
                           </div>
                         </CardContent>
 
-                        <CardFooter className='px-5 py-4 flex justify-between items-center border-t border-gray-100'>
+                        <CardFooter className='px-5  flex justify-between items-center'>
                           {/* Instructor Info */}
                           <div className='flex items-center'>
                             <img
