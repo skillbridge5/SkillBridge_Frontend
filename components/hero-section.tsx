@@ -115,10 +115,10 @@ export function HeroSection() {
                 style={{ transform: "rotate(45deg)" }}
               ></div>
             </div>
-            <h3 className='md:text-2xl 2xl:text-3xl font-bold text-gray-900'>
+            <h3 className='md:text-2xl 2xl:text-3xl font-bold text-gray-900 dark:text-white'>
               10+
             </h3>
-            <p className='text-gray-500 text-sm lg:text-base text-center'>
+            <p className='text-gray-500 dark:text-gray-400 text-sm lg:text-base text-center'>
               Online Courses
             </p>
           </motion.div>
@@ -196,7 +196,7 @@ export function HeroSection() {
               <div className='md:text-2xl 2xl:text-3xl font-bold text-gray-800 dark:text-white'>
                 250+
               </div>
-              <div className='text-gray-500 dark:text-gray-400 text-sm xl:text-lg'>
+              <div className='text-gray-500 dark:text-gray-400 text-sm xl:text-base'>
                 Tutors
               </div>
             </div>

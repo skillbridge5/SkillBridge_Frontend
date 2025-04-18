@@ -27,7 +27,7 @@ export function TestimonialsSection() {
           Testimonials
         </motion.h2>
       </div>
-      <section className='py-24 px-12 bg-[#EEF4FF] dark:bg-gray-950'>
+      <section className='py-24 px-12 bg-[#EEF4FF] dark:bg-gray-900'>
         <div className='container'>
           <div className='mx-auto flex gap-8 px-8'>
             <Carousel
