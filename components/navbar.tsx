@@ -76,7 +76,7 @@ export function Navbar() {
               </div>
               <Button
                 size='sm'
-                className='bg-[#2196F3] hover:bg-blue-600 h-9 px-5'
+                className='bg-[#2196F3] hover:bg-blue-500 h-9 px-5'
               >
                 Sign Up
               </Button>
@@ -150,7 +150,7 @@ export function Navbar() {
             <ThemeToggle />
             <Button
               size='sm'
-              className='bg-[#2196F3] hover:bg-blue-600 h-9 px-5'
+              className='bg-[#2196F3] hover:bg-blue-500 h-9 px-5'
             >
               Sign Up
             </Button>
@@ -201,7 +201,7 @@ export function Navbar() {
               <ThemeToggle />
               <Button
                 size='sm'
-                className='mobile_signup bg-[#2196F3] hover:bg-blue-600'
+                className='mobile_signup bg-[#2196F3] hover:bg-blue-500'
               >
                 Sign Up
               </Button>

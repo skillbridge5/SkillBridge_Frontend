@@ -48,12 +48,12 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className='flex flex-wrap gap-4 mt-8 2xl:mt-16 justify-center md:justify-start 2xl:gap-10'
           >
-            <Button className='bg-[#2196F3] hover:bg-blue-600 h-11 px-8 transition-transform hover:scale-105 scale-96 sm:scale-100 2xl:scale-110'>
+            <Button className='bg-[#2196F3] hover:bg-blue-500 dark:hover:bg-[#2196F3]/70 dark:text-white h-11 px-8 transition-transform hover:scale-105 scale-96 sm:scale-100 2xl:scale-110 '>
               Get Started
             </Button>
             <Button
               variant='outline'
-              className='bg-[#B5C4E6] text-[#2196F3] border-blue-100 hover:bg-blue-100 hover:text-blue-600 h-11 px-8 dark:bg-blue-900/20 dark:border-blue-900/30 dark:text-blue-400 dark:hover:bg-blue-900/30 transition-transform hover:scale-105 scale-96 sm:scale-100 2xl:scale-110'
+              className='bg-[#B5C4E6] text-[#2196F3] border-blue-100 hover:bg-blue-100 hover:text-blue-500 h-11 px-8 dark:bg-blue-900/20 dark:border-blue-800/30 dark:text-blue-400 dark:hover:bg-blue-500/30 transition-transform hover:scale-105 scale-96 sm:scale-100 2xl:scale-110'
             >
               Get free trial
             </Button>
