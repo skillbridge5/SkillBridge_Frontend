@@ -10,14 +10,14 @@ import { imagePaths } from "../data/image-paths"
 
 export function InstructorsSection() {
   return (
-    <section className="py-16 bg-gray-50 dark:bg-gray-900">
+    <section className="py-16">
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-3xl font-bold text-center mb-4 dark:text-white"
+          className="text-3xl lg:text-4xl font-bold text-center mb-4 dark:text-white"
         >
           Meet the Heroes
         </motion.h2>
@@ -27,7 +27,7 @@ export function InstructorsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           viewport={{ once: true }}
-          className="text-center text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-12"
+          className="text-center text-gray-500 dark:text-gray-400 max-w-3xl mx-auto mb-12 lg:text-lg font-semibold"
         >
           Our leading instructors bring a unique blend of creative expertise and technical knowledge, delivering
           real-world skills that shape your future.
@@ -35,7 +35,7 @@ export function InstructorsSection() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {instructors.map((instructor, index) => (
-            <AnimatedCard key={instructor.id} delay={0.1 * index}>
+            <AnimatedCard key={instructor.id} delay={0.1 * index} className="bg-gray-50 dark:bg-gray-900 py-8 px-4">
               <div className="text-center transition-all duration-300 hover:transform hover:scale-105">
                 <HoverCard>
                   <HoverCardTrigger asChild>
