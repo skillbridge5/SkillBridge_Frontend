@@ -12,15 +12,7 @@ import { ArrowUpRight, ChevronRight, Clock, Star } from "lucide-react";
 import { courses } from "@/data/courses";
 import { AnimatedCard } from "@/components/ui/animated-card";
 import { motion } from "framer-motion";
-// import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-// import {
-//   Tooltip,
-//   TooltipContent,
-//   TooltipProvider,
-//   TooltipTrigger,
-// } from "@/components/ui/tooltip";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { imagePaths } from "../data/image-paths";
 
 export function CoursesSection() {
   const categories = ["All", "Design", "Coding", "AI", "Business"];
@@ -33,7 +25,7 @@ export function CoursesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className='text-3xl font-bold text-center mb-2 dark:text-white'
+          className='text-4xl lg:text-5xl font-bold text-start mb-2 dark:text-white'
         >
           Top Course
         </motion.h2>
@@ -43,7 +35,7 @@ export function CoursesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           viewport={{ once: true }}
-          className='text-center text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-8'
+          className='font-semibold text-center text-gray-500 dark:text-gray-400 max-w-3xl mx-auto mb-12 mt-4 text-sm md:text-base lg:text-lg'
         >
           Join the learning movement our top class delivers
           <br />
