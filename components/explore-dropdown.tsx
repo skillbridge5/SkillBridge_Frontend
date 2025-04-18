@@ -177,7 +177,7 @@ export function ExploreDropdown() {
                     <Link
                       href={`/topics/${encodeURIComponent(topic.toLowerCase().replace(/\s+/g, "-"))}`}
                       key={index}
-                      className="block px-3 py-2 sm:px-4  hover:bg-gray-100 dark:bg-gray-800 transition-colors duration-150"
+                      className="block px-3 py-2 sm:px-4  hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-150"
                     >
                       <span className="text-gray-800 dark:text-gray-300 font-light text-[9px] sm:text-xs lg:text-sm 2xl:text-base">{topic}</span>
                     </Link>
