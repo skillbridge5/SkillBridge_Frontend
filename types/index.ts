@@ -18,7 +18,8 @@ export interface Course {
   }
   rating: number
   reviews: number
-  price: string
+  link: string
+  price: number
   duration: string
   enrollmentYear: number
 }
