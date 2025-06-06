@@ -60,7 +60,7 @@ export function Navbar() {
                   ))}
                 </nav>
               </div>
-              <div className='flex max-[375px]:gap-2 min-[375px]:gap-5 sm:gap-6 md:gap-6 lg:gap-8 2xl:gap-12 items-center'>
+              <div className='flex max-[375px]:gap-2 min-[375px]:gap-5 sm:gap-6 md:gap-6 2xl:gap-12 items-center'>
                 <div className='search_bar flex items-center border border-gray-200 dark:border-gray-700 rounded-full pl-4 pr-2 py-0.5 sm:py-1.5 lg:py-1 xl:py-1.5 2xl:py-2 2xl:pl-8 2xl:pr-3 w-[220px] min-[500px]:w-[260px] sm:w-[280px] md:w-[240px] lg:w-[180px] xl:w-[280px] 2xl:w-[320px] max-[375px]:mr-1 min-[375px]:mr-4 min-[500px]:mr-7 sm:mr-4 md:mr-20 min-[920px]:!mr-8 lg:mr-4 xl:mr-1'>
                   <input
                     type='text'
