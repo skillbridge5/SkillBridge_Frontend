@@ -67,7 +67,7 @@ export function CoursesSection() {
                             <img
                               src={course.image}
                               alt={course.title}
-                              className='w-full h-[280px] object-cover'
+                              className='w-full h-[240px] object-cover'
                             />
                             <div className='absolute top-4 right-4'>
                               <Badge
