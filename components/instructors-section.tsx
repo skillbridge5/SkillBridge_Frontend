@@ -7,35 +7,22 @@ import { motion } from "framer-motion"
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { imagePaths } from "../data/image-paths"
+import { SectionHeading } from "./ui/section-heading"
+import "@/components/styles/style.css" // Import custom styles
 
 export function InstructorsSection() {
   return (
-    <section className="py-16">
+    <section className="py-16 bg-[#F5FAFF] dark:bg-gray-900">
       <div className="container mx-auto px-4">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="text-3xl lg:text-4xl font-bold text-center mb-4 dark:text-white"
-        >
-          Meet the Heroes
-        </motion.h2>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          viewport={{ once: true }}
-          className="text-center text-gray-500 dark:text-gray-400 max-w-3xl mx-auto mb-12 lg:text-lg font-semibold"
-        >
-          Our leading instructors bring a unique blend of creative expertise and technical knowledge, delivering
-          real-world skills that shape your future.
-        </motion.p>
-
+        <SectionHeading
+                  title='Meet the Heroes'
+                  subtitle='Our leading instructors bring a unique blend of creative expertise and technical knowledge, delivering
+          real-world skills that shape your future.'
+                  center={true}
+                />
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {instructors.map((instructor, index) => (
-            <AnimatedCard key={instructor.id} delay={0.1 * index} className="bg-gray-50 dark:bg-gray-900 py-8 px-4">
+            <AnimatedCard key={instructor.id} delay={0.1 * index} className="bg-gray-50 dark:bg-gray-900/40 py-6 px-2 border border-[#2196f3]/30 dark:border-[#2195f355] rounded-none custom-shadow transition-transform duration-300 hover:scale-105">
               <div className="text-center transition-all duration-300 hover:transform hover:scale-105">
                 <HoverCard>
                   <HoverCardTrigger asChild>

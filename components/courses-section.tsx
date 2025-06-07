@@ -29,10 +29,10 @@ Real world value you can’t miss!'
         />
 
         <div className='w-full mb-8'>
-          <div className='grid min-[840px]:grid-cols-3 gap-6 xl:gap-10'>
+          <div className='grid min-[840px]:grid-cols-3 gap-6 xl:gap-8 lg:px-4 xl:px-8 2xl:px-12'>
             {courses.map((course, index) => (
               <AnimatedCard key={course.id} delay={0.1 * index}>
-                <Card className='flex overflow-hidden border-none shadow-lg dark:bg-gray-800 transition-all duration-300 hover:shadow-xl gap-2 h-full'>
+                <Card className='flex overflow-hidden border-none shadow-lg dark:bg-gray-900/40 transition-all duration-300 hover:shadow-xl gap-2 h-full '>
                   <CardHeader className='px-4'>
                     <div className='relative'>
                       <img
