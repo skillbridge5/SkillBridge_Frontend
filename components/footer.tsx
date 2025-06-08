@@ -1,71 +1,130 @@
 "use client"
 
 import Link from "next/link"
-import { Twitter, Linkedin, Facebook, Instagram, Youtube } from "lucide-react"
-import { footerSections } from "@/data/footer-links"
+import {
+  Facebook,
+  Twitter,
+  Instagram,
+  Linkedin,
+  Mail,
+  Phone
+} from "lucide-react"
 import { motion } from "framer-motion"
 
-export function Footer() {
+const container = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+}
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut"
+    }
+  }
+}
+
+export default function Footer() {
   return (
-    <footer className="bg-[#EEF4FF] text-[#2396F3] dark:bg-[#EEF4FF]/10 pt-16 pb-6">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 justify-center gap-8 mb-12">
-          {footerSections.map((section, sectionIndex) => (
-            <motion.div
-              key={section.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: sectionIndex * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="font-bold mb-4">{section.title}</h3>
-              <ul className="space-y-2">
-                {section.links.map((link, linkIndex) => (
-                  <motion.li
-                    key={link.label}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: sectionIndex * 0.1 + linkIndex * 0.05 }}
-                    viewport={{ once: true }}
-                  >
-                    <Link
-                      href={link.href}
-                      className="text-[#2396F3] hover:text-[#2396F3]/80 text-sm transition-colors duration-300"
-                    >
-                      {link.label}
-                    </Link>
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
-        </div>
+    <footer className="bg-blue-400 text-white dark:bg-[#2396f3]/60">
+      <div className="container mx-auto px-4 py-12">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+        >
+          <motion.div variants={fadeInUp}>
+            <h3 className="text-lg font-bold mb-4">About SkillBirdge</h3>
+            <p className="text-xs md:text-[14px] text-white/90 mb-4">
+              Bridging Gaps, Building Skills, Transforming Futures. We provide high-quality online courses to help you
+              advance your career.
+            </p>
+            <div className="flex space-x-4">
+              {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
+                <motion.div key={i} whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>
+                  <Link href="#" className="hover:text-white/80">
+                    <Icon size={20} />
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div variants={fadeInUp}>
+            <h3 className="text-lg font-bold mb-4">Quick Links</h3>
+            <ul className="space-y-2">
+              {[
+                { href: "/courses", label: "All Courses" },
+                { href: "/about", label: "About Us" },
+                { href: "/instructors", label: "Instructors" },
+                { href: "/jobs", label: "Jobs & Scholarships" },
+                { href: "/blog", label: "Blog" }
+              ].map((link, i) => (
+                <li key={i}>
+                  <Link href={link.href} className="hover:text-white/80">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          <motion.div variants={fadeInUp}>
+            <h3 className="text-lg font-bold mb-4">Popular Categories</h3>
+            <ul className="space-y-2">
+              {[
+                { href: "/courses/development", label: "Development" },
+                { href: "/courses/business", label: "Business" },
+                { href: "/courses/design", label: "Design" },
+                { href: "/courses/ai", label: "Artificial Intelligence" },
+                { href: "/courses/blockchain", label: "Blockchain" }
+              ].map((link, i) => (
+                <li key={i}>
+                  <Link href={link.href} className="hover:text-white/80">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          <motion.div variants={fadeInUp}>
+            <h3 className="text-lg font-bold mb-4">Contact Us</h3>
+            <ul className="space-y-2">
+              <li className="flex items-center gap-2">
+                <Mail size={16} className="text-white" />
+                <a href="mailto:john@gmail.com" className="hover:text-white/80">
+                  john@gmail.com
+                </a>
+              </li>
+              <li className="flex items-center gap-2">
+                <Phone size={16} className="text-white" />
+                <a href="tel:+2512345436" className="hover:text-white/80">
+                  +251 2345 4365
+                </a>
+              </li>
+            </ul>
+          </motion.div>
+        </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className=" bg-[#2396F3] dark:bg-[#2396F3]/40 border border-blue-40 py-6 sm:py-10 md:py-14 lg:py-16 px-3 sm:px-4 md:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center"
+          transition={{ delay: 0.5, duration: 1 }}
+          className="border-t border-white/30 mt-8 pt-8 text-center text-white/80"
         >
-          <p className="text-xs lg:text-sm 2xl:text-base text-white mb-4 md:mb-0">
-            © 2025 SkillBridge All Rights Reserved | Privacy Policy | Terms of Service | Cookie Policy | Site Map
-          </p>
-          <div className="flex gap-4">
-            {[
-              { icon: <Twitter size={18} />, href: "https://twitter.com" },
-              { icon: <Linkedin size={18} />, href: "https://linkedin.com" },
-              { icon: <Facebook size={18} />, href: "https://facebook.com" },
-              { icon: <Instagram size={18} />, href: "https://instagram.com" },
-              { icon: <Youtube size={18} />, href: "https://youtube.com" },
-            ].map((social, index) => (
-              <motion.div key={index} whileHover={{ y: -3 }} transition={{ duration: 0.2 }}>
-                <Link href={social.href} className="text-blue-100 hover:text-white transition-colors duration-300">
-                  {social.icon}
-                </Link>
-              </motion.div>
-            ))}
-          </div>
+          <p>&copy; {new Date().getFullYear()} SkillBirdge. All rights reserved.</p>
         </motion.div>
       </div>
     </footer>

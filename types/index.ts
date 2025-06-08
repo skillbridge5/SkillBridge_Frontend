@@ -47,9 +47,9 @@ export interface Testimonial {
 }
 
 export interface SuccessMetric {
+  icon: ReactElement<{ className?: string }>;
   value: string
   label: string
-  color: string
 }
 
 export interface FooterLink {

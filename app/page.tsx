@@ -5,8 +5,8 @@ import { CoursesSection } from "@/components/courses-section";
 import { InstructorsSection } from "@/components/instructors-section";
 import { TestimonialsSection } from "@/components/testimonials-section";
 import { SuccessSection } from "@/components/success-section";
-import { Footer } from "@/components/footer";
 import { servicesData } from "@/data/services";
+import Footer from "@/components/footer";
 
 export default function Home() {
   return (

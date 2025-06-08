@@ -31,7 +31,7 @@ export function ServicesSection({ services }: ServicesGridProps) {
                     {service.icon &&
                       React.isValidElement(service.icon) &&
                       React.cloneElement(service.icon, {
-                        className: "text-[#2196F3] group-hover:text-[#2196F3]",
+                        className: "text-[#2196F3] group-hover:text-[#2396F3]",
                       })}
                   </div>
                   <h3 className='text-xl font-bold mb-2 dark:text-white group-hover:text-white'>
