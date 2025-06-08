@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Search, ChevronDown, ChevronUp, Menu, X, Globe } from "lucide-react";
+import { Search, Menu, X, Globe } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { useState } from "react";
 import "./styles/style.css";
@@ -80,7 +80,7 @@ export function Navbar() {
                   size='sm'
                   className='hidden md:block bg-[#2196F3] hover:bg-blue-500 h-9 px-5'
                 >
-                  Get Started
+                  <Link href='/login'>Get Started</Link>
                 </Button>
                 <div className='flex gap-2'>
                   <label htmlFor='lang'>
@@ -165,7 +165,7 @@ export function Navbar() {
                 size='sm'
                 className='block md:hidden bg-[#2196F3] hover:bg-blue-500 h-9 px-5'
               >
-                Get Started
+                <Link href='/login'>Get Started</Link>
               </Button>
             </div>
 

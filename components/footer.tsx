@@ -7,7 +7,8 @@ import {
   Instagram,
   Linkedin,
   Mail,
-  Phone
+  Phone,
+  HelpCircle
 } from "lucide-react"
 import { motion } from "framer-motion"
 
@@ -34,7 +35,7 @@ const fadeInUp = {
 
 export default function Footer() {
   return (
-    <footer className="bg-blue-400 text-white dark:bg-[#2396f3]/60">
+    <footer className="bg-blue-400 text-white dark:bg-[#2196f3]/40">
       <div className="container mx-auto px-4 py-12">
         <motion.div
           variants={container}
@@ -68,7 +69,7 @@ export default function Footer() {
                 { href: "/about", label: "About Us" },
                 { href: "/instructors", label: "Instructors" },
                 { href: "/jobs", label: "Jobs & Scholarships" },
-                { href: "/blog", label: "Blog" }
+                { href: "/FAQs", label: "FAQ" }
               ].map((link, i) => (
                 <li key={i}>
                   <Link href={link.href} className="hover:text-white/80">
@@ -99,7 +100,8 @@ export default function Footer() {
           </motion.div>
 
           <motion.div variants={fadeInUp}>
-            <h3 className="text-lg font-bold mb-4">Contact Us</h3>
+            <div>
+               <h3 className="text-lg font-bold mb-4">Contact Us</h3>
             <ul className="space-y-2">
               <li className="flex items-center gap-2">
                 <Mail size={16} className="text-white" />
@@ -113,7 +115,20 @@ export default function Footer() {
                   +251 2345 4365
                 </a>
               </li>
+            
             </ul>
+            </div>
+            <div>
+              {/* faq icon */}
+              <Link href="/faq" className="relative text-white/80 hover:text-white top-12 left-12">
+                {/* lucide-react icon */}
+                <HelpCircle className="w-8 h-8 md:h-10 md:w-10 lg:w-12 lg:h-12 2xl:h-14 2xl:w-14 text-[#E57C00] hover:text-[#F48000] hover:scale-105" />
+
+                
+              </Link>
+            </div>
+           
+
           </motion.div>
         </motion.div>
 

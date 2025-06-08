@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { imagePaths } from "../data/image-paths";
+import Link from "next/link";
 
 export function HeroSection() {
   return (
@@ -47,8 +48,9 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className='flex flex-wrap gap-4 mt-8 2xl:mt-16 justify-center md:justify-start 2xl:gap-10'
           >
+            
             <Button className='bg-[#2196F3] hover:bg-blue-500 dark:hover:bg-[#2196F3]/70 dark:text-white h-11 px-8 transition-transform hover:scale-105 scale-96 sm:scale-100 2xl:scale-110 '>
-              Get Started
+              <Link href='/login'>Get Started</Link>
             </Button>
             <Button
               variant='outline'
