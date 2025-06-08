@@ -36,7 +36,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className='text-gray-600 dark:text-gray-400 mt-4 2xl:mt-8 text-sm md:text-lg 2xl:text-xl text-center md:text-left pt-8 md:pt-12' 
+            className='text-gray-600 dark:text-gray-400 mt-4 2xl:mt-8 text-sm md:text-lg 2xl:text-xl text-center md:text-left pt-8 md:pt-12'
           >
             Bridging Gaps, Building Skills, Transforming Futures
           </motion.p>
@@ -57,7 +57,6 @@ export function HeroSection() {
               Get free trial
             </Button>
           </motion.div>
-
         </div>
 
         <div className='hero_right_section relative hidden md:block ml-12 lg:ml-0 mt-2 md:mt-8 lg:mt-10'>

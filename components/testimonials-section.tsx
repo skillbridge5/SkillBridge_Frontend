@@ -20,11 +20,7 @@ export function TestimonialsSection() {
     <>
       <section className='py-24 px-12 bg-[#F6F6F6] dark:bg-gray-900/60'>
         <div className='container'>
-           <SectionHeading
-                    title='Testimonials'
-                    subtitle=''
-                    center={true}
-                  />
+          <SectionHeading title='Testimonials' subtitle='' center={true} />
           <div className='mx-auto flex  px-8'>
             <Carousel
               opts={{
@@ -40,12 +36,14 @@ export function TestimonialsSection() {
                     className='md:basis-1/2 lg:basis-1/3 '
                   >
                     {/* when i hover in this div container change the color of quote icon */}
-                    <div className={`bg-transparent hover:scale-105 h-full transition-all duration-300 group
+                    <div
+                      className={`bg-transparent hover:scale-105 h-full transition-all duration-300 group
                     
-                      `}>
+                      `}
+                    >
                       <div className='py-6 px-2 '>
                         <div className='flex flex-col items-center text-center'>
-                          <div className="flex flex-col justify-center items-center bg-white group-hover:bg-[#2196f3] transition-colors duration-300 dark:bg-gray-900/40 dark:group-hover:bg-gray-800 pt-4 pb-12 px-6 gap-4 shadow-sm">
+                          <div className='flex flex-col justify-center items-center bg-white group-hover:bg-[#2196f3] transition-colors duration-300 dark:bg-gray-900/40 dark:group-hover:bg-gray-800 pt-4 pb-12 px-6 gap-4 shadow-sm'>
                             <BiSolidQuoteAltLeft className='h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:w-16 lg:h-16 2xl:w-20 2xl:h-20 text-[#E5E8EA]' />
                             <p className='text-[#646464] group-hover:text-white dark:text-gray-300 italic relative z-10 font-montserrat'>
                               {testimonial.testimonial}

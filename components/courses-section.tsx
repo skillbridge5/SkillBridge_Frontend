@@ -8,11 +8,9 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowUpRight, ChevronRight, Clock, Star } from "lucide-react";
+import { ArrowUpRight, Clock } from "lucide-react";
 import { courses } from "@/data/courses";
 import { AnimatedCard } from "@/components/ui/animated-card";
-import { motion } from "framer-motion";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { SectionHeading } from "./ui/section-heading";
 
 export function CoursesSection() {
