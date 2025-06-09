@@ -53,3 +53,7 @@
    }
 
 }
+
+.custom-shadow {
+  box-shadow: 0 4px 8px rgba(33, 150, 243, 0.5); /* Adjust values as needed */
+}

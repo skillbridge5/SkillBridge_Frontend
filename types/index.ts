@@ -18,7 +18,8 @@ export interface Course {
   }
   rating: number
   reviews: number
-  price: string
+  link: string
+  price: number
   duration: string
   enrollmentYear: number
 }
@@ -46,9 +47,9 @@ export interface Testimonial {
 }
 
 export interface SuccessMetric {
+  icon: ReactElement<{ className?: string }>;
   value: string
   label: string
-  color: string
 }
 
 export interface FooterLink {

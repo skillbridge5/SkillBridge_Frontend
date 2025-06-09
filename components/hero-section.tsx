@@ -3,19 +3,19 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { AnimatedText } from "@/components/ui/animated-text";
 import { imagePaths } from "../data/image-paths";
+import Link from "next/link";
 
 export function HeroSection() {
   return (
-    <section className='container mx-auto px-4 pt-8 pb-16 relative'>
-      <div className='grid md:grid-cols-2 gap-8  items-center'>
-        <div className='hero_left_section'>
+    <section className='container !mx-auto px-4 lg:px-0 lg:pl-8 pb-16 relative flex gap-12 justify-center items-center'>
+      <div className='grid md:grid-cols-2 gap-8 md:gap-3 lg:gap-8 xl:gap-32 2xl:gap-48 items-center'>
+        <div className='hero_left_section pt-8 md:pt-6'>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className='text-4xl sm:text-5xl lg:text-6xl 2xl:text-7xl font-bold lg:font-extrabold leading-tight dark:text-white text-center md:text-left '
+            className='text-4xl sm:text-5xl lg:text-6xl 2xl:text-7xl font-montserrat font-bold lg:font-extrabold leading-tight dark:text-white text-center md:text-left '
           >
             <span className='text-[#2196F3] tracking-wide md:tracking-normal'>
               Your{" "}
@@ -28,7 +28,7 @@ export function HeroSection() {
               Begins With
             </span>{" "}
             <br />
-            <span className='text-[#F57C00] tracking-wide md:tracking-normal lg:tracking-wider'>
+            <span className='text-[#F57C00] tracking-wide md:tracking-normal lg:tracking-wider !font-montserrat'>
               One Click
             </span>
           </motion.h1>
@@ -37,7 +37,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className='text-gray-600 dark:text-gray-400 mt-4 2xl:mt-8 text-sm md:text-lg 2xl:text-xl text-center md:text-left'
+            className='text-gray-600 dark:text-gray-400 mt-4 2xl:mt-8 text-sm md:text-lg 2xl:text-xl text-center md:text-left pt-8 md:pt-12'
           >
             Bridging Gaps, Building Skills, Transforming Futures
           </motion.p>
@@ -48,8 +48,9 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className='flex flex-wrap gap-4 mt-8 2xl:mt-16 justify-center md:justify-start 2xl:gap-10'
           >
+            
             <Button className='bg-[#2196F3] hover:bg-blue-500 dark:hover:bg-[#2196F3]/70 dark:text-white h-11 px-8 transition-transform hover:scale-105 scale-96 sm:scale-100 2xl:scale-110 '>
-              Get Started
+              <Link href='/login'>Get Started</Link>
             </Button>
             <Button
               variant='outline'
@@ -58,41 +59,14 @@ export function HeroSection() {
               Get free trial
             </Button>
           </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className='flex flex-wrap justify-center md:justify-start items-center gap-4 sm:gap-6 mt-12 2xl:mt-20'
-          >
-            {[
-              "Innovation",
-              "Excellence",
-              "Accessibility",
-              "Industry Readiness",
-            ].map((item, index) => (
-              <AnimatedText
-                key={item}
-                delay={0.3 + index * 0.1}
-                text={
-                  <div className='flex items-center gap-2'>
-                    <div className='w-2 h-2 rounded-full bg-gray-800 dark:bg-gray-300'></div>
-                    <span className='text-gray-800 dark:text-gray-300 text-sm 2xl:text-lg'>
-                      {item}
-                    </span>
-                  </div>
-                }
-              />
-            ))}
-          </motion.div>
         </div>
 
-        <div className='hero_right_section relative hidden md:block ml-12 lg:ml-0'>
+        <div className='hero_right_section relative hidden md:block ml-12 lg:ml-0 mt-2 md:mt-8 lg:mt-10'>
           <motion.div
             initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
             transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
-            className='w-[400px] h-[400px] lg:w-[450px] lg:h-[450px] xl:w-[500px] xl:h-[500px] 2xl:w-[600px] 2xl:h-[600px] rounded-full border-[4px] border-[#2196F3] overflow-hidden'
+            className='w-[340px] h-[340px] lg:w-[420px] lg:h-[420px] xl:w-[460px] xl:h-[460px] 2xl:w-[540px] 2xl:h-[540px] rounded-full border-[1px] border-[#2196F3] overflow-hidden'
           >
             <img
               src={imagePaths.hero.studentsLearning}
@@ -106,7 +80,7 @@ export function HeroSection() {
             initial={{ opacity: 0, x: 50, y: -50 }}
             animate={{ opacity: 1, x: 0, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className='absolute -top-12 -right-8 lg:top-4 lg:right-4 2xl:right-20 2xl:top-6  bg-white dark:bg-gray-800 rounded-xl py-4 px-2 flex flex-col items-center shadow-xl hover:shadow-2xl transition-all duration-300 border border-[#2196F3]/80'
+            className='absolute -top-6 right-0 lg:-top-4 lg:right-20 2xl:right-28 2xl:top-6  bg-white dark:bg-gray-800 rounded-xl py-4 px-2 flex flex-col items-center shadow-xl hover:shadow-2xl transition-all duration-300 border border-[#2196F3]/80'
           >
             <div className='relative w-12 h-12 mb-2'>
               <div className='absolute inset-0 rounded-full border-4'></div>
@@ -115,10 +89,10 @@ export function HeroSection() {
                 style={{ transform: "rotate(45deg)" }}
               ></div>
             </div>
-            <h3 className='md:text-2xl 2xl:text-3xl font-bold text-gray-900 dark:text-white'>
+            <h3 className='md:text-xl lg:text-2xl 2xl:text-3xl font-bold text-gray-900 dark:text-white'>
               10+
             </h3>
-            <p className='text-gray-500 dark:text-gray-400 text-sm lg:text-base text-center'>
+            <p className='text-gray-500 dark:text-gray-400 !text-[10px] lg:text-sm 2xl:text-base text-center'>
               Online Courses
             </p>
           </motion.div>
@@ -127,7 +101,7 @@ export function HeroSection() {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
-            className='absolute top-1/2 -translate-y-1/2 -left-16 bg-white dark:bg-gray-800 rounded-xl p-4 shadow-xl flex items-center gap-3 hover:shadow-2xl transition-all duration-300 border border-[#2196F3]/80'
+            className='absolute top-1/2 -translate-y-1/2 -left-20 bg-white dark:bg-gray-800 rounded-xl p-4 shadow-xl flex items-center gap-3 hover:shadow-2xl transition-all duration-300 border border-[#2196F3]/80'
           >
             <div className='w-10 h-10 rounded-lg bg-[#2196F3] flex items-center justify-center'>
               <Image
@@ -138,10 +112,10 @@ export function HeroSection() {
               />
             </div>
             <div>
-              <div className='md:text-2xl 2xl:text-3xl font-bold text-gray-800 dark:text-white'>
+              <div className='md:text-xl lg:text-2xl 2xl:text-3xl font-bold text-gray-800 dark:text-white'>
                 30+
               </div>
-              <div className='text-gray-500 dark:text-gray-400 text-sm xl:text-base'>
+              <div className='text-gray-500 dark:text-gray-400 !text-[10px] lg:text-sm 2xl:text-base'>
                 Video Courses
               </div>
             </div>
@@ -193,10 +167,10 @@ export function HeroSection() {
               </svg>
             </div>
             <div>
-              <div className='md:text-2xl 2xl:text-3xl font-bold text-gray-800 dark:text-white'>
+              <div className='md:text-xl lg:text-2xl 2xl:text-3xl font-bold text-gray-800 dark:text-white'>
                 250+
               </div>
-              <div className='text-gray-500 dark:text-gray-400 text-sm xl:text-base'>
+              <div className='text-gray-500 dark:text-gray-400 !text-[10px] lg:text-sm 2xl:text-base'>
                 Tutors
               </div>
             </div>
