@@ -38,30 +38,19 @@ const{handleChange,errors,values,handleSubmit}=useSignUp()
 <form onSubmit={handleSubmit} className="space-y-3 w-full max-w-md mx-auto">
 
 <div>
-    <Label htmlFor="firstName" className="  text-[#181818]  p-2 w-full mt-2">First Name</Label>
-<Input type="text" name="firstName" id="firstName"  className={` ${errors.firstName ? 'border-red-500' : 'border border-blue-500'}`}
-value={values.firstName}  onChange={handleChange} 
- placeholder="Enter your first Name"
+    <Label htmlFor="fullName" className="  text-[#181818]  p-2 w-full mt-2">Full Name</Label>
+<Input type="text" name="fullName" id="fullName"  className={` ${errors.fullName ? 'border-red-500' : 'border border-blue-500'}`}
+value={values.fullName}  onChange={handleChange} 
+ placeholder="Enter your full Name "
 
 />
-{errors.firstName &&(
-    <p className="text-red-500 text-sm">{errors.firstName}</p>
+{errors.fullName &&(
+    <p className="text-red-500 text-sm">{errors.fullName}</p>
 )}
 
 </div>
 
-<div >
-<Label htmlFor="lastName" className="font-[500]  text-[#181818]  p-2 w-full mt-2">Last Name</Label>
-<Input type="text" name="lastName" id="lastName"
-value={values.lastName} onChange={handleChange}  className={` ${errors.lastName ? 'border-red-500' : 'border border-blue-500'}`}
- placeholder="Enter your last Name"
-/>
-{errors.firstName &&(
-   <p className="text-red-500 text-sm">{errors.lastName}</p>
-)}
 
-
-</div>
 
 <div>
     <Label htmlFor="email" className="font-[500]  text-[#181818]  p-2 w-full mt-2">Email</Label>

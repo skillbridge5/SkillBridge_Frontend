@@ -7,8 +7,8 @@ export interface SignUpProps {
     email:string
     password:string
     confirmPassword:string
-    firstName:string
-    lastName:string
+    fullName:string
+
   
 }
 export default interface ButtonProps {

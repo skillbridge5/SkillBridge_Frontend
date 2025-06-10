@@ -1,5 +1,3 @@
-
-
 "use client"
 import { useRouter } from "next/navigation"
 import { Input } from "@/components/ui/input"
@@ -42,7 +40,7 @@ const{handleChange,errors,values,handleSubmit}=useSignIn()
 <div>
     <Label htmlFor="email" className="font-[500]  text-[#181818]  p-2 w-full mt-2">Email</Label>
 <Input type="email" name="email" id="email"  onChange={handleChange}
-value={values.email}   className={` ${errors.password ? 'border-red-500' : 'border border-blue-500'}`}
+value={values.email}   className={ ${errors.password ? 'border-red-500' : 'border border-blue-500'}}
  placeholder="Enter your email"
 />
 {errors.email &&(
@@ -51,6 +49,7 @@ value={values.email}   className={` ${errors.password ? 'border-red-500' : 'bord
 </div>
 
 <div>
+  <Label htmlFor="password" className="font-[500]  text-[#181818]  p-2 w-full mt-2">Password</Label>
 <div className="relative">
     <Input
       type={show ? 'text' : 'password'}
@@ -59,7 +58,7 @@ value={values.email}   className={` ${errors.password ? 'border-red-500' : 'bord
       value={values.password}
       onChange={handleChange}
       placeholder="***********"
-      className={` ${errors.password ? 'border-red-500' : 'border border-blue-500'}`}
+      className={ ${errors.password ? 'border-red-500' : 'border border-blue-500'}}
     />
     <span
       onClick={handlePasswordToggle}

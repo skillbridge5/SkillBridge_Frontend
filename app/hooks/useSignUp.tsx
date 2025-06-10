@@ -5,9 +5,8 @@ import { SignUpProps } from "../interface";
 
 const useSignUp=(
     initalValue:SignUpProps={
-        firstName:"",
+        fullName:"",
         email:"",
-        lastName:"",
         password:"",
     confirmPassword:"",
     }
@@ -19,8 +18,7 @@ const[errors,setErrors]=useState<Partial<SignUpProps>>({})
 const validateError=(values:SignUpProps)=>{
 const errors:Partial<SignUpProps>={}
 
-if(!values.firstName) errors.firstName="First Name is Required"
-if(!values.lastName) errors.lastName="Last Name is Required"
+if(!values.fullName) errors.firstName="full Name  is Required"
 if(!values.email) errors.email="Email is Required"
 if(!values.password) errors.password="Password is Required"
 if(values.password!==values.confirmPassword) errors.confirmPassword="Password Doesnt Match"
