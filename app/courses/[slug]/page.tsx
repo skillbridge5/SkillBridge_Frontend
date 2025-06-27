@@ -37,7 +37,7 @@ import EnrollmentForm from "@/components/enrollment-form";
 export default function CourseDetailPage() {
   const params = useParams();
   const slug = params.slug as string;
-  const [isEnrollDialogOpen, setIsEnrollDialogOpen] = useState(false);
+  //const [isEnrollDialogOpen, setIsEnrollDialogOpen] = useState(false);
 
   // Find the course by slug
   const course = courses.find((c) => c.slug === slug);
@@ -253,13 +253,19 @@ export default function CourseDetailPage() {
                   </RadioGroup>
                 </div>
 
-                <Button
+                 {/*<Button
                   className='w-full mb-4'
                   size='lg'
                   onClick={() => setIsEnrollDialogOpen(true)}
                 >
                   Enroll Now
+                </Button> */}
+                <Button asChild className="w-full mb-4" size="lg">
+                  <Link href={`/courses/${slug}/ApplicationForm`}>
+                     Enroll Now
+                  </Link>
                 </Button>
+
 
                 <div className='text-sm text-gray-500 space-y-3'>
                   <div className='flex items-center gap-2'>
@@ -280,7 +286,7 @@ export default function CourseDetailPage() {
           </div>
         </div>
       </div>
-
+ {/*
       <Dialog open={isEnrollDialogOpen} onOpenChange={setIsEnrollDialogOpen}>
         <DialogContent className='sm:max-w-[500px]'>
           <DialogHeader>
@@ -311,7 +317,7 @@ export default function CourseDetailPage() {
             onClose={() => setIsEnrollDialogOpen(false)}
           />
         </DialogContent>
-      </Dialog>
+      </Dialog>  */}
     </div>
   );
 }
