@@ -60,8 +60,8 @@ export default function CoursesPage() {
   return (
     <>
       <Navbar />
-      <div className='container mx-auto px-4 py-12'>
-        <div className='mb-8'>
+      <div className='container mx-auto px-4 md:px-6 py-12'>
+        <div className=' mb-8'>
           <h1 className='text-3xl font-bold mb-4'>Explore Our Courses</h1>
           <p className='text-gray-600 max-w-3xl'>
             Browse our comprehensive collection of courses designed to help you
@@ -119,10 +119,10 @@ export default function CoursesPage() {
           {categories.map((category) => (
             <TabsContent key={category} value={category} className='mt-0'>
               {sortedCourses.length > 0 ? (
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
                   {sortedCourses.map((course, index) => (
                     <AnimatedCard key={course.id} delay={0.1 * index}>
-                      <Card className='flex overflow-hidden border-none shadow-lg dark:bg-gray-900/40 transition-all duration-300 hover:shadow-xl gap-2 h-full '>
+                      <Card className='flex overflow-hidden border-none shadow-[2px_2px_15px_rgba(0,0,0,0.2)] dark:bg-gray-900/40 transition-all duration-300 hover:shadow-xl gap-2 h-full '>
                         <CardHeader className='px-4'>
                           <div className='relative'>
                             <img
@@ -156,7 +156,7 @@ export default function CoursesPage() {
                           </div>
 
                           {/* Description */}
-                          <p className='text-gray-600 mb-4 dark:text-gray-400 text-sm md:text-base lg:text-lg 2xl:text-xl'>
+                          <p className='text-gray-600 mb-4 dark:text-gray-400 text-sm md:text-base 2xl:text-lg'>
                             {course.description}
                           </p>
 

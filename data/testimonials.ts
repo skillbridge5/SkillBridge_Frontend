@@ -26,24 +26,24 @@ export const testimonials: Testimonial[] = [
     image: imagePaths.testimonials.lualawitAbera,
   },
   {
-    id: "daniel-semac",
-    name: "DANIEL SEMAGN",
+    id: "bereket-tadesse",
+    name: "BAREKET TADESSE",
     title: "Software Developer, Gigasystems",
     testimonial:
       '"The courses here really set me apart and catapulted my career as a Software Developer. Highly recommended!"',
     image: imagePaths.testimonials.danielSemagn,
   },
   {
-    id: "debora-resiml",
-    name: "DEBORA RESIMUL",
+    id: "mahlet-sahle",
+    name: "MAHLET SAHLE",
     title: "Data Analyst",
     testimonial:
       '"Their unique course was a game-changer. It gave me the skills I needed to start my career as a Data Analyst."',
     image: imagePaths.testimonials.deboraResimul,
   },
   {
-    id: "lualawit-abra",
-    name: "LUALAWIT ABERA",
+    id: "solomon-belay",
+    name: "SOLOMON BELAY",
     title: "Developer",
     testimonial: '"The instructors were knowledgeable and confident in guiding me through the program."',
     image: imagePaths.testimonials.lualawitAbera,
