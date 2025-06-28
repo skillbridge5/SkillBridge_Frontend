@@ -21,8 +21,8 @@ export const navbarItems = [
     //  ]
    },
    { 
-     name: "Jobs & Scholarships", 
-     path: "/jobs",
+     name: "Contact Us", 
+     path: "/Contact",
      type: "link"
    },
    
