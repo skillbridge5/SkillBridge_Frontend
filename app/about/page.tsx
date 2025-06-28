@@ -1,15 +1,19 @@
-import { Navbar } from "@/components/navbar";
-import React from "react";
+import { Navbar } from "@/components/navbar"
+import AboutPage from "@/components/AboutPage"
+import Footer from "@/components/footer"
 
-const AboutPage = () => {
+const About = () => {
   return (
-    <div className='min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300 font-montserrat'>
+    <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300 font-montserrat flex flex-col">
       <Navbar />
-      <section className='container !mx-auto px-4 lg:px-0 lg:pl-8 pb-16'>
-        Hello Welcome, This is About page!
-      </section>
+      <main className="flex-1">
+        <section className="container !mx-auto px-4 lg:px-0 lg:pl-8 pb-16">
+          <AboutPage />
+        </section>
+      </main>
+      <Footer />
     </div>
-  );
-};
+  )
+}
 
-export default AboutPage;
+export default About
