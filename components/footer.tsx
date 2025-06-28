@@ -28,7 +28,7 @@ const fadeInUp = {
     y: 0,
     transition: {
       duration: 0.6,
-      ease: "easeOut"
+      ease: "easeOut" // use a string value for ease
     }
   }
 }
@@ -61,7 +61,7 @@ export default function Footer() {
             </div>
           </motion.div>
 
-          <motion.div variants={fadeInUp}>
+            <motion.div variants={fadeInUp}>
             <h3 className="text-lg font-bold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               {[
@@ -70,15 +70,16 @@ export default function Footer() {
                 { href: "/instructors", label: "Instructors" },
                 { href: "/Contact", label: "Contact Us" },
                 { href: "/FAQs", label: "FAQ" }
+
               ].map((link, i) => (
-                <li key={i}>
-                  <Link href={link.href} className="hover:text-white/80">
-                    {link.label}
-                  </Link>
-                </li>
+              <li key={i}>
+                <Link href={link.href} className="hover:text-white/80">
+                {link.label}
+                </Link>
+              </li>
               ))}
             </ul>
-          </motion.div>
+            </motion.div>
 
           <motion.div variants={fadeInUp}>
             <h3 className="text-lg font-bold mb-4">Popular Categories</h3>
@@ -120,11 +121,8 @@ export default function Footer() {
             </div>
             <div>
               {/* faq icon */}
-              <Link href="/faq" className="relative text-white/80 hover:text-white top-12 left-12">
-                {/* lucide-react icon */}
+              <Link href="/faq" className="relative text-white/80 hover:text-white top-6 lg:top-12 lg:left-12">
                 <HelpCircle className="w-8 h-8 md:h-10 md:w-10 lg:w-12 lg:h-12 2xl:h-14 2xl:w-14 text-[#E57C00] hover:text-[#F48000] hover:scale-105" />
-
-                
               </Link>
             </div>
            
@@ -137,7 +135,7 @@ export default function Footer() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5, duration: 1 }}
-          className="border-t border-white/30 mt-8 pt-8 text-center text-white/80"
+          className="border-t border-white/30 mt-8 pt-8 text-center text-white/80 text-sm md:text-base"
         >
           <p>&copy; {new Date().getFullYear()} SkillBirdge. All rights reserved.</p>
         </motion.div>
