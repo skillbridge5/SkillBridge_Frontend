@@ -29,10 +29,10 @@ export function Navbar() {
   const closeMobileMenu = () => setMobileOpen(false);
   return (
     <>
-      <header className='sticky top-0 z-40 bg-white/50 backdrop-blur-xl dark:bg-gray-950/50'>
-        <section className='container mx-auto  px-2 xl:px-4 py-1 flex items-center justify-around lg:gap-4 xl:gap-32 '>
+      <header className='sticky top-0 2xl:pt-3 min-[1710px]:pt-4 z-40 bg-white/50 backdrop-blur-xl dark:bg-gray-950/50'>
+        <section className='mx-auto  px-2 xl:px-4 py-1 flex items-center justify-around lg:gap-4 xl:gap-32 '>
           <div className='flex items-center justify-between gap-4 sm:gap-6 md:gap-4 lg:gap-2 xl:gap-32 2xl:gap-10'>
-            <div className='container spacing flex justify-between items-center gap-4 sm:gap-6 md:gap-8 lg:gap-2 xl:gap-32 2xl:gap-10 '>
+            <div className='spacing flex justify-between items-center gap-4 sm:gap-6 md:gap-4 lg:gap-20 xl:gap-40 2xl:gap-60 min-[1710px]:gap-72 '>
               <div className='flex  gap-2 md:gap-4 lg:gap-8 '>
                 <Link
                   href='/'
@@ -44,12 +44,12 @@ export function Navbar() {
                     className='logo_width w-16 sm:w-20 md:w-24 lg:w-16 xl:w-20 h-16 sm:h-20 md:h-24 lg:h-16 xl:h-20 2xl:w-24 2xl:h-24'
                   />
                 </Link>
-                <nav className='hidden lg:flex items-center gap-4 lg:gap-5 xl:gap-6 2xl:gap-10 font-inter'>
+                <nav className='hidden lg:flex items-center gap-4 lg:gap-5 xl:gap-6 min-[1710px]:gap-12  font-inter'>
                   {navbarItems.map((item, index) => (
                     <Link
                       key={index}
                       href={item.path}
-                      className={`font-medium font-inter text-sm lg:text-xs xl:text-sm 2xl:text-[16px] ${
+                      className={`font-medium font-inter text-sm lg:text-xs xl:text-sm 2xl:text-[18px] ${
                         isActive(item.path)
                           ? "text-[#2196F3]"
                           : "text-gray-700 dark:text-gray-300 hover:text-[#2196F3]"
@@ -60,8 +60,8 @@ export function Navbar() {
                   ))}
                 </nav>
               </div>
-              <div className='flex max-[375px]:gap-2 min-[375px]:gap-5 sm:gap-6 md:gap-6 2xl:gap-12 items-center'>
-                <div className='search_bar flex items-center border border-gray-200 dark:border-gray-700 rounded-full pl-4 pr-2 py-0.5 sm:py-1.5 lg:py-1 xl:py-1.5 2xl:py-2 2xl:pl-8 2xl:pr-3 w-[220px] min-[500px]:w-[260px] sm:w-[280px] md:w-[240px] lg:w-[180px] xl:w-[280px] 2xl:w-[320px] max-[375px]:mr-1 min-[375px]:mr-4 min-[500px]:mr-7 sm:mr-4 md:mr-20 min-[920px]:!mr-8 lg:mr-4 xl:mr-1'>
+              <div className='flex max-[375px]:gap-2 min-[375px]:gap-5 sm:gap-6 min-[1760px]:gap-12 items-center'>
+                <div className='search_bar flex items-center border border-gray-200 dark:border-gray-700 rounded-full pl-4 pr-2 py-0.5 sm:py-1.5 lg:py-1 xl:py-1.5 2xl:py-2 2xl:pl-8 2xl:pr-3 w-[220px] min-[500px]:w-[260px] sm:w-[280px] md:w-[240px] lg:w-[180px] xl:w-[280px] 2xl:w-[320px] max-[375px]:mr-1 min-[375px]:mr-4 min-[500px]:mr-7 sm:mr-4 md:mr-16 min-[920px]:mr-8 lg:mr-4 xl:mr-1'>
                   <input
                     type='text'
                     placeholder='What do you want to learn?'
@@ -78,11 +78,13 @@ export function Navbar() {
 
                 <Button
                   size='sm'
-                  className='hidden md:block bg-[#2196F3] hover:bg-blue-500 h-9 px-5'
+                  className='hidden md:block bg-[#2196F3] hover:bg-blue-500 h-9 2xl:h-12 px-5'
                 >
-                  <Link href='/login'>Get Started</Link>
+                  <Link href='/login' className='text-base 2xl:text-lg'>
+                    Get Started
+                  </Link>
                 </Button>
-                <div className='flex gap-2'>
+                <div className='flex gap-2 items-center justify-center'>
                   <label htmlFor='lang'>
                     <Globe className=' h-5 w-5 text-gray-700 dark:text-gray-300 hover:text-[#2196F3] cursor-pointer' />
                   </label>

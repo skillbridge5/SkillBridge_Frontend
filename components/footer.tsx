@@ -44,7 +44,7 @@ export default function Footer() {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
         >
-          <motion.div variants={fadeInUp}>
+          <motion.div variants={fadeInUp} className="lg:mr-2 xl:mr-4 2xl:mr-10 min-[1710px]:mr-16">
             <h3 className="text-lg font-bold mb-4">About SkillBirdge</h3>
             <p className="text-xs md:text-[14px] text-white/90 mb-4">
               Bridging Gaps, Building Skills, Transforming Futures. We provide high-quality online courses to help you
@@ -120,7 +120,7 @@ export default function Footer() {
             </div>
             <div>
               {/* faq icon */}
-              <Link href="/faq" className="relative text-white/80 hover:text-white top-6 lg:top-12 lg:left-12">
+              <Link href="/faq" className="relative text-white/80 hover:text-white top-6 lg:top-12">
                 <HelpCircle className="w-8 h-8 md:h-10 md:w-10 lg:w-12 lg:h-12 2xl:h-14 2xl:w-14 text-[#E57C00] hover:text-[#F48000] hover:scale-105" />
               </Link>
             </div>

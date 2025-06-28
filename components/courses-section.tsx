@@ -21,7 +21,7 @@ export function CoursesSection() {
 
   return (
     <section className='py-16 dark:bg-gray-950'>
-      <div className='container mx-auto px-4'>
+      <div className=' mx-auto px-4'>
         <SectionHeading
           title='Top Courses'
           subtitle="Join thousands of students in our most popular courses. Real world value you can't miss!"
@@ -29,10 +29,10 @@ export function CoursesSection() {
         />
 
         <div className='w-full mb-8'>
-          <div className='grid min-[840px]:grid-cols-3 gap-6 xl:gap-8 lg:px-4 xl:px-8 2xl:px-12'>
+          <div className='grid min-[840px]:grid-cols-3 gap-8 xl:gap-12 2xl:gap-16 min-[1710px]:gap-20  lg:px-4 xl:px-8 2xl:px-12 '>
             {topCourses.map((course, index) => (
               <AnimatedCard key={course.id} delay={0.1 * index}>
-                      <Card className='flex overflow-hidden border-none shadow-lg dark:bg-gray-900/40 transition-all duration-300 hover:shadow-xl gap-2 h-full '>
+                      <Card className='flex overflow-hidden border-none shadow-[2px_2px_15px_rgba(0,0,0,0.3)] dark:bg-gray-900/40 transition-all duration-300 hover:shadow-xl gap-2 h-full '>
                         <CardHeader className='px-4'>
                           <div className='relative'>
                             <img

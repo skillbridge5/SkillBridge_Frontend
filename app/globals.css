@@ -194,3 +194,11 @@
   } */
 }
 
+.home-banner {
+   height: 480px !important;
+   background-image: url(/help_image.png) !important;
+   background-repeat: no-repeat !important;
+   width: 100%;
+   background-size: cover !important;
+   background-position: center !important;
+}

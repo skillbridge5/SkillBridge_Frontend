@@ -27,7 +27,7 @@ export function SectionHeading({ title, subtitle, center = false, titleColor = "
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           viewport={{ once: true }}
-          className="font-montserrat text-[#667085] dark:text-[#e1f7ff] max-[320px]:!text-xs min-[321px]:!text-sm lg:text-base xl:text-lg max-w-2xl mx-auto"
+          className="font-montserrat text-[#667085] dark:text-[#e1f7ff] max-[320px]:text-xs min-[321px]:text-sm lg:text-base xl:text-lg 2xl:text-xl max-w-2xl mx-auto"
         >
           {subtitle}
         </motion.p>
