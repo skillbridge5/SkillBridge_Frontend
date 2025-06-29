@@ -19,6 +19,7 @@ import {
 import { courses } from "@/lib/course-data";
 import { Navbar } from "../../components/navbar";
 import { AnimatedCard } from "@/components/ui/animated-card";
+import Footer from "@/components/footer";
 
 // Categories for filtering
 const categories = [
@@ -60,7 +61,7 @@ export default function CoursesPage() {
   return (
     <>
       <Navbar />
-      <div className='container mx-auto px-4 md:px-6 py-12'>
+      <div className='container mx-auto px-4 md:px-6 lg:px-8 xl:px-10 2xl:px-16 py-12 2xl:pb-20'>
         <div className=' mb-8'>
           <h1 className='text-3xl font-bold mb-4'>Explore Our Courses</h1>
           <p className='text-gray-600 max-w-3xl'>
@@ -228,6 +229,7 @@ export default function CoursesPage() {
           ))}
         </Tabs>
       </div>
+      <Footer />
     </>
   );
 }

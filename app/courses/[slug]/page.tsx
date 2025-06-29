@@ -16,13 +16,6 @@ import {
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import {
   Star,
   Clock,
   Award,
@@ -30,10 +23,9 @@ import {
   BookOpen,
   CheckCircle,
   AlertCircle,
+  ArrowLeft,
 } from "lucide-react";
 import { courses } from "@/lib/course-data";
-import EnrollmentForm from "@/components/enrollment-form";
-
 export default function CourseDetailPage() {
   const params = useParams();
   const slug = params.slug as string;
@@ -58,6 +50,14 @@ export default function CourseDetailPage() {
 
   return (
     <div className='container mx-auto px-4 py-12'>
+      <Link
+        href='/courses'
+        className='flex items-center text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-200 transition-colors mb-6 w-fit'
+      >
+        <ArrowLeft className='w-5 h-5 mr-2' />
+        <span className='font-medium'>Back to Courses</span>
+      </Link>
+
       <div className='grid grid-cols-1 lg:grid-cols-3 gap-8'>
         <div className='lg:col-span-2'>
           <div className='mb-8'>
@@ -73,7 +73,7 @@ export default function CourseDetailPage() {
               </div>
             </div>
 
-            <h1 className='text-3xl font-bold mb-4'>{course.title}</h1>
+            <h1 className='text-2xl sm:text-3xl font-bold mb-4'>{course.title}</h1>
 
             <p className='text-gray-600 mb-6'>{course.description}</p>
 
@@ -97,9 +97,11 @@ export default function CourseDetailPage() {
             </div>
 
             <div className='relative h-[300px] md:h-[400px] w-full rounded-lg overflow-hidden mb-8'>
-              <img
-                src={course.image}
+              <Image
+                src={course.image || "/placeholder.svg?height=400&width=800"}
                 alt={course.title}
+                width={800}
+                height={400}
                 className='w-full h-[300px] md:h-[400px] 2xl:h-[500px] object-cover'
               />
             </div>
@@ -193,12 +195,10 @@ export default function CourseDetailPage() {
               <div className='flex flex-col md:flex-row gap-6'>
                 <div className='relative h-32 w-32 rounded-full overflow-hidden'>
                   <Image
-                    src={
-                      course.instructorImage ||
-                      "/placeholder.svg?height=200&width=200"
-                    }
+                    src={course.instructorImage || "/placeholder.svg?height=200&width=200"}
                     alt={course.instructor}
                     fill
+                    sizes='(max-width: 200px) 100vw, 200px'
                     className='object-cover'
                   />
                 </div>
@@ -253,19 +253,18 @@ export default function CourseDetailPage() {
                   </RadioGroup>
                 </div>
 
-                 {/*<Button
+                {/*<Button
                   className='w-full mb-4'
                   size='lg'
                   onClick={() => setIsEnrollDialogOpen(true)}
                 >
                   Enroll Now
                 </Button> */}
-                <Button asChild className="w-full mb-4" size="lg">
+                <Button asChild className='w-full mb-4' size='lg'>
                   <Link href={`/courses/${slug}/ApplicationForm`}>
-                     Enroll Now
+                    Enroll Now
                   </Link>
                 </Button>
-
 
                 <div className='text-sm text-gray-500 space-y-3'>
                   <div className='flex items-center gap-2'>
@@ -286,7 +285,7 @@ export default function CourseDetailPage() {
           </div>
         </div>
       </div>
- {/*
+      {/*
       <Dialog open={isEnrollDialogOpen} onOpenChange={setIsEnrollDialogOpen}>
         <DialogContent className='sm:max-w-[500px]'>
           <DialogHeader>
