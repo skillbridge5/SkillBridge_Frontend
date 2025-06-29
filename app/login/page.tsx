@@ -8,6 +8,7 @@ import Image from "next/image"
 import { Eye, EyeOff } from "lucide-react";
 import useSignIn from "@/components/hooks/useSignIn"
    import { useState } from "react"
+import { signIn } from "@/lib/auth-client"
 
 const SignIn:React.FC=()=>{
  const[show,setShow]=useState(false);
@@ -16,7 +17,22 @@ const SignIn:React.FC=()=>{
 const handlePasswordToggle=()=>{
     setShow(!show)
 }
+const handleGoogleSignIn = async () => {
+  try {
+    console.log("Initiating Google Sign In");
+    const res = await signIn.social({ provider: "google" });
+    console.log("Google Sign In Response:", res);
+    if (res) {
+      alert("User Logged In Successfully");
+      router.push("/");
+    }
+  } catch (error) {
+    console.error("Google Sign In Error:", error);
+    alert("Google Sign In Failed");
+  }
+};
 
+ 
     const router=useRouter()
 const{handleChange,errors,values,handleSubmit}=useSignIn()
     return(
@@ -88,8 +104,8 @@ value={values.email}   className={`${errors.password ? 'border-red-500' : 'borde
 
 
 <div className="flex flex-col justify-center items-center gap-3">
-<Button className="bg-sky-500 text-white w-full py-2 text-lg font-semibold">Sign In</Button>
-<Button className="bg-white text-black w-full py-2 text-lg font-semibold border border-gray-300">Sign in with Google</Button>
+<Button className="bg-sky-500 text-white w-full py-2 text-lg font-semibold" type="submit">Sign In</Button>
+<Button className="bg-white text-black w-full py-2 text-lg font-semibold border border-gray-300" onClick={handleGoogleSignIn}>Sign in with Google</Button>
 </div>
 <p className="text-center text-[#595959] font-[400] mt-4 cursor-pointer">Dont Have an account?  
     <span className="text-blue-600" onClick={()=>router.push("/signup")}> Sign up for Free !</span>

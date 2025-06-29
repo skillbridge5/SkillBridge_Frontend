@@ -9,6 +9,7 @@ import useSignUp from "@/components/hooks/useSignUp"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
+import { signIn, signUp } from "@/lib/auth-client"
 
 const SignUp: React.FC = () => {
   const [show, setShow] = useState(false)
@@ -17,6 +18,20 @@ const SignUp: React.FC = () => {
 
   // Toggle Password Visibility
   const handlePasswordToggle = () => setShow((prev) => !prev)
+  const handleGoogleSignUp = async () => {
+    console.log("hey");
+  try {
+    const res = await signIn.social({ provider: "google" });
+    if (res) {
+      alert("User Logged In Successfully");
+      router.push("/");
+    }
+  } catch (error) {
+    console.error("Google Sign In Error:", error);
+    alert("Google Sign In Failed");
+  }
+};
+
 
   return (
     <section className="min-h-screen flex flex-col md:flex-row overflow-hidden">
@@ -129,7 +144,7 @@ const SignUp: React.FC = () => {
             <Button type="submit" className="bg-sky-500 text-white w-full py-2 text-lg font-semibold">
               Sign Up
             </Button>
-            <Button className="bg-white text-black w-full py-2 text-lg font-semibold border border-gray-300">
+            <Button className="bg-white text-black w-full py-2 text-lg font-semibold border border-gray-300" onClick={handleGoogleSignUp}>
               Sign in with Google
             </Button>
           </div>

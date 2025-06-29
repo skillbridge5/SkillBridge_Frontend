@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { SignUpProps } from "../interface";
+import { signUp } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
 
 const useSignUp=(
     initalValue:SignUpProps={
@@ -40,19 +42,34 @@ const handleChange=(e:React.ChangeEvent<HTMLInputElement>)=>{
     }
 
     //Function to handle After Form is Submitted
-    const handleSubmit=(e?:React.FormEvent<HTMLFormElement>)=>{
-        e?.preventDefault()
-        const validationErrors=validateError(values)
-    setErrors(validationErrors)
-    if(Object.keys(validationErrors).length===0) {
-        alert("User Registered Sucessfuuly")
-        resetForm()
+   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  const validationErrors = validateError(values);
+
+  setErrors(validationErrors);
+
+  if (Object.keys(validationErrors).length === 0) {
+    try {
+        console.log("Submitting Sign Up Form", values);
+      const res = await signUp.email({
+        email: values.email,
+        password: values.password,
+        // optionally, include name or metadata if your backend expects it
+        name: values.fullName,
+      });
+      console.log(res);
+     
+     
+      resetForm();
+    } catch (err) {
+      console.error(err);
+      alert("Sign-up failed");
     }
-    else{
-        alert("Invalid Submisson, Try Again")
-    }
-   
-    }
+  } else {
+    alert("Invalid submission");
+  }
+};
+
     
  
     

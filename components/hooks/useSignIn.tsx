@@ -1,6 +1,8 @@
 import {useState } from "react";
 
 import { SignInProps } from "../interface"
+import { signIn } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
 
 
 // Typescript enforced SignIn Values
@@ -16,6 +18,7 @@ const[errors,setErrors]=useState<Partial<SignInProps>>({})
 //Error Validations
 const validateError=(values:SignInProps)=>{
 const errors:Partial<SignInProps>={}
+
 
 if(!values.email) errors.email="Email is Required"
 if(!values.password) errors.password="Password is Required"
@@ -39,19 +42,33 @@ const resetForm=()=>{
 }
 
 //Function to handle After Form is Submitted
-const handleSubmit=(e:React.FormEvent<HTMLFormElement>)=>{
-    e.preventDefault()
-    const validationErrors=validateError(values);
-    setErrors(validationErrors)
-if(Object.keys(validationErrors).length===0) {
-    alert("User Logged In Sucessfuuly")
-    resetForm()
-}
-else{
-    alert("Invalid Submisson, Try Again")
-}
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+ 
+  const validationErrors = validateError(values);
+  setErrors(validationErrors);
 
-}
+  if (Object.keys(validationErrors).length === 0) {
+    try {
+        console.log("Submitting Sign In Form", values);
+      const res = await signIn.email({ 
+        email: values.email, 
+        password: values.password 
+      });
+     
+      console.log(res);
+      
+      
+      resetForm();
+    } catch (err) {
+      alert("Login failed");
+      console.error(err);
+    }
+  } else {
+    alert("Invalid Submission, Try Again");
+  }
+};
+
 
 
 return{
