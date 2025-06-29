@@ -1,4 +1,4 @@
-import { imagePaths } from "@/data/image-paths";
+import { imagePaths } from "@/app/[lang]/data/image-paths";
 
 // Demo data for courses
 export const courses = [
