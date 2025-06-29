@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { Inter, Montserrat, Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { NextIntlClientProvider } from "next-intl";
+import { notFound } from "next/navigation";
 
 // Initialize Inter font with various weights
 const inter = Inter({
@@ -29,20 +31,35 @@ export const metadata: Metadata = {
   description: "Bridging Gaps, Building Skills, Transforming Futures",
 };
 
+
+export function generateStaticParams() {
+  return [{ locale: "en" }, { locale: "am" }];
+}
+
 export default function RootLayout({
   children,
-}: Readonly<{
+  params: { locale },
+}: {
   children: React.ReactNode;
-}>) {
+  params: { locale: string };
+}) {
+  let messages;
+  try {
+    messages = require(`../../messages/${locale}.json`);
+  } catch (error) {
+    notFound();
+  }
   return (
     <html
-      lang='en'
+      lang={locale}
       className={`${montserrat.variable} ${inter.variable} ${poppins.variable}`}
       suppressHydrationWarning
     >
-      <body className="antialiased">
-        <ThemeProvider attribute='class' defaultTheme='light'  enableSystem>
-          {children}
+      <body className='antialiased'>
+        <ThemeProvider attribute='class' defaultTheme='light' enableSystem>
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            {children}
+          </NextIntlClientProvider>
         </ThemeProvider>
       </body>
     </html>
