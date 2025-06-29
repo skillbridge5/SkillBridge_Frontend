@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Montserrat, Poppins } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/app/[lang]/components/theme-provider";
+import { ThemeProvider } from "@/app/[locale]/components/theme-provider";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
@@ -30,18 +30,15 @@ export const metadata: Metadata = {
   description: "Bridging Gaps, Building Skills, Transforming Futures",
 };
 
-
-
-
 export default async function RootLayout({
   children,
-  params
+  params,
 }: {
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 }) {
   // Ensure that the incoming `locale` is valid
-  const {locale} = await params;
+  const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
@@ -54,9 +51,7 @@ export default async function RootLayout({
     >
       <body className='antialiased'>
         <ThemeProvider attribute='class' defaultTheme='light' enableSystem>
-          <NextIntlClientProvider >
-            {children}
-          </NextIntlClientProvider>
+          <NextIntlClientProvider>{children}</NextIntlClientProvider>
         </ThemeProvider>
       </body>
     </html>

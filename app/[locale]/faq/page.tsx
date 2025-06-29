@@ -1,15 +1,15 @@
 "use client";
 import { useTranslations } from "next-intl";
-import { Navbar } from "@/app/[lang]/components/navbar";
+import { Navbar } from "@/app/[locale]/components/navbar";
 import React, { useState } from "react";
 import Image from "next/image";
-import Footer from "@/app/[lang]/components/footer";
+import Footer from "@/app/[locale]/components/footer";
 
 const FaqPage = () => {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
 
   const t = useTranslations();
-  const faqList = t.raw("faqList") as { question: string; answer: string }[];
+  const faqList = t.raw("faq.faqList") as { question: string; answer: string }[];
 
   return (
     <div className='bg-[#D6EBFC] font-montserrat'>
@@ -28,10 +28,10 @@ const FaqPage = () => {
           <div className='absolute top-[200px] 2xl:top-72 left-20 2xl:left-40 w-[70%] p-4 2xl:p-8 flex flex-col justify-start items-start text-left bg-[#dddddd57]'>
             <div className='mr-auto ml-8 font-montserrat '>
               <h1 className='font-bold text-[#ffc107] drop-shadow-[2px_2px_3px_rgba(0,0,0,1)] text-3xl 2xl:text-4xl'>
-                {t("faqTitle")}
+                {t("faq.faqTitle")}
               </h1>
               <h6 className=' drop-shadow-[2px_2px_3px_rgba(0,0,0,1)] text-white text-xl 2xl:text-2xl font-semibold mt-2'>
-                {t("faqSubtitle")}
+                {t("faq.faqSubtitle")}
               </h6>
             </div>
           </div>
@@ -42,7 +42,7 @@ const FaqPage = () => {
               Frequently Asked <span className='text-[#2196F3]'>Questions</span>
             </h1>
             <p className='text-gray-600 mb-6 text-base 2xl:text-lg 2xl:mt-2'>
-              {t("FaqDescription")}
+              {t("faq.faqDescription")}
             </p>
             <div className='flex flex-col gap-4'>
               {faqList.map((faq, idx) => (

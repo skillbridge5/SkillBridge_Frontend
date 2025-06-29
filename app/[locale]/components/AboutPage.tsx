@@ -11,14 +11,14 @@ import {
   Zap,
   GraduationCap,
 } from "lucide-react";
-import { Button } from "@/app/[lang]/components/ui/button";
+import { Button } from "@/app/[locale]/components/ui/button";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@/app/[lang]/components/ui/card";
-import { Badge } from "@/app/[lang]/components/ui/badge";
+} from "@/app/[locale]/components/ui/card";
+import { Badge } from "@/app/[locale]/components/ui/badge";
 
 export default function AboutPage() {
   return (

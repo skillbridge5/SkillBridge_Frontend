@@ -5,11 +5,11 @@ import {
   CardContent,
   CardHeader,
   CardFooter,
-} from "@/app/[lang]/components/ui/card";
-import { Badge } from "@/app/[lang]/components/ui/badge";
+} from "@/app/[locale]/components/ui/card";
+import { Badge } from "@/app/[locale]/components/ui/badge";
 import { ArrowUpRight, Clock } from "lucide-react";
 import { courses } from "@/lib/course-data";
-import { AnimatedCard } from "@/app/[lang]/components/ui/animated-card";
+import { AnimatedCard } from "@/app/[locale]/components/ui/animated-card";
 import { SectionHeading } from "./ui/section-heading";
 import Link from "next/link";
 

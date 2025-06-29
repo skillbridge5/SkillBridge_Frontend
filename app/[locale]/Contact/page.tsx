@@ -1,7 +1,7 @@
 "use client";
 
-import { Navbar } from "@/app/[lang]/components/navbar";
-import Footer from "@/app/[lang]/components/footer";
+import { Navbar } from "@/app/[locale]/components/navbar";
+import Footer from "@/app/[locale]/components/footer";
 import React, { useState } from "react";
 
 const Contact = () => {

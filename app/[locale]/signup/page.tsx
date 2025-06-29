@@ -5,10 +5,10 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Eye, EyeOff } from "lucide-react";
 
-import useSignUp from "@/app/[lang]/components/hooks/useSignUp";
-import { Input } from "@/app/[lang]/components/ui/input";
-import { Label } from "@/app/[lang]/components/ui/label";
-import { Button } from "@/app/[lang]/components/ui/button";
+import useSignUp from "@/app/[locale]/components/hooks/useSignUp";
+import { Input } from "@/app/[locale]/components/ui/input";
+import { Label } from "@/app/[locale]/components/ui/label";
+import { Button } from "@/app/[locale]/components/ui/button";
 
 const SignUp: React.FC = () => {
   const [show, setShow] = useState(false);

@@ -1,18 +1,22 @@
 "use client";
 import Link from "next/link";
 import { Twitter, Linkedin } from "lucide-react";
-import { instructors } from "@/app/[lang]/data/instructors";
-import { AnimatedCard } from "@/app/[lang]/components/ui/animated-card";
+import { instructors } from "@/app/[locale]/data/instructors";
+import { AnimatedCard } from "@/app/[locale]/components/ui/animated-card";
 import { motion } from "framer-motion";
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/app/[lang]/components/ui/hover-card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/app/[lang]/components/ui/avatar";
+} from "@/app/[locale]/components/ui/hover-card";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/app/[locale]/components/ui/avatar";
 import { imagePaths } from "../data/image-paths";
 import { SectionHeading } from "./ui/section-heading";
-import "./styles/style.css"
+import "./styles/style.css";
 export function InstructorsSection() {
   return (
     <section className='py-16 bg-[#F5FAFF] dark:bg-gray-900'>

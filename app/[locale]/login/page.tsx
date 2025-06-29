@@ -1,12 +1,12 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { Input } from "@/app/[lang]/components/ui/input";
-import { Label } from "@/app/[lang]/components/ui/label";
+import { Input } from "@/app/[locale]/components/ui/input";
+import { Label } from "@/app/[locale]/components/ui/label";
 import Link from "next/link";
-import { Button } from "@/app/[lang]/components/ui/button";
+import { Button } from "@/app/[locale]/components/ui/button";
 import Image from "next/image";
 import { Eye, EyeOff } from "lucide-react";
-import useSignIn from "@/app/[lang]/components/hooks/useSignIn";
+import useSignIn from "@/app/[locale]/components/hooks/useSignIn";
 import { useState } from "react";
 
 const SignIn: React.FC = () => {

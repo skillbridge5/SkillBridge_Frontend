@@ -1,12 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { Button } from "@/app/[lang]/components/ui/button";
+import { Button } from "@/app/[locale]/components/ui/button";
 import { motion } from "framer-motion";
 import { imagePaths } from "../data/image-paths";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 export function HeroSection() {
+  const t = useTranslations();
+  const stats = t.raw("hero.statCards") as { title: string; value: string }[];
   return (
     <section className='container !mx-auto px-4 lg:px-0 lg:pl-8 pb-16 relative flex gap-12 justify-center items-center'>
       <div className='grid md:grid-cols-2 gap-8 md:gap-3 lg:gap-16 xl:gap-[13rem] 2xl:gap-72 min-[1710px]:gap-80 items-center'>
@@ -18,18 +21,18 @@ export function HeroSection() {
             className='text-4xl sm:text-5xl lg:text-6xl 2xl:text-7xl min-[1710px]:text-[5rem] font-montserrat font-bold lg:font-extrabold leading-tight dark:text-white text-center md:text-left '
           >
             <span className='text-[#2196F3] tracking-wide md:tracking-normal'>
-              Your{" "}
+              {t("hero.span1")}{" "}
             </span>
             <span className='text-[#F57C00] tracking-wide md:tracking-normal lg:tracking-wider 2xl:tracking-widest'>
-              Future
+              {t("hero.span2")}
             </span>{" "}
             <br />
             <span className='text-[#2196F3] tracking-wide md:tracking-normal lg:tracking-wider 2xl:tracking-widest'>
-              Begins With
+              {t("hero.span3")}
             </span>{" "}
             <br />
             <span className='text-[#F57C00] tracking-wide md:tracking-normal lg:tracking-wider 2xl:tracking-widest !font-montserrat'>
-              One Click
+              {t("hero.span4")}
             </span>
           </motion.h1>
 
@@ -39,7 +42,7 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className='text-gray-600 dark:text-gray-400 mt-4 2xl:mt-8 text-sm md:text-lg 2xl:text-xl text-center md:text-left pt-8 md:pt-12'
           >
-            Bridging Gaps, Building Skills, Transforming Futures
+            {t("hero.heroSubtitle")}
           </motion.p>
 
           <motion.div
@@ -48,15 +51,14 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className='flex flex-wrap gap-4 mt-8 2xl:mt-12 justify-center md:justify-start 2xl:gap-12 min-[1710px]:gap-16 '
           >
-            
             <Button className='bg-[#2196F3] hover:bg-blue-500 dark:hover:bg-[#2196F3]/70 dark:text-white h-11 px-8 transition-transform hover:scale-105 scale-96 sm:scale-100 2xl:scale-110 min-[1710px]:h-14 min-[1710px]:text-lg'>
-              <Link href='/login'>Get Started</Link>
+              <Link href='/login'>{t("hero.getStarted")}</Link>
             </Button>
             <Button
               variant='outline'
               className='bg-[#B5C4E6] text-[#2196F3] border-blue-100 hover:bg-blue-100 hover:text-blue-500 h-11 px-8 dark:bg-blue-800/20 dark:border-blue-800/30 dark:text-blue-400 dark:hover:bg-blue-700/30 transition-transform hover:scale-105 scale-96 sm:scale-100 2xl:scale-110 min-[1710px]:h-14 min-[1710px]:text-lg'
             >
-              Get free trial
+              {t("hero.freeTrial")}
             </Button>
           </motion.div>
         </div>
@@ -90,10 +92,10 @@ export function HeroSection() {
               ></div>
             </div>
             <h3 className='md:text-xl lg:text-2xl 2xl:text-3xl font-bold text-gray-900 dark:text-white'>
-              10+
+              {t(stats[0].value)}
             </h3>
             <p className='text-gray-500 dark:text-gray-400 !text-[10px] lg:text-sm 2xl:text-base text-center'>
-              Online Courses
+              {t(stats[0].title)}
             </p>
           </motion.div>
 
@@ -113,10 +115,10 @@ export function HeroSection() {
             </div>
             <div>
               <div className='md:text-xl lg:text-2xl 2xl:text-3xl font-bold text-gray-800 dark:text-white'>
-                30+
+                {t(stats[1].value)}
               </div>
               <div className='text-gray-500 dark:text-gray-400 !text-[10px] lg:text-sm 2xl:text-base'>
-                Video Courses
+                {t(stats[1].title)}
               </div>
             </div>
           </motion.div>
@@ -168,10 +170,10 @@ export function HeroSection() {
             </div>
             <div>
               <div className='md:text-xl lg:text-2xl 2xl:text-3xl font-bold text-gray-800 dark:text-white'>
-                250+
+                {t(stats[2].value)}
               </div>
               <div className='text-gray-500 dark:text-gray-400 !text-[10px] lg:text-sm 2xl:text-base'>
-                Tutors
+                {t(stats[2].title)}
               </div>
             </div>
           </motion.div>

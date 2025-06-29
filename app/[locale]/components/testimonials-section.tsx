@@ -1,16 +1,20 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { testimonials } from "@/app/[lang]/data/testimonials";
+import { testimonials } from "@/app/[locale]/data/testimonials";
 import { motion } from "framer-motion";
-import { Avatar, AvatarFallback, AvatarImage } from "@/app/[lang]/components/ui/avatar";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/app/[locale]/components/ui/avatar";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/app/[lang]/components/ui/carousel";
+} from "@/app/[locale]/components/ui/carousel";
 import { BiSolidQuoteAltLeft } from "react-icons/bi";
 import { imagePaths } from "../data/image-paths";
 import { SectionHeading } from "./ui/section-heading";

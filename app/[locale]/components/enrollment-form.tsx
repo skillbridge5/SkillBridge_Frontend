@@ -3,13 +3,13 @@
 import type React from "react";
 
 import { useState } from "react";
-import { Button } from "@/app/[lang]/components/ui/button";
-import { Input } from "@/app/[lang]/components/ui/input";
-import { Label } from "@/app/[lang]/components/ui/label";
+import { Button } from "@/app/[locale]/components/ui/button";
+import { Input } from "@/app/[locale]/components/ui/input";
+import { Label } from "@/app/[locale]/components/ui/label";
 import {
   RadioGroup,
   RadioGroupItem,
-} from "@/app/[lang]/components/ui/radio-group";
+} from "@/app/[locale]/components/ui/radio-group";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -18,7 +18,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@/app/[lang]/components/ui/alert-dialog";
+} from "@/app/[locale]/components/ui/alert-dialog";
 import { Mail, Phone } from "lucide-react";
 
 interface EnrollmentFormProps {

@@ -8,7 +8,7 @@ import {
   ChevronRight,
   ChevronLeft,
 } from "lucide-react";
-import { categoriesData } from "@/app/[lang]/data/categories";
+import { categoriesData } from "@/app/[locale]/data/categories";
 
 export function ExploreDropdown() {
   const [isExploreOpen, setIsExploreOpen] = useState(false);

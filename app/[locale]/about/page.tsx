@@ -1,6 +1,6 @@
-import { Navbar } from "@/app/[lang]/components/navbar";
-import AboutPage from "@/app/[lang]/components/AboutPage";
-import Footer from "@/app/[lang]/components/footer";
+import { Navbar } from "@/app/[locale]/components/navbar";
+import AboutPage from "@/app/[locale]/components/AboutPage";
+import Footer from "@/app/[locale]/components/footer";
 
 const About = () => {
   return (

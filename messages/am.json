@@ -47,12 +47,53 @@
       ]
    },
    "navbar": {
-      "home": "መነሻ",
-      "about": "ስለ እኛ",
-      "courses": "ኮርሶች",
-      "faq": "ተደጋጋሚ ጥያቄዎች",
-      "contact": "ያግኙን",
-      "searchPlaceholder": "ምን ማማረር ይፈልጋሉ?",
+      "navbarItems": [
+         {
+            "name": "መነሻ",
+            "path": "/",
+            "type": "link"
+         },
+         {
+            "name": "ስለ እኛ",
+            "path": "/about",
+            "type": "link"
+         },
+         {
+            "name": "ኮርሶች",
+            "path": "/courses",
+            "type": "link"
+         },
+         {
+            "name": "ያግኙን",
+            "path": "/contact",
+            "type": "link"
+         }
+      ],
+      "searchPlaceholder": "ምን መማር ይፈልጋሉ ? ",
       "getStarted": "ጀምር"
+   },
+   "hero": {
+      "span1": "የእርስዎን",
+      "span2": "ወደፊት",
+      "span3": "በአንድ ክሊክ",
+      "span4": "ይጀምሩ!",
+      "heroSubtitle": "እንከኖችን ማጥፋት ፣ ክህሎቶችን መገንባት ፣ ወደፊቶን መቀየር",
+      "getStarted": "ጀምር",
+      "freeTrial": "ነፃ ሙከራ ያግኙ",
+      "statCards": [
+         {
+            "title": "ኦንላይን ኮርሶች",
+            "value": "10+"
+         },
+         {
+            "title": "ቪዲዮ ኮርሶች",
+            "value": "30+"
+         },
+         {
+            "title": "ቲቶሮች",
+            "value": "250+"
+         }
+      ]
    }
+
 }

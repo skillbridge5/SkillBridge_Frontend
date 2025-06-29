@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { Card, CardContent } from "@/app/[lang]/components/ui/card";
+import { Card, CardContent } from "@/app/[locale]/components/ui/card";
 import { ChevronRight } from "lucide-react";
-import { AnimatedCard } from "@/app/[lang]/components/ui/animated-card";
-import { SectionHeading } from "@/app/[lang]/components/ui/section-heading";
+import { AnimatedCard } from "@/app/[locale]/components/ui/animated-card";
+import { SectionHeading } from "@/app/[locale]/components/ui/section-heading";
 import React from "react";
 import { Service } from "@/types";
 

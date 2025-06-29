@@ -8,16 +8,16 @@ import {
   CardContent,
   CardFooter,
   CardHeader,
-} from "@/app/[lang]/components/ui/card";
-import { Button } from "@/app/[lang]/components/ui/button";
-import { Badge } from "@/app/[lang]/components/ui/badge";
-import { Input } from "@/app/[lang]/components/ui/input";
+} from "@/app/[locale]/components/ui/card";
+import { Button } from "@/app/[locale]/components/ui/button";
+import { Badge } from "@/app/[locale]/components/ui/badge";
+import { Input } from "@/app/[locale]/components/ui/input";
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/app/[lang]/components/ui/tabs";
+} from "@/app/[locale]/components/ui/tabs";
 import { Star, Search, Filter, ArrowUpRight, Clock } from "lucide-react";
 import {
   Select,
@@ -25,11 +25,11 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/app/[lang]/components/ui/select";
+} from "@/app/[locale]/components/ui/select";
 import { courses } from "@/lib/course-data";
-import { Navbar } from "../../[lang]/components/navbar";
-import { AnimatedCard } from "@/app/[lang]/components/ui/animated-card";
-import Footer from "@/app/[lang]/components/footer";
+import { Navbar } from "../components/navbar";
+import { AnimatedCard } from "@/app/[locale]/components/ui/animated-card";
+import Footer from "@/app/[locale]/components/footer";
 
 // Categories for filtering
 const categories = [

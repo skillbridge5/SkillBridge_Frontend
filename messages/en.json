@@ -47,12 +47,53 @@
       ]
    },
    "navbar": {
-      "home": "Home",
-      "about": "About",
-      "courses": "Courses",
-      "faq": "FAQ",
-      "contact": "Contact",
+      "navbarItems": [
+         {
+            "name": "Home",
+            "path": "/",
+            "type": "link"
+         },
+         {
+            "name": "About us",
+            "path": "/about",
+            "type": "link"
+         },
+         {
+            "name": "Courses",
+            "path": "/courses",
+            "type": "link"
+         },
+         {
+            "name": "Contact Us",
+            "path": "/contact",
+            "type": "link"
+         }
+      ],
       "searchPlaceholder": "What do you want to learn?",
       "getStarted": "Get Started"
+   },
+   "hero": {
+      "span1": "Your",
+      "span2": "Future",
+      "span3": "Begins With",
+      "span4": "One Click",
+      "heroSubtitle": "Bridging Gaps, Building Skills, Transforming Futures",
+      "getStarted": "Get Started",
+      "freeTrial": "Get Free Trial",
+      "statCards": [
+         {
+            "title": "Online Courses",
+            "value": "10+"
+         },
+         {
+            "title": "Video Courses",
+            "value": "30+"
+         },
+         {
+            "title": "Tutors",
+            "value": "250+"
+         }
+         
+      ]
    }
 }
