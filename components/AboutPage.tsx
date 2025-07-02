@@ -36,8 +36,8 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="flex justify-center">
-              <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 text-center shadow-lg w-80 h-80 flex flex-col justify-center">
-                <div className="w-32 h-32 mx-auto mb-4 relative">
+              <div className="bg-white dark:bg-gray-800 rounded-3xl p-6 text-center shadow-lg w-64 h-64 flex flex-col justify-center">
+                <div className="w-32 h-32 mx-auto mb-3 relative">
                   <Image
                     src="/skills.png?height=128&width=128"
                     alt="SkillBridge Logo"
@@ -46,8 +46,8 @@ export default function AboutPage() {
                     className="rounded-full"
                   />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">SkillBridge</h3>
-                <p className="text-gray-600 dark:text-gray-400 font-medium">Institute Of Technology</p>
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">SkillBridge</h3>
+                <p className="text-gray-600 dark:text-gray-400 font-medium text-sm">Institute Of Technology</p>
               </div>
             </div>
           </div>
@@ -80,13 +80,14 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-[4/3] bg-gray-200 dark:bg-gray-800 rounded-2xl overflow-hidden">
+              <div className="rounded-2xl overflow-hidden">
                 <Image
-                  src="/about_image1.webp?height=400&width=500"
+                  src="/about_image1.webp"
                   alt="Our Story Image"
                   width={500}
-                  height={400}
-                  className="w-full h-full object-cover"
+                  height={300}
+                  className="object-cover w-full h-full"
+                  style={{ width: "100%", height: "300px" }}
                 />
               </div>
             </div>
@@ -258,13 +259,14 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-square bg-gray-900 dark:bg-gray-700 rounded-2xl overflow-hidden">
+              <div className="bg-gray-900 dark:bg-gray-700 rounded-2xl overflow-hidden">
                 <Image
-                  src="/about_image2.jpg?height=500&width=500"
+                  src="/about_image2.jpg"
                   alt="Learning Methodology"
-                  width={500}
-                  height={500}
-                  className="w-full h-full object-cover"
+                  width={450}
+                  height={350}
+                  className="object-cover"
+                  style={{ width: "450px", height: "350px" }}
                 />
               </div>
             </div>
@@ -272,122 +274,111 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Why Students Choose SkillBridge */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900 -mx-4 lg:-mx-8 px-4 lg:px-8">
+      {/* Why Students Choose SkillBridge - Made Shorter */}
+      <section className="py-16 bg-gray-50 dark:bg-gray-900 -mx-4 lg:-mx-8 px-4 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Why Students Choose SkillBridge</h2>
             <p className="text-xl text-gray-600 dark:text-gray-400">
               The learning experience that actually prepares you for your first dev job
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="text-center hover:shadow-lg transition-shadow bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 h-full flex flex-col min-h-[280px]">
-              <CardHeader className="pb-6 flex-shrink-0">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Card className="text-center hover:shadow-lg transition-shadow bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 h-full flex flex-col min-h-[200px]">
+              <CardHeader className="pb-3 flex-shrink-0">
                 <div
-                  className="mx-auto w-16 h-16 rounded-lg flex items-center justify-center mb-6"
+                  className="mx-auto w-12 h-12 rounded-lg flex items-center justify-center mb-3"
                   style={{ backgroundColor: "rgba(33, 150, 243, 0.1)" }}
                 >
-                  <BookOpen className="w-8 h-8" style={{ color: "oklch(44.6% 0.03 256.802)" }} />
+                  <BookOpen className="w-6 h-6" style={{ color: "oklch(44.6% 0.03 256.802)" }} />
                 </div>
-                <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+                <CardTitle className="text-base font-semibold text-gray-900 dark:text-white mb-2">
                   Industry-Relevant Curriculum
                 </CardTitle>
               </CardHeader>
-              <CardContent className="flex-grow px-6 pb-6">
-                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                  Our courses are designed by industry professionals and updated regularly to reflect current market
-                  demands and emerging technologies. Stay ahead of the curve with cutting-edge skills that employers are
-                  actively seeking.
+              <CardContent className="flex-grow px-4 pb-4">
+                <p className="text-gray-600 dark:text-gray-400 text-xs leading-relaxed">
+                  Courses designed by industry professionals, updated regularly with cutting-edge skills employers seek.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="text-center hover:shadow-lg transition-shadow bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 h-full flex flex-col min-h-[280px]">
-              <CardHeader className="pb-6 flex-shrink-0">
-                <div className="mx-auto w-16 h-16 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center mb-6">
-                  <Users className="w-8 h-8" style={{ color: "oklch(44.6% 0.03 256.802)" }} />
+            <Card className="text-center hover:shadow-lg transition-shadow bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 h-full flex flex-col min-h-[200px]">
+              <CardHeader className="pb-3 flex-shrink-0">
+                <div className="mx-auto w-12 h-12 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center mb-3">
+                  <Users className="w-6 h-6" style={{ color: "oklch(44.6% 0.03 256.802)" }} />
                 </div>
-                <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+                <CardTitle className="text-base font-semibold text-gray-900 dark:text-white mb-2">
                   Expert Instructors
                 </CardTitle>
               </CardHeader>
-              <CardContent className="flex-grow px-6 pb-6">
-                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                  Learn from experienced software engineers and tech leaders who bring real-world experience into the
-                  classroom. Get insights from professionals who have worked at top companies and understand what it
-                  takes to succeed.
+              <CardContent className="flex-grow px-4 pb-4">
+                <p className="text-gray-600 dark:text-gray-400 text-xs leading-relaxed">
+                  Learn from experienced engineers and tech leaders with real-world experience from top companies.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="text-center hover:shadow-lg transition-shadow bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 h-full flex flex-col min-h-[280px]">
-              <CardHeader className="pb-6 flex-shrink-0">
-                <div className="mx-auto w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center mb-6">
-                  <Code className="w-8 h-8" style={{ color: "oklch(44.6% 0.03 256.802)" }} />
+            <Card className="text-center hover:shadow-lg transition-shadow bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 h-full flex flex-col min-h-[200px]">
+              <CardHeader className="pb-3 flex-shrink-0">
+                <div className="mx-auto w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center mb-3">
+                  <Code className="w-6 h-6" style={{ color: "oklch(44.6% 0.03 256.802)" }} />
                 </div>
-                <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+                <CardTitle className="text-base font-semibold text-gray-900 dark:text-white mb-2">
                   Hands-On Learning
                 </CardTitle>
               </CardHeader>
-              <CardContent className="flex-grow px-6 pb-6">
-                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                  Build real projects and gain practical experience through our project-based learning approach and
-                  coding challenges. Every lesson includes practical exercises that reinforce your understanding and
-                  build your portfolio.
+              <CardContent className="flex-grow px-4 pb-4">
+                <p className="text-gray-600 dark:text-gray-400 text-xs leading-relaxed">
+                  Build real projects through practical exercises that reinforce understanding and build your portfolio.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="text-center hover:shadow-lg transition-shadow bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 h-full flex flex-col min-h-[280px]">
-              <CardHeader className="pb-6 flex-shrink-0">
-                <div className="mx-auto w-16 h-16 bg-orange-100 dark:bg-orange-900 rounded-lg flex items-center justify-center mb-6">
-                  <GraduationCap className="w-8 h-8" style={{ color: "oklch(44.6% 0.03 256.802)" }} />
+            <Card className="text-center hover:shadow-lg transition-shadow bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 h-full flex flex-col min-h-[200px]">
+              <CardHeader className="pb-3 flex-shrink-0">
+                <div className="mx-auto w-12 h-12 bg-orange-100 dark:bg-orange-900 rounded-lg flex items-center justify-center mb-3">
+                  <GraduationCap className="w-6 h-6" style={{ color: "oklch(44.6% 0.03 256.802)" }} />
                 </div>
-                <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+                <CardTitle className="text-base font-semibold text-gray-900 dark:text-white mb-2">
                   Career Support
                 </CardTitle>
               </CardHeader>
-              <CardContent className="flex-grow px-6 pb-6">
-                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                  Comprehensive career services including resume building, interview preparation, and job placement
-                  assistance. Our dedicated career team works with you from day one to ensure you're ready for your
-                  dream job.
+              <CardContent className="flex-grow px-4 pb-4">
+                <p className="text-gray-600 dark:text-gray-400 text-xs leading-relaxed">
+                  Complete career services including resume building, interview prep, and job placement assistance.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="text-center hover:shadow-lg transition-shadow bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 h-full flex flex-col min-h-[280px]">
-              <CardHeader className="pb-6 flex-shrink-0">
-                <div className="mx-auto w-16 h-16 bg-red-100 dark:bg-red-900 rounded-lg flex items-center justify-center mb-6">
-                  <Clock className="w-8 h-8" style={{ color: "oklch(44.6% 0.03 256.802)" }} />
+            <Card className="text-center hover:shadow-lg transition-shadow bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 h-full flex flex-col min-h-[200px]">
+              <CardHeader className="pb-3 flex-shrink-0">
+                <div className="mx-auto w-12 h-12 bg-red-100 dark:bg-red-900 rounded-lg flex items-center justify-center mb-3">
+                  <Clock className="w-6 h-6" style={{ color: "oklch(44.6% 0.03 256.802)" }} />
                 </div>
-                <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+                <CardTitle className="text-base font-semibold text-gray-900 dark:text-white mb-2">
                   Flexible Learning
                 </CardTitle>
               </CardHeader>
-              <CardContent className="flex-grow px-6 pb-6">
-                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                  Choose from full-time, part-time, and online options to fit your schedule and learning preferences.
-                  Whether you're working full-time or looking for an intensive bootcamp experience, we have options that
-                  work for you.
+              <CardContent className="flex-grow px-4 pb-4">
+                <p className="text-gray-600 dark:text-gray-400 text-xs leading-relaxed">
+                  Full-time, part-time, and online options to fit your schedule and learning preferences.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="text-center hover:shadow-lg transition-shadow bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 h-full flex flex-col min-h-[280px]">
-              <CardHeader className="pb-6 flex-shrink-0">
-                <div className="mx-auto w-16 h-16 bg-teal-100 dark:bg-teal-900 rounded-lg flex items-center justify-center mb-6">
-                  <Trophy className="w-8 h-8" style={{ color: "oklch(44.6% 0.03 256.802)" }} />
+            <Card className="text-center hover:shadow-lg transition-shadow bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 h-full flex flex-col min-h-[200px]">
+              <CardHeader className="pb-3 flex-shrink-0">
+                <div className="mx-auto w-12 h-12 bg-teal-100 dark:bg-teal-900 rounded-lg flex items-center justify-center mb-3">
+                  <Trophy className="w-6 h-6" style={{ color: "oklch(44.6% 0.03 256.802)" }} />
                 </div>
-                <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+                <CardTitle className="text-base font-semibold text-gray-900 dark:text-white mb-2">
                   Proven Results
                 </CardTitle>
               </CardHeader>
-              <CardContent className="flex-grow px-6 pb-6">
-                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                  85% job placement rate within 6 months of graduation with competitive starting salaries. Our track
-                  record speaks for itself - we're committed to your success and have the results to prove it.
+              <CardContent className="flex-grow px-4 pb-4">
+                <p className="text-gray-600 dark:text-gray-400 text-xs leading-relaxed">
+                  85% job placement rate within 6 months with competitive starting salaries.
                 </p>
               </CardContent>
             </Card>
@@ -395,34 +386,34 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Complete Learning Paths */}
-      <section className="py-20">
+      {/* Complete Learning Paths - Made Shorter */}
+      <section className="py-16">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Complete Learning Paths</h2>
             <p className="text-xl text-gray-600 dark:text-gray-400">
               From zero to hired - structured programs that get results
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">Career-Focused Programs</h3>
-              <div className="space-y-6">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Career-Focused Programs</h3>
+              <div className="space-y-4">
                 <Card
                   className="hover:shadow-lg transition-shadow bg-white dark:bg-gray-800 border-l-4 h-full dark:border-gray-700"
                   style={{ borderLeftColor: "#2196F3" }}
                 >
-                  <CardContent className="p-6">
-                    <div className="flex items-center justify-between mb-3">
-                      <h4 className="font-semibold text-lg text-gray-900 dark:text-white">
+                  <CardContent className="p-4">
+                    <div className="flex items-center justify-between mb-2">
+                      <h4 className="font-semibold text-base text-gray-900 dark:text-white">
                         Full Stack Web Development
                       </h4>
                       <Badge className="text-xs px-2 py-1 text-white" style={{ backgroundColor: "#2196F3" }}>
                         Most Popular
                       </Badge>
                     </div>
-                    <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm leading-relaxed">
+                    <p className="text-gray-600 dark:text-gray-400 mb-3 text-xs leading-relaxed">
                       Master React, Node.js, databases, and cloud deployment. Build 5 full-stack applications.
                     </p>
                     <div className="flex items-center text-xs text-gray-500 dark:text-gray-500">
@@ -433,14 +424,14 @@ export default function AboutPage() {
                 </Card>
 
                 <Card className="hover:shadow-lg transition-shadow bg-white dark:bg-gray-800 border-l-4 border-l-orange-500 h-full dark:border-gray-700">
-                  <CardContent className="p-6">
-                    <div className="flex items-center justify-between mb-3">
-                      <h4 className="font-semibold text-lg text-gray-900 dark:text-white">Mobile App Development</h4>
+                  <CardContent className="p-4">
+                    <div className="flex items-center justify-between mb-2">
+                      <h4 className="font-semibold text-base text-gray-900 dark:text-white">Mobile App Development</h4>
                       <Badge className="text-xs px-2 py-1 text-white border-0" style={{ backgroundColor: "#f97316" }}>
                         High Demand
                       </Badge>
                     </div>
-                    <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm leading-relaxed">
+                    <p className="text-gray-600 dark:text-gray-400 mb-3 text-xs leading-relaxed">
                       Build iOS and Android apps with React Native and Flutter. Deploy to app stores.
                     </p>
                     <div className="flex items-center text-xs text-gray-500 dark:text-gray-500">
@@ -454,14 +445,14 @@ export default function AboutPage() {
                   className="hover:shadow-lg transition-shadow bg-white dark:bg-gray-800 border-l-4 h-full dark:border-gray-700"
                   style={{ borderLeftColor: "#2196F3" }}
                 >
-                  <CardContent className="p-6">
-                    <div className="flex items-center justify-between mb-3">
-                      <h4 className="font-semibold text-lg text-gray-900 dark:text-white">Data Science & AI</h4>
+                  <CardContent className="p-4">
+                    <div className="flex items-center justify-between mb-2">
+                      <h4 className="font-semibold text-base text-gray-900 dark:text-white">Data Science & AI</h4>
                       <Badge className="text-xs px-2 py-1 text-white" style={{ backgroundColor: "#2196F3" }}>
                         Future-Ready
                       </Badge>
                     </div>
-                    <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm leading-relaxed">
+                    <p className="text-gray-600 dark:text-gray-400 mb-3 text-xs leading-relaxed">
                       Python, machine learning, data visualization. Work with real datasets from day one.
                     </p>
                     <div className="flex items-center text-xs text-gray-500 dark:text-gray-500">
@@ -473,13 +464,14 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-[4/5] bg-gray-900 dark:bg-gray-700 rounded-2xl overflow-hidden">
+              <div className="bg-gray-900 dark:bg-gray-700 rounded-2xl overflow-hidden">
                 <Image
-                  src="/about_image3.webp?height=600&width=480"
+                  src="/about_image3.webp"
                   alt="Complete Learning Paths"
-                  width={480}
-                  height={600}
-                  className="w-full h-full object-cover"
+                  width={450}
+                  height={400}
+                  className="object-cover"
+                  style={{ width: "450px", height: "400px" }}
                 />
               </div>
             </div>
