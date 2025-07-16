@@ -92,10 +92,10 @@ export function HeroSection() {
               ></div>
             </div>
             <h3 className='md:text-xl lg:text-2xl 2xl:text-3xl font-bold text-gray-900 dark:text-white'>
-              {t(stats[0].value)}
+              {stats[0].value}
             </h3>
             <p className='text-gray-500 dark:text-gray-400 !text-[10px] lg:text-sm 2xl:text-base text-center'>
-              {t(stats[0].title)}
+              {stats[0].title}
             </p>
           </motion.div>
 
@@ -115,10 +115,10 @@ export function HeroSection() {
             </div>
             <div>
               <div className='md:text-xl lg:text-2xl 2xl:text-3xl font-bold text-gray-800 dark:text-white'>
-                {t(stats[1].value)}
+                {stats[1].value}
               </div>
               <div className='text-gray-500 dark:text-gray-400 !text-[10px] lg:text-sm 2xl:text-base'>
-                {t(stats[1].title)}
+                {stats[1].title}
               </div>
             </div>
           </motion.div>
@@ -170,10 +170,10 @@ export function HeroSection() {
             </div>
             <div>
               <div className='md:text-xl lg:text-2xl 2xl:text-3xl font-bold text-gray-800 dark:text-white'>
-                {t(stats[2].value)}
+                {stats[2].value}
               </div>
               <div className='text-gray-500 dark:text-gray-400 !text-[10px] lg:text-sm 2xl:text-base'>
-                {t(stats[2].title)}
+                {stats[2].title}
               </div>
             </div>
           </motion.div>

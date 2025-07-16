@@ -64,7 +64,7 @@ export function Navbar() {
                           : "text-gray-700 dark:text-gray-300 hover:text-[#2196F3]"
                       }`}
                     >
-                      {t(item.name)}
+                      {item.name}
                     </Link>
                   ))}
                 </nav>
@@ -185,7 +185,7 @@ export function Navbar() {
                     }`}
                     onClick={closeMobileMenu}
                   >
-                    {t(item.name)}
+                    {item.name}
                   </Link>
                 </div>
               ))}

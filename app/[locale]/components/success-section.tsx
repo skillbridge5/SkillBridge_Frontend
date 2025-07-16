@@ -3,28 +3,38 @@
 import { motion } from "framer-motion";
 import { CountUp } from "@/app/[locale]/components/ui/count-up";
 import { SectionHeading } from "./ui/section-heading";
-import { successMetrics } from "@/app/[locale]/data/success-metrics";
 import React from "react";
+import { useTranslations } from "next-intl";
+import { SuccessMetricsConfig } from "@/lib/sucess-config";
 
 export function SuccessSection() {
-  // Process the metrics to extract numeric values and suffixes
-  const processedMetrics = successMetrics.map((metric) => {
-    const value = metric.value;
-    let numericValue = "";
+  const t = useTranslations();
+
+  const metricsList = t.raw("success.successMetrics") as Record<
+    string,
+    { value: string; label: string }
+  >;
+
+  const processedMetrics = SuccessMetricsConfig.map((config) => {
+    const metricData = metricsList[config.key] || { value: "0", label: "" };
+    const { value, label } = metricData;
+
+    // Extract numeric part and suffix
+    let numericValue: string | number = "";
     let suffix = "";
 
-    // Extract numeric part and suffix (like K+, %, etc.)
-    if (typeof value === "string") {
-      const match = value.match(/^(\d+)(.*)$/);
-      if (match) {
-        numericValue = match[1];
-        suffix = match[2];
-      }
+    const match = value.match(/^(\d+)(.*)$/);
+    if (match) {
+      numericValue = parseInt(match[1], 10);
+      suffix = match[2];
+    } else {
+      numericValue = 0;
     }
 
     return {
-      ...metric,
-      numericValue: numericValue || value,
+      ...config,
+      label,
+      numericValue,
       suffix,
     };
   });
@@ -33,8 +43,8 @@ export function SuccessSection() {
     <section className='py-16 dark:bg-gray-950'>
       <div className='container mx-auto px-4'>
         <SectionHeading
-          title='Why Choose Skillbridge?'
-          subtitle='Join our global community of learners and transform your career with our industry-leading courses.'
+          title={t("success.title")}
+          subtitle={t("success.subtitle")}
           center={true}
         />
 
@@ -49,12 +59,9 @@ export function SuccessSection() {
               className='text-center'
             >
               <div className=' flex items-center justify-center mx-auto mb-4'>
-                {metric.icon && React.isValidElement(metric.icon)
-                  ? React.cloneElement(metric.icon, {
-                      className:
-                        "h-4 w-4 md:h-5 md:w-5 lg:h-7 lg:w-7 xl:h-8 xl:w-8 text-[#2396F3]",
-                    })
-                  : null}
+                {metric.icon && (
+                  <metric.icon className='h-4 w-4 md:h-5 md:w-5 lg:h-7 lg:w-7 xl:h-8 xl:w-8 text-[#2396F3]' />
+                )}
               </div>
               <CountUp
                 end={metric.numericValue}

@@ -1,55 +1,115 @@
-import type React from "react"
-import { ReactElement } from "react";
-export interface Service {
-  icon: ReactElement<{ className?: string }>;
-  title: string
-  description: string
+import { LucideIcon } from "lucide-react";
+
+export interface ServiceConfig {
+  key: string;
+  icon: LucideIcon;
 }
 
-export interface Course {
-  id: string
-  image: string
-  category: string
-  title: string
-  description: string
-  instructor: {
-    name: string
-    avatar: string
-  }
-  rating: number
-  reviews: number
-  link: string
-  price: number
-  duration: string
-  enrollmentYear: number
+export interface SuccessMetricConfig {
+  key: number;
+  icon: LucideIcon;
+}
+
+export interface Service extends ServiceConfig {
+  title: string;
+  description: string;
+}
+
+export interface CourseBase {
+  id: number;
+  key: string;
+  image: string;
+  instructorImage: string;
+  category: string;
+  level: string;
+  rating: number;
+  reviews: number;
+  price: number;
+  discount?: number;
+  duration: string;
+  lessons: number;
+  students: number;
+  createdAt: string;
+  slug: string;
+  enrollmentYear: number;
+}
+
+export interface CourseTranslation {
+  title: string;
+  description: string;
+  instructor: string;
+  instructorTitle?: string;
+  learningOutcomes: string[];
+  prerequisites: string[];
+  curriculum: Array<{
+    title: string;
+    duration: string;
+    lessons: Array<{
+      title: string;
+      duration: string;
+    }>;
+  }>;
+}
+
+export interface InstructorTranslation {
+  name: string;
+  title: string;
+  description: string;
+  socialLinks: Array<{
+    twitter?: string;
+    linkedin?: string;
+  }>
 }
 
 export interface Instructor {
-  id: string
-  name: string
-  title: string
-  description: string
-  image: string
-  socialLinks?: {
-    twitter?: string
-    linkedin?: string
-    github?: string
-  }
+  translations: Record<string, InstructorTranslation>
 }
 
-export interface Testimonial {
+export interface Course extends CourseBase {
+  translations: Record<string, CourseTranslation>; // Key is locale (en, am, etc.)
+}
+
+export interface CoursesConfig {
+  key: number;
+  image: string;
+  instructorImage: string;
+}
+
+export interface InstructorsConfig {
+  key: string;
+  image: string;
+}
+
+export interface SocialLinks {
+  twitter: string;
+  linkedin: string;
+}
+
+export interface MeetHeroes extends InstructorsConfig {
+  name: string;
+  title: string;
+  description: string;
+  socialLinks: SocialLinks[];
+}
+
+
+
+export interface TestimonialConfig {
+  key: string;
+  image: string;
+}
+
+export interface Testimonial extends TestimonialConfig {
   id: string
   name: string
   title: string
   testimonial: string
-  image: string
   bgColor?: string
 }
 
-export interface SuccessMetric {
-  icon: ReactElement<{ className?: string }>;
-  value: string
-  label: string
+export interface SuccessMetric extends SuccessMetricConfig {
+  value: string;
+  label: string;
 }
 
 export interface FooterLink {
