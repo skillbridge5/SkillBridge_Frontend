@@ -8,23 +8,42 @@ import {
 } from "@/app/[locale]/components/ui/card";
 import { Badge } from "@/app/[locale]/components/ui/badge";
 import { ArrowUpRight, Clock } from "lucide-react";
-import { courses } from "@/lib/course-data";
 import { AnimatedCard } from "@/app/[locale]/components/ui/animated-card";
 import { SectionHeading } from "./ui/section-heading";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { coursesConfig } from "@/lib/courses-config";
 
 export function CoursesSection() {
+
+  const t = useTranslations();
+  
+  // Get raw courses data from translations
+  const coursesData = t.raw("courses") as Record<string, any>;
+  
+  // Merge config with translations
+  const courses = coursesConfig.map(config => {
+    const translation = coursesData[config.key] || {};
+    return {
+      ...config,
+      ...translation,
+      id: config.key, // Or use actual ID from your data
+      enrollmentYear: translation.enrollmentYear || 2025, // Default value
+      
+    };
+  });
+
   // Get top 3 courses by student enrollment
   const topCourses = [...courses]
-    .sort((a, b) => b.students - a.students)
+    .sort((a, b) => (b.students || 0) - (a.students || 0))
     .slice(0, 3);
 
   return (
     <section className='py-16 dark:bg-gray-950'>
       <div className=' mx-auto px-4'>
         <SectionHeading
-          title='Top Courses'
-          subtitle="Join thousands of students in our most popular courses. Real world value you can't miss!"
+          title={t("topCoursesHeading.title")}
+          subtitle={t("topCoursesHeading.subtitle")}
           center={true}
         />
 
@@ -112,7 +131,7 @@ export function CoursesSection() {
                           {course.instructor}
                         </p>
                         <p className='text-sm text-gray-500'>
-                          {course.enrollmentYear} Enrolled
+                          {course.enrollmentYear}{" "} {t("topCoursesHeading.enrolled")}
                         </p>
                       </div>
                     </div>
@@ -120,7 +139,7 @@ export function CoursesSection() {
                     {/* Price */}
                     <span className='text-sky-500 font-bold md:text-xl'>
                       <Link href={`/courses/${course.slug}`}>
-                        View Details &gt;
+                        {t("topCoursesHeading.details")} &gt;
                       </Link>
                     </span>
                   </CardFooter>

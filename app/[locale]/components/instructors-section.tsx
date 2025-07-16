@@ -1,9 +1,7 @@
 "use client";
 import Link from "next/link";
 import { Twitter, Linkedin } from "lucide-react";
-import { instructors } from "@/app/[locale]/data/instructors";
 import { AnimatedCard } from "@/app/[locale]/components/ui/animated-card";
-import { motion } from "framer-motion";
 import {
   HoverCard,
   HoverCardContent,
@@ -17,20 +15,38 @@ import {
 import { imagePaths } from "../data/image-paths";
 import { SectionHeading } from "./ui/section-heading";
 import "./styles/style.css";
+import { useTranslations } from "next-intl";
+import { instructorsConfig } from "@/lib/instructors-config";
 export function InstructorsSection() {
+  const t = useTranslations();
+  const instructorsList = t.raw("meetHero.instructors") as Record<string, any>;
+
+  const instructors = instructorsConfig.map((config) => {
+    const translation = instructorsList[config.key] || {};
+     const { name = "", title = "", description = "", socialLinks = {} } = translation;
+
+    return {
+      ...config,
+      name,
+      title,
+      description,
+      socialLinks,
+
+    };
+  });
+
   return (
     <section className='py-16 bg-[#F5FAFF] dark:bg-gray-900'>
       <div className='container mx-auto px-4'>
         <SectionHeading
-          title='Meet the Heroes'
-          subtitle='Our leading instructors bring a unique blend of creative expertise and technical knowledge, delivering
-          real-world skills that shape your future.'
+          title={t("meetHero.title")}
+          subtitle={t("meetHero.subtitle")}
           center={true}
         />
         <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-6'>
           {instructors.map((instructor, index) => (
             <AnimatedCard
-              key={instructor.id}
+              key={instructor.key}
               delay={0.1 * index}
               className='bg-gray-50 dark:bg-gray-900/40 py-6 px-2 border border-[#2196f3]/30 dark:border-[#2195f355] rounded-none custom-shadow transition-transform duration-300 hover:scale-105'
             >
@@ -47,7 +63,7 @@ export function InstructorsSection() {
                           className='w-full h-full object-cover transition-transform duration-500 hover:scale-110'
                         />
                         <AvatarFallback className='text-2xl'>
-                          {instructor.name.charAt(0)}
+                          {instructor.name?.charAt(0)}
                         </AvatarFallback>
                       </Avatar>
                     </div>
@@ -61,13 +77,12 @@ export function InstructorsSection() {
                           }
                         />
                         <AvatarFallback>
-                          {instructor.name.charAt(0)}
+                          {instructor.name?.charAt(0)}
                         </AvatarFallback>
                       </Avatar>
                       <div className='space-y-1 text-left'>
                         <h4 className='text-sm font-semibold'>
-                          {instructor.name}
-                        </h4>
+                          {instructor.name }                       </h4>
                         <p className='text-sm text-blue-500'>
                           {instructor.title}
                         </p>

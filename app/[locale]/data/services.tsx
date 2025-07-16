@@ -1,9 +1,11 @@
 import { BookOpen, Monitor, Briefcase } from "lucide-react";
 import type { Service } from "@/types";
 
+
 export const servicesData: Service[] = [
+  
   {
-    icon: <BookOpen className='h-6 w-6 text-[#2396F3]' />,
+    icon: <BookOpen className='h-6 w-6 text-[2396F3]' />,
     title: "Courses",
     description: "Lessons on design that cover the most recent developments.",
   },

@@ -26,38 +26,37 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/app/[locale]/components/ui/select";
-import { courses } from "@/lib/course-data";
+// import { courses } from "@/lib/course-data";
 import { Navbar } from "../components/navbar";
 import { AnimatedCard } from "@/app/[locale]/components/ui/animated-card";
 import Footer from "@/app/[locale]/components/footer";
-
-// Categories for filtering
-const categories = [
-  "All",
-  "Development",
-  "Business",
-  "Design",
-  "Marketing",
-  "IT & Software",
-  "Artificial Intelligence",
-  "Data Science",
-  "Blockchain",
-];
+import { useTranslations } from "next-intl"; // or your i18n library
+import { coursesConfig } from "@/lib/course-config-for-course-page";
 
 export default function CoursesPage() {
-  const [activeCategory, setActiveCategory] = useState("All");
+  const t = useTranslations();
+  const coursePage = t.raw("courses") as any;
+  const courseCategory = t.raw("coursePage") as any;
+  const categories = courseCategory.categories;
+
+  const [activeCategory, setActiveCategory] = useState(t("coursePage.allCategory"));
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("popular");
 
-  // Filter courses based on active category and search query
-  const filteredCourses = courses.filter((course) => {
-    const matchesCategory =
-      activeCategory === "All" || course.category === activeCategory;
-    const matchesSearch =
-      course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      course.description.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+ const mergedCourses = coursePage.map((course: any) => ({
+  ...course,
+  ...coursesConfig[course.id], // This adds image and instructorImage
+}));
+
+// Then use mergedCourses instead of coursePage in your filtering/sorting:
+const filteredCourses = mergedCourses.filter((course: any) => {
+  const matchesCategory =
+    activeCategory === "ሁሉም" || activeCategory === "All" || course.category === activeCategory;
+  const matchesSearch =
+    course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    course.description.toLowerCase().includes(searchQuery.toLowerCase());
+  return matchesCategory && matchesSearch;
+});
 
   // Sort courses based on selected option
   const sortedCourses = [...filteredCourses].sort((a, b) => {
@@ -68,16 +67,16 @@ export default function CoursesPage() {
     return 0;
   });
 
+  
+
   return (
     <>
       <Navbar />
       <div className='container mx-auto px-4 md:px-6 lg:px-8 xl:px-10 2xl:px-16 py-12 2xl:pb-20'>
         <div className=' mb-8'>
-          <h1 className='text-3xl font-bold mb-4'>Explore Our Courses</h1>
+          <h1 className='text-3xl font-bold mb-4'>{courseCategory.explore}</h1>
           <p className='text-gray-600 max-w-3xl'>
-            Browse our comprehensive collection of courses designed to help you
-            master new skills, advance your career, and achieve your learning
-            goals.
+            {courseCategory.description}
           </p>
         </div>
 
@@ -87,7 +86,7 @@ export default function CoursesPage() {
               <Search className='absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400' />
               <Input
                 type='search'
-                placeholder='Search for courses...'
+                placeholder={courseCategory.searchPlaceholder}
                 className='pl-10'
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -101,21 +100,21 @@ export default function CoursesPage() {
                 <SelectValue placeholder='Sort by' />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value='popular'>Most Popular</SelectItem>
-                <SelectItem value='newest'>Newest</SelectItem>
+                <SelectItem value='popular'>{t("coursePage.sort")}</SelectItem>
+                <SelectItem value='newest'>{t("coursePage.newest")}</SelectItem>
               </SelectContent>
             </Select>
 
             <Button variant='outline' size='icon'>
               <Filter className='h-4 w-4' />
-              <span className='sr-only'>Filter</span>
+              <span className='sr-only'>{t("coursePage.filter")}</span>
             </Button>
           </div>
         </div>
 
-        <Tabs defaultValue='All' className='mb-8'>
+        <Tabs defaultValue={t("coursePage.allCategory")} className='mb-8'>
           <TabsList className='flex flex-wrap h-auto mb-4'>
-            {categories.map((category) => (
+            {categories.map((category: string) => (
               <TabsTrigger
                 key={category}
                 value={category}
@@ -127,7 +126,7 @@ export default function CoursesPage() {
             ))}
           </TabsList>
 
-          {categories.map((category) => (
+          {categories.map((category: string) => (
             <TabsContent key={category} value={category} className='mt-0'>
               {sortedCourses.length > 0 ? (
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
@@ -213,7 +212,7 @@ export default function CoursesPage() {
                                 {course.instructor}
                               </p>
                               <p className='text-sm text-gray-500'>
-                                {course.enrollmentYear} Enrolled
+                                {course.enrollmentYear} {" "} {t("topCoursesHeading.enrolled")}
                               </p>
                             </div>
                           </div>
@@ -221,7 +220,7 @@ export default function CoursesPage() {
                           {/* Price */}
                           <span className='text-sky-500 font-bold md:text-xl'>
                             <Link href={`/courses/${course.slug}`}>
-                              View Details &gt;
+                              {t("topCoursesHeading.details")}{" "} &gt;
                             </Link>
                           </span>
                         </CardFooter>
@@ -232,7 +231,7 @@ export default function CoursesPage() {
               ) : (
                 <div className='text-center py-12'>
                   <p className='text-gray-500'>
-                    No courses found. Try adjusting your search criteria.
+                    {t("coursePage.noCourse")}
                   </p>
                 </div>
               )}
