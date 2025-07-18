@@ -1,5 +1,5 @@
-import type { Testimonial } from "@/types"
-import { imagePaths } from "./image-paths"
+import type { Testimonial } from "@/types";
+import { imagePaths } from "./image-paths";
 
 export const testimonials: Testimonial[] = [
   {
@@ -22,7 +22,8 @@ export const testimonials: Testimonial[] = [
     id: "lualawit-abera",
     name: "LUALAWIT ABERA",
     title: "Developer",
-    testimonial: '"The instructors were knowledgeable and confident in guiding me through the program."',
+    testimonial:
+      '"The instructors were knowledgeable and confident in guiding me through the program."',
     image: imagePaths.testimonials.lualawitAbera,
   },
   {
@@ -45,8 +46,8 @@ export const testimonials: Testimonial[] = [
     id: "solomon-belay",
     name: "SOLOMON BELAY",
     title: "Developer",
-    testimonial: '"The instructors were knowledgeable and confident in guiding me through the program."',
+    testimonial:
+      '"The instructors were knowledgeable and confident in guiding me through the program."',
     image: imagePaths.testimonials.lualawitAbera,
   },
-  
-]
+];

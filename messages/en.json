@@ -93,7 +93,843 @@
             "title": "Tutors",
             "value": "250+"
          }
-         
       ]
+   },
+   "services": {
+      "serviceTitle": "Our Services",
+      "serviceSubtitle": "Bridging skill gaps and fostering industry-ready talent.",
+      "servicesList": {
+         "courses": {
+            "title": "Courses",
+            "description": "Lessons on design that cover the most recent developments."
+         },
+         "training": {
+            "title": "Training",
+            "description": "Classes in development that cover the most recent advancements in web technologies."
+         },
+         "job-opportunities": {
+            "title": "Job-related Opportunities",
+            "description": "Successful data analysts have a unique set of skills and represent."
+         }
+      },
+      "learnMore": "Learn More"
+   },
+   "topCoursesHeading": {
+      "title": "Top Courses",
+      "subtitle": "Join thousands of students in our most popular courses. Real world value you can't miss!",
+      "enrolled": "Enrolled",
+      "details": "View Details"
+   },
+   "coursePage": {
+      "explore": "Explore Our Courses",
+      "description": "Browse our comprehensive collection of courses designed to help you master new skills, advance your career, and achieve your learning goals.",
+      "searchPlaceholder": " Search for courses...",
+      "allCategory": "All",
+      "categories": [
+         "All",
+         "Development",
+         "Business",
+         "Design",
+         "Marketing",
+         "IT & Software",
+         "Artificial Intelligence",
+         "Data Science",
+         "Blockchain"
+      ],
+      "noCourse": "No courses found. Try adjusting your search criteria.",
+      "filter": "Filter",
+      "sort": "Most Popular",
+      "newest": "Newest"
+   },
+   "courses": [
+      {
+         "id": 1,
+         "title": "Complete Web Development Bootcamp",
+         "description": "Learn HTML, CSS, JavaScript, React, Node.js and more to become a full-stack web developer",
+         "longDescription": "This comprehensive course is designed to take you from beginner to professional in web development. You'll learn front-end and back-end technologies, build real-world projects, and gain the skills needed to land your first developer job or freelance clients.",
+         "category": "Development",
+         "level": "Beginner to Advanced",
+         "rating": 4.8,
+         "reviews": 1245,
+         "instructor": "John Smith",
+         "instructorTitle": "Senior Web Developer & Educator",
+         "instructorBio": "John has over 10 years of experience in web development and has worked with companies like Google and Facebook. He's passionate about teaching and has helped over 50,000 students learn to code.",
+         "price": 99.99,
+         "discount": 79.99,
+         "duration": "48 hours",
+         "lessons": 120,
+         "students": 15000,
+         "createdAt": "2023-01-15",
+         "slug": "web-development-bootcamp",
+         "learningOutcomes": [
+            "Build 16+ web development projects for your portfolio",
+            "Learn HTML5, CSS3, JavaScript, React, Node.js, MongoDB, and more",
+            "Create a full-stack web application from scratch",
+            "Understand how to connect and work with databases",
+            "Deploy your applications to production",
+            "Learn professional developer best practices"
+         ],
+         "prerequisites": [
+            "Basic computer skills",
+            "No prior programming experience required",
+            "A computer with internet access"
+         ],
+         "curriculum": [
+            {
+               "title": "Introduction to Web Development",
+               "duration": "3 hours",
+               "lessons": [
+                  {
+                     "title": "Course Overview"
+                  },
+                  {
+                     "title": "Setting Up Your Development Environment",
+                     "duration": "30 min"
+                  },
+                  {
+                     "title": "How the Internet Works",
+                     "duration": "45 min"
+                  },
+                  {
+                     "title": "Web Development Basics",
+                     "duration": "1 hour"
+                  },
+                  {
+                     "title": "Introduction to HTML",
+                     "duration": "30 min"
+                  }
+               ]
+            },
+            {
+               "title": "HTML Fundamentals",
+               "duration": "5 hours",
+               "lessons": [
+                  {
+                     "title": "HTML Document Structure",
+                     "duration": "45 min"
+                  },
+                  {
+                     "title": "Text Elements and Typography",
+                     "duration": "1 hour"
+                  },
+                  {
+                     "title": "Links and Navigation",
+                     "duration": "45 min"
+                  },
+                  {
+                     "title": "Images and Multimedia",
+                     "duration": "1 hour"
+                  },
+                  {
+                     "title": "Tables and Forms",
+                     "duration": "1.5 hours"
+                  }
+               ]
+            },
+            {
+               "title": "CSS Fundamentals",
+               "duration": "6 hours",
+               "lessons": [
+                  {
+                     "title": "Introduction to CSS",
+                     "duration": "45 min"
+                  },
+                  {
+                     "title": "Selectors and Properties",
+                     "duration": "1 hour"
+                  },
+                  {
+                     "title": "Box Model and Layout",
+                     "duration": "1.5 hours"
+                  },
+                  {
+                     "title": "Flexbox and Grid",
+                     "duration": "2 hours"
+                  },
+                  {
+                     "title": "Responsive Design",
+                     "duration": "1 hour"
+                  }
+               ]
+            },
+            {
+               "title": "JavaScript Basics",
+               "duration": "8 hours",
+               "lessons": [
+                  {
+                     "title": "Introduction to JavaScript",
+                     "duration": "1 hour"
+                  },
+                  {
+                     "title": "Variables and Data Types",
+                     "duration": "1 hour"
+                  },
+                  {
+                     "title": "Control Flow and Loops",
+                     "duration": "1.5 hours"
+                  },
+                  {
+                     "title": "Functions and Scope",
+                     "duration": "2 hours"
+                  },
+                  {
+                     "title": "DOM Manipulation",
+                     "duration": "2.5 hours"
+                  }
+               ]
+            },
+            {
+               "title": "Advanced JavaScript",
+               "duration": "7 hours",
+               "lessons": [
+                  {
+                     "title": "ES6+ Features",
+                     "duration": "1.5 hours"
+                  },
+                  {
+                     "title": "Asynchronous JavaScript",
+                     "duration": "2 hours"
+                  },
+                  {
+                     "title": "Fetch API and AJAX",
+                     "duration": "1.5 hours"
+                  },
+                  {
+                     "title": "Error Handling",
+                     "duration": "1 hour"
+                  },
+                  {
+                     "title": "JavaScript Best Practices",
+                     "duration": "1 hour"
+                  }
+               ]
+            },
+            {
+               "title": "React Fundamentals",
+               "duration": "10 hours",
+               "lessons": [
+                  {
+                     "title": "Introduction to React",
+                     "duration": "1 hour"
+                  },
+                  {
+                     "title": "Components and Props",
+                     "duration": "2 hours"
+                  },
+                  {
+                     "title": "State and Lifecycle",
+                     "duration": "2 hours"
+                  },
+                  {
+                     "title": "Handling Events",
+                     "duration": "1.5 hours"
+                  },
+                  {
+                     "title": "Forms and Controlled Components",
+                     "duration": "1.5 hours"
+                  },
+                  {
+                     "title": "React Hooks",
+                     "duration": "2 hours"
+                  }
+               ]
+            },
+            {
+               "title": "Node.js and Express",
+               "duration": "6 hours",
+               "lessons": [
+                  {
+                     "title": "Introduction to Node.js",
+                     "duration": "1 hour"
+                  },
+                  {
+                     "title": "NPM and Package Management",
+                     "duration": "45 min"
+                  },
+                  {
+                     "title": "Express.js Basics",
+                     "duration": "1.5 hours"
+                  },
+                  {
+                     "title": "Routing and Middleware",
+                     "duration": "1.5 hours"
+                  },
+                  {
+                     "title": "RESTful API Development",
+                     "duration": "1.5 hours"
+                  }
+               ]
+            },
+            {
+               "title": "MongoDB and Mongoose",
+               "duration": "5 hours",
+               "lessons": [
+                  {
+                     "title": "Introduction to MongoDB",
+                     "duration": "1 hour"
+                  },
+                  {
+                     "title": "CRUD Operations",
+                     "duration": "1.5 hours"
+                  },
+                  {
+                     "title": "Mongoose ODM",
+                     "duration": "1.5 hours"
+                  },
+                  {
+                     "title": "Data Validation and Relationships",
+                     "duration": "1 hour"
+                  }
+               ]
+            }
+         ],
+         "enrollmentYear": 2025
+      },
+      {
+         "id": 2,
+         "title": "Machine Learning A-Z: Hands-On Python & R",
+         "description": "Learn to create Machine Learning Algorithms in Python and R from two Data Science experts",
+         "category": "Artificial Intelligence",
+         "level": "Intermediate",
+         "rating": 4.7,
+         "reviews": 985,
+         "instructor": "Sarah Johnson",
+         "price": 129.99,
+         "discount": 89.99,
+         "duration": "42 hours",
+         "lessons": 95,
+         "students": 12000,
+         "createdAt": "2023-02-20",
+         "slug": "machine-learning-python-r",
+         "learningOutcomes": [
+            "Master Machine Learning on Python & R",
+            "Make accurate predictions with regression algorithms",
+            "Create powerful analysis using classification algorithms",
+            "Implement clustering algorithms to segment data",
+            "Learn to use neural networks and deep learning",
+            "Apply ML to real-world business problems"
+         ],
+         "prerequisites": [
+            "Basic mathematics knowledge",
+            "Basic programming knowledge is helpful but not required",
+            "A computer with internet access"
+         ],
+         "curriculum": [
+            {
+               "title": "Introduction to Machine Learning",
+               "duration": "3 hours",
+               "lessons": [
+                  {
+                     "title": "What is Machine Learning?",
+                     "duration": "45 min"
+                  },
+                  {
+                     "title": "The Machine Learning Landscape",
+                     "duration": "1 hour"
+                  },
+                  {
+                     "title": "Setting Up Your Environment",
+                     "duration": "1.5 hours"
+                  }
+               ]
+            },
+            {
+               "title": "Data Preprocessing",
+               "duration": "4 hours",
+               "lessons": [
+                  {
+                     "title": "Importing Libraries and Datasets",
+                     "duration": "45 min"
+                  },
+                  {
+                     "title": "Handling Missing Data",
+                     "duration": "1 hour"
+                  },
+                  {
+                     "title": "Encoding Categorical Data",
+                     "duration": "1 hour"
+                  },
+                  {
+                     "title": "Feature Scaling",
+                     "duration": "1.5 hours"
+                  }
+               ]
+            }
+         ],
+         "enrollmentYear": 2023
+      },
+      {
+         "id": 3,
+         "title": "The Complete Digital Marketing Course",
+         "description": "Master Digital Marketing Strategy, Social Media Marketing, SEO, YouTube, Email, Facebook Marketing",
+         "category": "Business",
+         "level": "All Levels",
+         "rating": 4.5,
+         "reviews": 1876,
+         "instructor": "Michael Brown",
+         "price": 149.99,
+         "discount": 99.99,
+         "duration": "52 hours",
+         "lessons": 110,
+         "students": 18000,
+         "createdAt": "2023-03-10",
+         "slug": "complete-digital-marketing",
+         "learningOutcomes": [
+            "Grow a business online from scratch",
+            "Master SEO, social media marketing, and email marketing",
+            "Create effective Facebook and Google ads",
+            "Build a WordPress website with no coding required",
+            "Increase website traffic and conversions",
+            "Develop a comprehensive digital marketing strategy"
+         ],
+         "prerequisites": [
+            "No prior marketing knowledge required",
+            "A computer with internet access",
+            "Willingness to implement the strategies taught"
+         ],
+         "curriculum": [
+            {
+               "title": "Introduction to Digital Marketing",
+               "duration": "3 hours",
+               "lessons": [
+                  {
+                     "title": "The Digital Marketing Landscape",
+                     "duration": "45 min"
+                  },
+                  {
+                     "title": "Creating a Digital Marketing Strategy",
+                     "duration": "1 hour"
+                  },
+                  {
+                     "title": "Understanding Your Target Audience",
+                     "duration": "1.5 hours"
+                  }
+               ]
+            }
+         ],
+         "enrollmentYear": 2024
+      }
+   ],
+   "courseMessages": {
+      "notFound": "Course Not Found",
+      "message": "The course you are looking for does not exist.",
+      "browse": "Browse All Courses",
+      "back": "Back to Courses",
+      "award": "Certificate of completion",
+      "lessons": "lessons",
+      "students": "students",
+      "tabLists": {
+         "about": "About",
+         "curriculum": "Curriculum",
+         "instructor": "Instructor"
+      },
+      "tabContent": {
+         "aboutCourse": "About This Course",
+         "learn": "What You Will Learn",
+         "prerequisites": "Prerequisites",
+         "courseCur": "Course Curriculum",
+         "payOpt": "Payment Options",
+         "otp": "One-time payment",
+         "subscription": "Monthly subscription",
+         "perMonth": "month for 3 months",
+         "enroll": "Enroll Now",
+         "lifeTime": "Full lifetime access",
+         "access": "Access on mobile and desktop"
+      }
+   },
+   "meetHero": {
+      "title": "Meet Our Heroes",
+      "subtitle": "Our leading instructors bring a unique blend of creative expertise and technical knowledge, delivering real-world skills that shape your future.",
+      "instructors": {
+         "tafara-makaza": {
+            "id": "tafara-makaza",
+            "name": "Tafara Makaza",
+            "title": "Product & Systems Analyst",
+            "description": "Former UI Designer at Apple, Cofounder at AAA",
+            "socialLinks": {
+               "twitter": "https://twitter.com/tafaramakaza",
+               "linkedin": "https://linkedin.com/in/tafaramakaza"
+            }
+         },
+         "ange-mannah": {
+            "id": "ange-mannah",
+            "name": "Dr. Ange Mannah",
+            "title": "Data Science Specialist",
+            "description": "Lead CI Analyst at Data Space, Analytics and Planning",
+            "socialLinks": {
+               "twitter": "https://twitter.com/angemannah",
+               "linkedin": "https://linkedin.com/in/angemannah"
+            }
+         },
+         "eke-agulu": {
+            "id": "eke-agulu",
+            "name": "Eke Agulu",
+            "title": "Career Educator & Author",
+            "description": "Former PM for Lambda School",
+            "socialLinks": {
+               "twitter": "https://twitter.com/ekeagulu",
+               "linkedin": "https://linkedin.com/in/ekeagulu"
+            }
+         },
+         "mike-mahlangu": {
+            "id": "mike-mahlangu",
+            "name": "Mike Mahlangu",
+            "title": "Cloud & Information Program & Operations Manager",
+            "description": "Former Specialist for ISTG",
+            "socialLinks": {
+               "twitter": "https://twitter.com/mikemahlangu",
+               "linkedin": "https://linkedin.com/in/mikemahlangu"
+            }
+         }
+      }
+   },
+   "testimonials": {
+      "title": "Testimonials",
+      "subtitle": "",
+      "testimonies": {
+         "daniel-semach": {
+            "id": "daniel-semach",
+            "name": "DANIEL SEMAGN",
+            "title": "Software Developer, Gigasystems",
+            "testimonial": "The courses here really set me apart and catapulted my career as a Software Developer. Highly recommended!"
+         },
+         "debora-resimul": {
+            "id": "debora-resimul",
+            "name": "DEBORA RESIMUL",
+            "title": "Data Analyst",
+            "testimonial": "Their unique course was a game-changer. It gave me the skills I needed to start my career as a Data Analyst."
+         },
+         "lualawit-abera": {
+            "id": "lualawit-abera",
+            "name": "LUALAWIT ABERA",
+            "title": "Developer",
+            "testimonial": "The instructors were knowledgeable and confident in guiding me through the program."
+         },
+         "bereket-tadesse": {
+            "id": "bereket-tadesse",
+            "name": "BAREKET TADESSE",
+            "title": "Software Developer, Gigasystems",
+            "testimonial": "The courses here really set me apart and catapulted my career as a Software Developer. Highly recommended!"
+         },
+         "mahlet-sahle": {
+            "id": "mahlet-sahle",
+            "name": "MAHLET SAHLE",
+            "title": "Data Analyst",
+            "testimonial": "Their unique course was a game-changer. It gave me the skills I needed to start my career as a Data Analyst."
+         },
+         "solomon-belay": {
+            "id": "solomon-belay",
+            "name": "SOLOMON BELAY",
+            "title": "Developer",
+            "testimonial": "The instructors were knowledgeable and confident in guiding me through the program."
+         }
+      }
+   },
+   "success": {
+      "title": "Why Choose Skillbridge?",
+      "subtitle": "Join our global community of learners and transform your career with our industry-leading courses.",
+      "successMetrics": [
+         {
+            "value": "51,000+",
+            "label": "Students"
+         },
+         {
+            "value": "301+",
+            "label": "Courses"
+         },
+         {
+            "value": "251+",
+            "label": "Job Placement"
+         },
+         {
+            "value": "15,000+",
+            "label": "Hours of Content"
+         }
+      ]
+   },
+   "footer": {
+      "title": "About SkillBridge",
+      "description": "Bridging Gaps, Building Skills, Transforming Futures. We provide high-quality online courses to help you advance your career.",
+      "quickLinks": {
+         "title": "Quick Links",
+         "links": [
+            {
+               "href": "/courses",
+               "label": "All Courses"
+            },
+            {
+               "href": "/about",
+               "label": "About Us"
+            },
+            {
+               "href": "/instructors",
+               "label": "Instructors"
+            },
+            {
+               "href": "/contact",
+               "label": "Contact Us"
+            },
+            {
+               "href": "/faq",
+               "label": "FAQ"
+            }
+         ]
+      },
+      "popular": {
+         "title": "Popular Categories",
+         "links": [
+            {
+               "href": "/courses/development",
+               "label": "Development"
+            },
+            {
+               "href": "/courses/business",
+               "label": "Business"
+            },
+            {
+               "href": "/courses/ai",
+               "label": "Artificial Intelligence"
+            },
+            {
+               "href": "/courses/blockchain",
+               "label": "Blockchain"
+            }
+         ]
+      },
+      "contact": {
+         "title": "Contact Us"
+      },
+      "copyright": {
+         "text": "SkillBridge. All rights reserved."
+      }
+   },
+   "contactPage": {
+      "span1": "Get",
+      "span2": "In Touch",
+      "span3": "With Us",
+      "description": "We're happy to help! Reach out to us for any questions, feedback, or support.",
+      "phoneLabel": "Phone number",
+      "emailAddress": "Email address",
+      "office": "Office Address",
+      "office_info": "Addis Ababa, Ethiopia",
+      "telegram": "Telegram",
+      "message": "Send Us Message",
+      "namePlaceholder": "Your Name",
+      "emailPlaceholder": "Email",
+      "meessagePlaceholder": "Your Message",
+      "messageButton": "Send Message",
+      "mapTitle": "Find Us On the Map"
+   },
+   "aboutPage": {
+      "title": "Transforming Careers Since 2020!",
+      "heroText": "Learn.Build.Launch.",
+      "description": "SkillBridge Technologies - Where passionate learners become industry-ready developers through hands-on projects, expert mentorship, and proven learning methodologies.",
+      "ratingText": "Student Rating",
+      "jobText": "Job Guarantee",
+      "storyHeading": "Our Story",
+      "storyText1": "SkillBridge Technologies was founded in 2020 with a simple yet powerful vision: to bridge the gap between traditional education and the rapidly evolving tech industry. Our founders, experienced software engineers and educators, recognized that many talented individuals were struggling to break into the tech field due to outdated curricula and lack of practical, hands-on experience.",
+      "storyText2": "What started as a small coding bootcamp in a shared workspace has grown into a comprehensive school of software development, serving thousands of students worldwide. We believe that everyone deserves access to quality tech education, regardless of their background or previous experience.",
+      "storyText3": "Our story is one of passion, dedication, and the unwavering belief that with the right guidance and support, anyone can master the art of software development and build a successful career in technology.",
+      "purpose": {
+         "title": "Our Purpose",
+         "subtitle": "We exist to democratize tech education and create pathways for anyone to build a successful career in software development.",
+         "mission": {
+            "title": "Mission",
+            "description": "To provide world-class, practical software development education that transforms lives. We bridge the gap between learning and doing, ensuring every graduate is not just knowledgeable but job-ready and confident.",
+            "checkPoint": {
+               "point1": "Practical, hands-on learning approach",
+               "point2": "Industry-relevant curriculum",
+               "point3": "Inclusive and supportive community"
+            }
+         },
+         "vision": {
+            "title": "Vision",
+            "description": "To become the global standard for practical tech education, where talent and dedication matter more than traditional credentials. We envision a world where our graduates lead innovation at every level of the tech industry.",
+            "checkpoint": {
+               "point1": "Global recognition and impact",
+               "point2": "Merit-based career advancement",
+               "point3": "Industry leadership development"
+            }
+         }
+      },
+      "methodology": {
+         "title": "Our Learning Methodology",
+         "description": "How we turn beginners into job-ready developers",
+         "lists": [
+            {
+               "id": 1,
+               "heading": "Learn by Doing",
+               "paragraph": "Start coding from day one. Every concept is immediately applied in hands-on projects that simulate real work environments."
+            },
+            {
+               "id": 2,
+               "heading": "Build Real Projects",
+               "paragraph": "Create applications that solve actual problems. Your portfolio will showcase real solutions, not just tutorial projects."
+            },
+            {
+               "id": 3,
+               "heading": " Get Expert Feedback",
+               "paragraph": "Receive detailed code reviews and personalized guidance from industry professionals who've been where you want to go."
+            },
+            {
+               "id": 4,
+               "heading": "Land Your Dream Job",
+               "paragraph": "Leverage our industry connections, interview prep, and job placement support to secure your first developer role."
+            }
+         ]
+      },
+      "whyUs": {
+         "title": "Why Students Choose SkillBridge",
+         "subtitle": "The learning experience that actually prepares you for your first dev job",
+         "cards": [
+            {
+               "id": 1,
+               "title": "Industy-Relevant Curriculum",
+               "description": "Our courses are designed by industry professionals and updated regularly to reflect current market demands and emerging technologies. Stay ahead of the curve with cutting-edge skills that employers are actively seeking."
+            },
+            {
+               "id": 2,
+               "title": "Expert Instuctors",
+               "description": "Learn from experienced software engineers and tech leaders who bring real-world experience into the classroom. Get insights from professionals who have worked at top companies and understand what it takes to succeed."
+            },
+            {
+               "id": 3,
+               "title": "Hands-On Learning",
+               "description": "Build real projects and gain practical experience through our project-based learning approach and coding challenges. Every lesson includes practical exercises that reinforce your understanding and build your portfolio."
+            },
+            {
+               "id": 4,
+               "title": "Career Support",
+               "description": "Comprehensive career services including resume building, interview preparation, and job placement assistance. Our dedicated career team works with you from day one to ensure you're ready for your dream job."
+            },
+            {
+               "id": 5,
+               "title": "Flexible Learning",
+               "description": "Choose from full-time, part-time, and online options to fit your schedule and learning preferences. Whether you're working full-time or looking for an intensive bootcamp experience, we have options that work for you."
+            },
+            {
+               "id": 6,
+               "title": "Proven Results",
+               "description": "85% job placement rate within 6 months of graduation with competitive starting salaries. Our track record speaks for itself - we're committed to your success and have the results to prove it."
+            }
+         ]
+      },
+      "learningPaths": {
+         "title": "Complete Learning Paths",
+         "subtitle": "From zero to hired - structured programs that get results.",
+         "header": "Career-Focused Programs",
+         "courseLists": [
+            {
+               "courseTitle": "Full Stack Web Development",
+               "description": "Master React, Node.js, databases, and cloud deployment. Build 5 full-stack applications.",
+               "reviews": "16 weeks • Portfolio included",
+               "buttonText": "Most Popular"
+            },
+            {
+               "courseTitle": "Mobile App Development",
+               "description": "Build iOS and Android apps with React Native and Flutter. Deploy to app stores.",
+               "reviews": "14 weeks • 3 published apps",
+               "buttonText": "High Demand"
+            },
+            {
+               "courseTitle": "Data Science & AI",
+               "description": "Python, machine learning, data visualization. Work with real datasets from day one.",
+               "reviews": "18 weeks • ML projects",
+               "buttonText": "Future-Ready"
+            }
+         ]
+      },
+      "startJourney": {
+         "title": "Ready to Start Your Journey?",
+         "subtitle": "Join thousands of successful graduates who transformed their careers with SkillBridge Technologies",
+         "explore": "Explore Programs",
+         "consultation": "Schedule Consultation"
+      }
+   },
+   "applicationForm": {
+      "title": "Application Form",
+      "userInfo": "User Information",
+      "billingInfo": "Billing / Service Details",
+      "submit": "Submit Application",
+      "reset": "Reset Form",
+      "alert": {
+         "required": "Please fill in the required field: ",
+         "terms": "Please agree to the terms and confirm the accuracy.",
+         "success": "Application Submitted!"
+      },
+      "fields": {
+         "name": {
+            "label": "Full Name*",
+            "placeholder": "John Doe"
+         },
+         "dob": {
+            "label": "Date of Birth"
+         },
+         "gender": {
+            "label": "Gender",
+            "options": {
+               "male": "Male",
+               "female": "Female"
+            }
+         },
+         "nationality": {
+            "label": "Nationality",
+            "placeholder": "Ethiopian"
+         },
+         "email": {
+            "label": "Email Address*"
+         },
+         "phone": {
+            "label": "Phone Number*",
+            "placeholder": "+251 9XX XXX XXX"
+         },
+         "telegram": {
+            "label": "Telegram Handle*",
+            "placeholder": "@username"
+         },
+         "course": {
+            "label": "Selected Course*"
+         },
+         "paymentMethod": {
+            "label": "Payment Method Preference*",
+            "options": {
+               "telebirr": "Telebirr",
+               "cbe": "Commercial Bank of Ethiopia",
+               "boa": "Bank of Abyssinia",
+               "awash": "Awash Bank"
+            },
+            "details": {
+               "telebirr": "to: Ibrahim Ghazali\\n0960171717",
+               "cbe": "to: Ibrahim Ghazali\\n100041753914",
+               "boa": "to: Ibrahim Ghazali\\nXXXXXXXXXXX",
+               "awash": "to: Ibrahim Ghazali\\nXXXXXXXXXXX"
+            }
+         },
+         "paymentOption": {
+            "label": "Payment Option*",
+            "options": {
+               "one-time": "One-time Payment",
+               "monthly": "Monthly Subscription"
+            }
+         },
+         "receipt": {
+            "label": "Upload Receipt*"
+         },
+         "transactionId": {
+            "label": "Transaction ID*",
+            "placeholder": "Transaction reference"
+         },
+         "referral": {
+            "label": "How did you hear about us?",
+            "options": {
+               "facebook": "Facebook",
+               "telegram": "Telegram",
+               "friend": "Friend",
+               "search": "Google Search"
+            }
+         },
+         "agreeTerms": "I agree to the Terms and Conditions and Privacy Policy.",
+         "confirmAccuracy": "I confirm all information is accurate and true."
+      }
    }
 }

@@ -1,0 +1,88 @@
+{
+   "applicationForm": {
+      "title": "Application Form",
+      "userInfo": "User Information",
+      "billingInfo": "Billing / Service Details",
+      "submit": "Submit Application",
+      "reset": "Reset Form",
+      "alert": {
+         "required": "Please fill in the required field: ",
+         "terms": "Please agree to the terms and confirm the accuracy.",
+         "success": "Application Submitted!"
+      },
+      "fields": {
+         "name": {
+            "label": "Full Name*",
+            "placeholder": "John Doe"
+         },
+         "dob": {
+            "label": "Date of Birth"
+         },
+         "gender": {
+            "label": "Gender",
+            "options": {
+               "male": "Male",
+               "female": "Female"
+            }
+         },
+         "nationality": {
+            "label": "Nationality",
+            "placeholder": "Ethiopian"
+         },
+         "email": {
+            "label": "Email Address*"
+         },
+         "phone": {
+            "label": "Phone Number*",
+            "placeholder": "+251 9XX XXX XXX"
+         },
+         "telegram": {
+            "label": "Telegram Handle*",
+            "placeholder": "@username"
+         },
+         "course": {
+            "label": "Selected Course*"
+         },
+         "paymentMethod": {
+            "label": "Payment Method Preference*",
+            "options": {
+               "telebirr": "Telebirr",
+               "cbe": "Commercial Bank of Ethiopia",
+               "boa": "Bank of Abyssinia",
+               "awash": "Awash Bank"
+            },
+            "details": {
+               "telebirr": "to: Ibrahim Ghazali\\n0960171717",
+               "cbe": "to: Ibrahim Ghazali\\n100041753914",
+               "boa": "to: Ibrahim Ghazali\\nXXXXXXXXXXX",
+               "awash": "to: Ibrahim Ghazali\\nXXXXXXXXXXX"
+            }
+         },
+         "paymentOption": {
+            "label": "Payment Option*",
+            "options": {
+               "one-time": "One-time Payment",
+               "monthly": "Monthly Subscription"
+            }
+         },
+         "receipt": {
+            "label": "Upload Receipt*"
+         },
+         "transactionId": {
+            "label": "Transaction ID*",
+            "placeholder": "Transaction reference"
+         },
+         "referral": {
+            "label": "How did you hear about us?",
+            "options": {
+               "facebook": "Facebook",
+               "telegram": "Telegram",
+               "friend": "Friend",
+               "search": "Google Search"
+            }
+         },
+         "agreeTerms": "I agree to the Terms and Conditions and Privacy Policy.",
+         "confirmAccuracy": "I confirm all information is accurate and true."
+      }
+   }
+}

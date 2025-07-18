@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { testimonials } from "@/app/[locale]/data/testimonials";
-import { motion } from "framer-motion";
 import {
   Avatar,
   AvatarFallback,
@@ -16,10 +14,22 @@ import {
   CarouselPrevious,
 } from "@/app/[locale]/components/ui/carousel";
 import { BiSolidQuoteAltLeft } from "react-icons/bi";
-import { imagePaths } from "../data/image-paths";
 import { SectionHeading } from "./ui/section-heading";
+import { useTranslations } from "next-intl";
+import { TestimonialsConfig } from "@/lib/testimonial-config";
+import { imagePaths } from "../data/image-paths";
 
 export function TestimonialsSection() {
+  const t = useTranslations();
+    const testimonialsData = t.raw("testimonials.testimonies") as Record<string, { name:string; title: string; testimonial: string }>;
+  
+    const testimonials = TestimonialsConfig.map(config => ({
+      ...config,
+      name: testimonialsData[config.key]?.name || "",
+      title: testimonialsData[config.key]?.title || "",
+      testimonial: testimonialsData[config.key]?.testimonial || ""
+    }));
+
   const carouselRef = useRef<HTMLDivElement>(null);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -66,13 +76,15 @@ export function TestimonialsSection() {
     setHovered(false);
   };
 
+  
+
   return (
     <section
       className='py-24 px-12 bg-[#F6F6F6] dark:bg-gray-900/60'
       ref={carouselRef}
     >
       <div className='container mx-auto'>
-        <SectionHeading title='Testimonials' subtitle='' center={true} />
+        <SectionHeading title={t("testimonials.title")} subtitle={t("testimonials.subtitle")} center={true} />
         <div className='mx-auto flex px-8'>
           <div className='relative w-full'>
             <Carousel
@@ -90,7 +102,7 @@ export function TestimonialsSection() {
               >
                 {testimonials.map((testimonial, index) => (
                   <CarouselItem
-                    key={testimonial.id + index}
+                    key={testimonial.key + index}
                     className='md:basis-1/2 lg:basis-1/3'
                   >
                     <div className='bg-transparent hover:scale-105 h-full transition-all duration-300 group'>

@@ -7,6 +7,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card"
 import { Badge } from "../components/ui/badge"
 
 export default function AboutPage() {
+  const t = useTranslations()
+  const aboutPage = t.raw("aboutPage") as any
+
   return (
     <>
       {/* Hero Section - Removed colored background */}
@@ -46,6 +49,7 @@ export default function AboutPage() {
                     width={128}
                     height={128}
                     className="rounded-full"
+                    className="rounded-full"
                   />
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">SkillBridge</h3>
@@ -56,6 +60,9 @@ export default function AboutPage() {
         </div>
       </section>
       {/* Our Story Section */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
       <section className="py-20">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -110,14 +117,19 @@ export default function AboutPage() {
           <div className="grid lg:grid-cols-2 gap-8">
             <Card
               className="border-l-4 shadow-sm h-full dark:bg-gray-800 dark:border-gray-700"
+              className="border-l-4 shadow-sm h-full dark:bg-gray-800 dark:border-gray-700"
               style={{ borderLeftColor: "#2196F3" }}
             >
               <CardHeader className="pb-4">
                 <div className="flex items-center mb-4">
+              <CardHeader className="pb-4">
+                <div className="flex items-center mb-4">
                   <div
+                    className="w-8 h-8 rounded-full flex items-center justify-center mr-3"
                     className="w-8 h-8 rounded-full flex items-center justify-center mr-3"
                     style={{ backgroundColor: "rgba(33, 150, 243, 0.1)" }}
                   >
+                    <Target className="w-5 h-5" style={{ color: "#2196F3" }} />
                     <Target className="w-5 h-5" style={{ color: "#2196F3" }} />
                   </div>
                   <CardTitle className="text-2xl dark:text-white" style={{ color: "#2196F3" }}>
@@ -477,24 +489,31 @@ export default function AboutPage() {
             Join thousands of successful graduates who transformed their careers with SkillBridge Technologies
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
+              size="lg"
+              className="px-8 py-3 text-base text-white hover:opacity-90"
               size="lg"
               className="px-8 py-3 text-base text-white hover:opacity-90"
               style={{ backgroundColor: "#2196F3" }}
             >
-              Explore Programs
+              {aboutPage.startJourney.explore}
             </Button>
             <Button
               size="lg"
               variant="outline"
               className="px-8 py-3 text-base bg-transparent hover:bg-opacity-10 dark:border-gray-600 dark:text-gray-300"
+              size="lg"
+              variant="outline"
+              className="px-8 py-3 text-base bg-transparent hover:bg-opacity-10 dark:border-gray-600 dark:text-gray-300"
               style={{ borderColor: "#2196F3", color: "#2196F3" }}
             >
-              Schedule Consultation
+              {aboutPage.startJourney.consultation}
             </Button>
           </div>
         </div>
       </section>
     </>
+  )
   )
 }
