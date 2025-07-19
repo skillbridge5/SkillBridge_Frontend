@@ -1,5 +1,4 @@
-'use client';
-
+'use client'
 
 import { useEffect, useState } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
@@ -11,42 +10,26 @@ const ApplicationForm = () => {
   const pathname = usePathname()
   const slug = decodeURIComponent(pathname.split('/').slice(-2, -1)[0])
   const router = useRouter()
-// import { ArrowLeft, Upload } from "lucide-react";
-// import { courses } from "@/lib/course-data";
 
-// const ApplicationForm = () => {
-//   const router = useRouter();
-//   const params = useParams();
-//   const slug = decodeURIComponent(params.slug as string);
-
-  const mockUser = {
-    name: "John Doe",
-    email: "john.doe@example.com",
-    loggedIn: true,
-  };
-
-  const course = courses.find((c) => c.slug === slug);
-  const coursePrice = course?.discount ?? 0;
-
-  const [step, setStep] = useState<1 | 2>(1);
+  const mockUser = { name: 'John Doe', email: 'john.doe@example.com', loggedIn: true }
 
   const [form, setForm] = useState({
-    name: "",
-    dob: "",
-    gender: "",
-    nationality: "",
-    email: "",
-    phone: "",
-    telegram: "",
+    name: '',
+    dob: '',
+    gender: '',
+    nationality: '',
+    email: '',
+    phone: '',
+    telegram: '',
     course: slug,
-    paymentMethod: "",
-    paymentOption: "",
+    paymentMethod: '',
+    paymentOption: '',
     receipt: null as File | null,
-    transactionId: "",
-    referral: "",
+    transactionId: '',
+    referral: '',
     agreeTerms: false,
     confirmAccuracy: false,
-  });
+  })
 
   useEffect(() => {
     if (mockUser.loggedIn) {
@@ -55,43 +38,43 @@ const ApplicationForm = () => {
         name: mockUser.name,
         email: mockUser.email,
         course: slug,
-      }));
+      }))
+    } else {
+      setForm((prev) => ({ ...prev, course: slug }))
     }
-  }, [slug]);
+  }, [slug])
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
-    const { name, value, type } = e.target;
-    if (type === "checkbox") {
-      setForm((prev) => ({ ...prev, [name]: (e.target as HTMLInputElement).checked }));
-    } else if (type === "file") {
+    const { name, value, type } = e.target
+
+    if (type === 'checkbox') {
+      setForm((prev) => ({ ...prev, [name]: (e.target as HTMLInputElement).checked }))
+    } else if (type === 'file') {
       setForm((prev) => ({
         ...prev,
         [name]: (e.target as HTMLInputElement).files?.[0] || null,
-      }));
+      }))
     } else {
-      setForm((prev) => ({ ...prev, [name]: value }));
+      setForm((prev) => ({ ...prev, [name]: value }))
     }
-  };
+  }
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
+
     const requiredFields = [
-      "name", "email", "phone", "telegram", "course", "paymentMethod", "paymentOption"
-    ];
+      'name', 'email', 'phone', 'telegram', 'course', 'paymentMethod', 'paymentOption', 'transactionId'
+    ]
+
     for (const field of requiredFields) {
       if (!form[field as keyof typeof form]) {
         alert(`${t('alert.required')}${field}`)
-        return;
-<!--         alert(`Please fill in: ${field}`);
-        return; -->
+        return
       }
     }
-    if (!form.receipt) {
-      alert("Please upload a receipt.");
-      return;
-    }
+
     if (!form.agreeTerms || !form.confirmAccuracy) {
       alert(t('alert.terms'))
       return
@@ -100,18 +83,10 @@ const ApplicationForm = () => {
     console.log(form)
     alert(t('alert.success'))
   }
-<!--       alert("You must agree to the terms and confirm accuracy.");
-      return;
-    }
-
-    alert("Application Submitted!");
-    console.log(form);
-  }; -->
-
 
   const handleReset = () => {
-    router.back();
-  };
+    router.back()
+  }
 
   return (
     <div className="bg-white min-h-screen py-10 px-4">
@@ -222,24 +197,10 @@ const ApplicationForm = () => {
             <button type="button" onClick={handleReset} className="bg-gray-300 text-gray-800 px-6 py-2 rounded hover:bg-gray-400">{t('reset')}</button>
             <button type="submit" className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">{t('submit')}</button>
           </div>
-<!--   const paymentOptions = {
-    telebirr: "to: Ibrahim Ghazali\n0960171717",
-    cbe: "to: Ibrahim Ghazali\n100041753914",
-    boa: "to: Ibrahim Ghazali\nXXXXXXXXXXX",
-    awash: "to: Ibrahim Ghazali\nXXXXXXXXXXX",
-  };
-
-  const isStepOneValid =
-    form.name &&
-    form.email &&
-    form.phone &&
-    form.telegram; -->
-
-  
         </form>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ApplicationForm;
+export default ApplicationForm
