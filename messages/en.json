@@ -399,7 +399,7 @@
          "discount": 89.99,
          "duration": "42 hours",
          "lessons": 95,
-         "students": 12000,
+         "students": 16000,
          "createdAt": "2023-02-20",
          "slug": "machine-learning-python-r",
          "learningOutcomes": [
