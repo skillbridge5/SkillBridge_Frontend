@@ -1,4 +1,3 @@
-"use client"
 
 import Image from "next/image"
 import { Users, Target, Code, Star, CheckCircle, Clock, Trophy, BookOpen, Zap, GraduationCap } from "lucide-react"
@@ -7,25 +6,22 @@ import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card"
 import { Badge } from "../components/ui/badge"
 
 export default function AboutPage() {
-  const t = useTranslations()
-  const aboutPage = t.raw("aboutPage") as any
-
   return (
     <>
       {/* Hero Section - Removed colored background */}
-      <section className="text-gray-900 dark:text-white py-16 px-4 relative">
+      <section className="text-gray-900 dark:text-white py-32 px-4 relative min-h-screen">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="mb-4">
-                <Badge className="text-sm px-3 py-1 text-white border-0" style={{ backgroundColor: "#2196F3" }}>
+                <Badge className="text-sm px-3 py-1 text-white border-0" style={{ backgroundColor: "#2196F3", opacity: 0.5 }}>
                   Transforming Careers Since 2020!
                 </Badge>
               </div>
               <h1 className="text-6xl font-bold mb-6 leading-tight whitespace-nowrap">
                 <span style={{ color: "#2196F3" }}>Learn. Build.</span> <span className="text-orange-400">Launch.</span>
               </h1>
-              <p className="text-base mb-8 text-gray-600 dark:text-gray-300 leading-relaxed">
+              <p className="text-lg mb-8 text-gray-600 dark:text-gray-300 leading-relaxed">
                 SkillBridge Technologies - Where passionate learners become industry-ready developers through hands-on
                 projects, expert mentorship, and proven learning methodologies.
               </p>
@@ -48,8 +44,7 @@ export default function AboutPage() {
                     alt="SkillBridge Logo"
                     width={128}
                     height={128}
-                    className="rounded-full"
-                    className="rounded-full"
+                    className="rounded-full w-full h-full object-cover"
                   />
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">SkillBridge</h3>
@@ -59,10 +54,9 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      {/* Our Story Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+
+
+{/* Our Story Section */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -87,24 +81,24 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
-            <div className="relative self-end">
-              {" "}
-              {/* Added self-end here */}
+            <div className="relative">
               <div className="rounded-2xl overflow-hidden">
                 <Image
                   src="/images/about/about_image1.webp"
                   alt="Our Story Image"
                   width={500}
-                  height={350}
+                  height={360}
                   className="object-cover w-full h-full"
-                  style={{ width: "100%", height: "350px" }}
+                  style={{ width: "100%", height: "360px" }}
                 />
               </div>
             </div>
           </div>
         </div>
       </section>
-      {/* Our Purpose Section */}
+
+
+{/* Our Purpose Section */}
       <section className="py-20 bg-gray-50 dark:bg-gray-900 -mx-4 lg:-mx-8 px-4 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -117,19 +111,14 @@ export default function AboutPage() {
           <div className="grid lg:grid-cols-2 gap-8">
             <Card
               className="border-l-4 shadow-sm h-full dark:bg-gray-800 dark:border-gray-700"
-              className="border-l-4 shadow-sm h-full dark:bg-gray-800 dark:border-gray-700"
               style={{ borderLeftColor: "#2196F3" }}
             >
               <CardHeader className="pb-4">
                 <div className="flex items-center mb-4">
-              <CardHeader className="pb-4">
-                <div className="flex items-center mb-4">
                   <div
-                    className="w-8 h-8 rounded-full flex items-center justify-center mr-3"
                     className="w-8 h-8 rounded-full flex items-center justify-center mr-3"
                     style={{ backgroundColor: "rgba(33, 150, 243, 0.1)" }}
                   >
-                    <Target className="w-5 h-5" style={{ color: "#2196F3" }} />
                     <Target className="w-5 h-5" style={{ color: "#2196F3" }} />
                   </div>
                   <CardTitle className="text-2xl dark:text-white" style={{ color: "#2196F3" }}>
@@ -177,7 +166,9 @@ export default function AboutPage() {
                 <div className="space-y-3">
                   <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
                     <CheckCircle className="w-4 h-4 text-orange-500 mr-2 flex-shrink-0" />
-                    <span>Global recognition and impact</span>
+
+
+<span>Global recognition and impact</span>
                   </div>
                   <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
                     <CheckCircle className="w-4 h-4 text-orange-500 mr-2 flex-shrink-0" />
@@ -193,6 +184,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
       {/* Our Learning Methodology */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto">
@@ -248,7 +240,7 @@ export default function AboutPage() {
                     Get Expert Feedback
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400">
-                    Receive detailed code reviews and personalized guidance from industry professionals who&apos;ve been
+                    Receive detailed code reviews and personalized guidance from industry professionals who've been
                     where you want to go.
                   </p>
                 </div>
@@ -258,7 +250,9 @@ export default function AboutPage() {
                   className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-1"
                   style={{ backgroundColor: "#2196F3" }}
                 >
-                  <span className="text-white font-bold text-sm">4</span>
+
+
+<span className="text-white font-bold text-sm">4</span>
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold mb-2 dark:text-white" style={{ color: "#2196F3" }}>
@@ -274,7 +268,7 @@ export default function AboutPage() {
             <div className="relative">
               <div className="bg-gray-900 dark:bg-gray-700 rounded-2xl overflow-hidden">
                 <Image
-                  src="/images/about/about_image2.jpg?height=350&width=450"
+                  src="/images/about/about_image2.jpg"
                   alt="Learning Methodology"
                   width={450}
                   height={350}
@@ -286,6 +280,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
       {/* Why Students Choose SkillBridge - Made Shorter */}
       <section className="py-16 bg-gray-50 dark:bg-gray-900 -mx-4 lg:-mx-8 px-4 lg:px-8">
         <div className="max-w-7xl mx-auto">
@@ -314,6 +309,7 @@ export default function AboutPage() {
                 </p>
               </CardContent>
             </Card>
+
             <Card className="text-center hover:shadow-lg transition-shadow bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 h-full flex flex-col min-h-[200px]">
               <CardHeader className="pb-3 flex-shrink-0">
                 <div className="mx-auto w-12 h-12 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center mb-3">
@@ -329,7 +325,9 @@ export default function AboutPage() {
                 </p>
               </CardContent>
             </Card>
-            <Card className="text-center hover:shadow-lg transition-shadow bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 h-full flex flex-col min-h-[200px]">
+
+
+<Card className="text-center hover:shadow-lg transition-shadow bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 h-full flex flex-col min-h-[200px]">
               <CardHeader className="pb-3 flex-shrink-0">
                 <div className="mx-auto w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center mb-3">
                   <Code className="w-6 h-6" style={{ color: "oklch(44.6% 0.03 256.802)" }} />
@@ -344,6 +342,7 @@ export default function AboutPage() {
                 </p>
               </CardContent>
             </Card>
+
             <Card className="text-center hover:shadow-lg transition-shadow bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 h-full flex flex-col min-h-[200px]">
               <CardHeader className="pb-3 flex-shrink-0">
                 <div className="mx-auto w-12 h-12 bg-orange-100 dark:bg-orange-900 rounded-lg flex items-center justify-center mb-3">
@@ -359,6 +358,7 @@ export default function AboutPage() {
                 </p>
               </CardContent>
             </Card>
+
             <Card className="text-center hover:shadow-lg transition-shadow bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 h-full flex flex-col min-h-[200px]">
               <CardHeader className="pb-3 flex-shrink-0">
                 <div className="mx-auto w-12 h-12 bg-red-100 dark:bg-red-900 rounded-lg flex items-center justify-center mb-3">
@@ -374,6 +374,7 @@ export default function AboutPage() {
                 </p>
               </CardContent>
             </Card>
+
             <Card className="text-center hover:shadow-lg transition-shadow bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 h-full flex flex-col min-h-[200px]">
               <CardHeader className="pb-3 flex-shrink-0">
                 <div className="mx-auto w-12 h-12 bg-teal-100 dark:bg-teal-900 rounded-lg flex items-center justify-center mb-3">
@@ -392,7 +393,9 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      {/* Complete Learning Paths - Made Shorter */}
+
+
+{/* Complete Learning Paths - Made Shorter */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
@@ -401,6 +404,7 @@ export default function AboutPage() {
               From zero to hired - structured programs that get results
             </p>
           </div>
+
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Career-Focused Programs</h3>
@@ -427,6 +431,7 @@ export default function AboutPage() {
                     </div>
                   </CardContent>
                 </Card>
+
                 <Card className="hover:shadow-lg transition-shadow bg-white dark:bg-gray-800 border-l-4 border-l-orange-500 h-full dark:border-gray-700">
                   <CardContent className="p-4">
                     <div className="flex items-center justify-between mb-2">
@@ -444,7 +449,9 @@ export default function AboutPage() {
                     </div>
                   </CardContent>
                 </Card>
-                <Card
+
+
+<Card
                   className="hover:shadow-lg transition-shadow bg-white dark:bg-gray-800 border-l-4 h-full dark:border-gray-700"
                   style={{ borderLeftColor: "#2196F3" }}
                 >
@@ -472,15 +479,16 @@ export default function AboutPage() {
                   src="/images/about/about_image3.webp"
                   alt="Complete Learning Paths"
                   width={450}
-                  height={500}
+                  height={400}
                   className="object-cover"
-                  style={{ width: "450px", height: "480px" }}
+                  style={{ width: "450px", height: "400px" }}
                 />
               </div>
             </div>
           </div>
         </div>
       </section>
+
       {/* Ready to Start Your Journey */}
       <section className="py-20 bg-gray-50 dark:bg-gray-900 -mx-4 lg:-mx-8 px-4 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
@@ -489,31 +497,24 @@ export default function AboutPage() {
             Join thousands of successful graduates who transformed their careers with SkillBridge Technologies
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
-              size="lg"
-              className="px-8 py-3 text-base text-white hover:opacity-90"
               size="lg"
               className="px-8 py-3 text-base text-white hover:opacity-90"
               style={{ backgroundColor: "#2196F3" }}
             >
-              {aboutPage.startJourney.explore}
+              Explore Programs
             </Button>
             <Button
-              size="lg"
-              variant="outline"
-              className="px-8 py-3 text-base bg-transparent hover:bg-opacity-10 dark:border-gray-600 dark:text-gray-300"
               size="lg"
               variant="outline"
               className="px-8 py-3 text-base bg-transparent hover:bg-opacity-10 dark:border-gray-600 dark:text-gray-300"
               style={{ borderColor: "#2196F3", color: "#2196F3" }}
             >
-              {aboutPage.startJourney.consultation}
+              Schedule Consultation
             </Button>
           </div>
         </div>
       </section>
     </>
-  )
   )
 }
