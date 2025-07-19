@@ -4,6 +4,7 @@ import { Navbar } from "@/app/[locale]/components/navbar";
 import React, { useState } from "react";
 import Image from "next/image";
 import Footer from "@/app/[locale]/components/footer";
+import { imagePaths } from "../data/image-paths";
 
 const FaqPage = () => {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
@@ -19,7 +20,7 @@ const FaqPage = () => {
         <div className='relative z-10 mx-auto'>
           {/* Image with full width/height */}
           <img
-            src='images/help_image.png'
+            src={imagePaths.faqBanner.banner}
             alt='Banner background'
             className='w-full h-[480px] object-cover 2xl:place-content-center 2xl:mx-auto 2xl:object-fill 2xl:min-w-screen 2xl:h-[600px]'
           />
@@ -36,10 +37,10 @@ const FaqPage = () => {
             </div>
           </div>
         </div>
-        <div className='container px-8 pt-12 pb-20 mx-auto xl:min-w-7xl'>
+        <div className='container px-8 pt-12 pb-20 mx-auto xl:min-w-6xl'>
           <div className='w-full '>
             <h1 className='text-4xl md:text-5xl font-bold text-[#2196F3] mb-2'>
-              Frequently Asked <span className='text-[#2196F3]'>Questions</span>
+              {t("faq.faqTitle")} <span className='text-[#d5aa33]'>{t("faq.faqQues")}</span>
             </h1>
             <p className='text-gray-600 mb-6 text-base 2xl:text-lg 2xl:mt-2'>
               {t("faq.faqDescription")}

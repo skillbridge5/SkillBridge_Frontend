@@ -89,7 +89,7 @@ export default function AboutPage() {
 
       {/* Our Story Section */}
       <section className="py-20">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">{aboutPage.storyHeading}</h2>
@@ -115,8 +115,8 @@ export default function AboutPage() {
       </section>
 
       {/* Our Purpose Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900 -mx-4 lg:-mx-8 px-4 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-20 bg-gray-50 dark:bg-gray-900 2xl:-mx-8 px-4 lg:px-8">
+        <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">{aboutPage.purpose.title}</h2>
             <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">{aboutPage.purpose.subtitle}</p>
@@ -227,8 +227,8 @@ export default function AboutPage() {
       </section>
 
       {/* Why Students Choose SkillBridge */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900 -mx-4 lg:-mx-8 px-4 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-20 bg-gray-50 dark:bg-gray-900  2xl:-mx-8 px-4 lg:px-8">
+        <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">{aboutPage.whyUs.title}</h2>
             <p className="text-xl text-gray-600 dark:text-gray-400">{aboutPage.whyUs.subtitle}</p>
@@ -328,7 +328,7 @@ export default function AboutPage() {
       </section>
 
       {/* Ready to Start Your Journey */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900 -mx-4 lg:-mx-8 px-4 lg:px-8">
+      <section className="py-20 bg-gray-50 dark:bg-gray-900 2xl:-mx-8 px-4 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">{aboutPage.startJourney.title}</h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto">

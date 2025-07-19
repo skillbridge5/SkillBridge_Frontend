@@ -1,8 +1,9 @@
 {
    "faq": {
-      "faqTitle": "Frequently Asked Questions",
+      "faqTitle": "Frequently Asked",
+      "faqQues": "Questions",
       "faqSubtitle": "We are here to help!",
-      "FaqDescription": "Have more questions? We understand that every situation is unique.If your concern wasn't addressed in the FAQs, feel free to get in touch—we're always here to provide the support you need.",
+      "faqDescription": "Have more questions? We understand that every situation is unique.If your concern wasn't addressed in the FAQs, feel free to get in touch—we're always here to provide the support you need.",
       "faqList": [
          {
             "question": "What are the technical requirements for learning at SkillBridge?",
