@@ -26,6 +26,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@radix-ui/react-tabs";
 import { Button } from "../../components/ui/button";
 import { Badge } from "../../components/ui/badge";
 import { courseDetailsConfig } from "@/lib/course-details-config";
+import { Navbar } from "../../components/navbar";
 
 export default function CourseDetailPage() {
   const t = useTranslations();
@@ -59,6 +60,8 @@ export default function CourseDetailPage() {
   }
 
   return (
+    <>
+    <Navbar />
     <div className='container mx-auto px-4 py-12'>
       <Link
         href='/courses'
@@ -317,5 +320,6 @@ export default function CourseDetailPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }
