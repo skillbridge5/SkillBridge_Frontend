@@ -27,6 +27,11 @@ const Contact = () => {
     console.log(form);
   };
 
+  const scrollToMap = () => {
+    const map = document.getElementById("contact-map");
+    if (map) map.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div className='min-h-screen font-montserrat bg-white dark:bg-gray-950 transition-colors duration-300 flex flex-col'>
       <Navbar />
@@ -58,9 +63,10 @@ const Contact = () => {
             </div>
           </div>
 
+     
           <form
             onSubmit={handleSubmit}
-            className='flex-1 shadow-md p-8 rounded-lg bg-white space-y-4'
+            className='flex-1 shadow-lg p-8 rounded-2xl bg-white border border-gray-200 space-y-4'
           >
             <h2 className='text-2xl font-bold mb-2'>{t("message")}</h2>
             <input
@@ -85,7 +91,7 @@ const Contact = () => {
               name='phone'
               type='text'
               placeholder='Phone'
-              className='w-full border px-4 py-2 rounded'
+              className='w-full border px-4 py-2 rounded outline-blue-500'
               value={form.phone}
               onChange={handleChange}
             />
@@ -110,7 +116,7 @@ const Contact = () => {
           <h2 className='text-xl font-semibold text-center mb-4'>
             {t("mapTitle")}
           </h2>
-          <div className='w-full h-96 rounded-lg overflow-hidden'>
+          <div className='w-full h-96 rounded-lg overflow-hidden shadow-lg'>
             <iframe
               src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3939.6719600732655!2d38.75776007590039!3d9.030151990986828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85f57f3d87ff%3A0x6f6242500e5b2a4a!2sAddis%20Ababa!5e0!3m2!1sen!2set!4v1687598230123'
               width='100%'
