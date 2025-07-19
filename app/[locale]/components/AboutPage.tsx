@@ -85,6 +85,7 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
+      {/* Why Students Choose SkillBridge */}
       </section>
 
       {/* Our Story Section */}
