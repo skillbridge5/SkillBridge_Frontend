@@ -33,11 +33,14 @@ export function CoursesSection() {
 
   // Get top 3 courses by student enrollment
   const topCourses = [...courses].sort((a, b) => {
+    
     if (b.reviews !== a.reviews) {
       return b.reviews - a.reviews;
     }
     return b.rating - a.rating;
+
   });
+
 
   return (
     <section className='py-16 dark:bg-gray-950'>
