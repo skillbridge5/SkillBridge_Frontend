@@ -39,7 +39,7 @@ export function CoursesSection() {
     }
     return b.rating - a.rating;
 
-  });
+  }).slice(0,3);
 
 
   return (
