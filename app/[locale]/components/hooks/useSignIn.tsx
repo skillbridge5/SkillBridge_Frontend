@@ -1,7 +1,11 @@
 import {useState } from "react";
 
-import { SignInProps } from "../interface"
-
+// Define the interface directly in the file
+interface SignInProps {
+  email: string;
+  password: string;
+  rememberMe: boolean;
+}
 
 // Typescript enforced SignIn Values
 const useSignIn=(

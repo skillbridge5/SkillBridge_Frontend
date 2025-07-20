@@ -10,7 +10,7 @@ import {
   Phone,
   HelpCircle,
 } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { useTranslations } from "next-intl";
 
 const container = {
@@ -22,7 +22,7 @@ const container = {
   },
 };
 
-const fadeInUp = {
+const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
   show: {
     opacity: 1,

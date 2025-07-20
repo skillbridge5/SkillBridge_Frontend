@@ -1,7 +1,14 @@
 "use client"
 
 import { useState } from "react";
-import { SignUpProps } from "../interface";
+
+// Define the interface directly in the file
+interface SignUpProps {
+  fullName: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
 
 const useSignUp=(
     initalValue:SignUpProps={
@@ -18,10 +25,10 @@ const[errors,setErrors]=useState<Partial<SignUpProps>>({})
 const validateError=(values:SignUpProps)=>{
 const errors:Partial<SignUpProps>={}
 
-if(!values.fullName) errors.firstName="full Name  is Required"
+if(!values.fullName) errors.fullName="full Name  is Required"
 if(!values.email) errors.email="Email is Required"
 if(!values.password) errors.password="Password is Required"
-if(values.password!==values.confirmPassword) errors.confirmPassword="Password Doesnt Match"
+if(values.password!==values.confirmPassword) errors.confirmPassword="Password Doesn't Match"
 
 return errors
 }
