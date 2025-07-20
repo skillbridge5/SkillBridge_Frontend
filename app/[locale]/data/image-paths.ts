@@ -7,7 +7,7 @@ export const imagePaths = {
    },
 
    faqBanner: {
-    banner: "/images/help_image.png"
+    banner: "/images/help-image.png"
    },
  
    // Course images
