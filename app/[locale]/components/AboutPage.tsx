@@ -94,6 +94,7 @@ export default function AboutPage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">{aboutPage.storyHeading}</h2>
+              <p className="text-lg mb-8 text-gray-600 dark:text-gray-300 leading-relaxed font-semibold">{aboutPage.storySubheading}</p>
               <div className="space-y-6 text-gray-700 dark:text-gray-300 leading-relaxed">
                 <p>{aboutPage.storyText1}</p>
                 <p>{aboutPage.storyText2}</p>

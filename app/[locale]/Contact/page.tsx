@@ -50,7 +50,7 @@ const Contact = () => {
               </div>
               <div>
                 <h4 className='font-semibold text-gray-800 dark:text-gray-200'>📧 {t("emailAddress")}</h4>
-                <p>skillbridgeinstituteoftech@gmail.com</p>
+                <a href="mailto:skillbridgeinstituteoftech@gmail.com" className="">skillbridgeinstituteoftech@gmail.com</a>
               </div>
               <div>
                 <h4 className='font-semibold text-gray-800 dark:text-gray-200'>📍 {t("office")}</h4>
