@@ -1,10 +1,8 @@
 "use client";
-
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { Eye, EyeOff } from "lucide-react";
-
+import { Eye, EyeOff, ArrowLeft } from "lucide-react";
 import useSignUp from "@/app/[locale]/components/hooks/useSignUp";
 import { Input } from "@/app/[locale]/components/ui/input";
 import { Label } from "@/app/[locale]/components/ui/label";
@@ -13,14 +11,23 @@ import { Button } from "@/app/[locale]/components/ui/button";
 const SignUp: React.FC = () => {
   const [show, setShow] = useState(false);
   const router = useRouter();
-  const { handleChange, errors, values, handleSubmit } = useSignUp();
-
-  // Toggle Password Visibility
+  const { handleChange, errors, values, handleSubmit, isLoading, apiError } = useSignUp();
   const handlePasswordToggle = () => setShow((prev) => !prev);
+  const handleGoBack = () => {
+    router.back();
+  };
 
   return (
-    <section className='min-h-screen flex flex-col md:flex-row overflow-hidden'>
-      {/* Left Side - Full Area with Full Covered Image */}
+    <section className='min-h-screen flex flex-col md:flex-row overflow-hidden relative'>
+
+      <button
+        onClick={handleGoBack}
+        className='absolute top-4 left-4 z-10 p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100 shadow-md cursor-pointer hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200'
+        aria-label="Go back"
+      >
+        <ArrowLeft size={24} />
+      </button>
+
       <div className='w-full md:w-1/2 min-h-[300px] md:min-h-screen relative overflow-hidden'>
         <Image
           src='/Formimage.png'
@@ -32,7 +39,6 @@ const SignUp: React.FC = () => {
         />
       </div>
 
-      {/* Right Side - Form */}
       <div className='md:w-1/2 w-full flex flex-col justify-center p-4'>
         <h1 className='py-5 text-center mb-3 uppercase font-bold md:text-4xl text-2xl text-[#2196F3]'>
           Create Your Account!
@@ -42,7 +48,8 @@ const SignUp: React.FC = () => {
           onSubmit={handleSubmit}
           className='space-y-3 w-full max-w-md mx-auto'
         >
-          {/* Full Name */}
+
+
           <div>
             <Label
               htmlFor='fullName'
@@ -66,7 +73,7 @@ const SignUp: React.FC = () => {
             )}
           </div>
 
-          {/* Email */}
+
           <div>
             <Label
               htmlFor='email'
@@ -90,7 +97,7 @@ const SignUp: React.FC = () => {
             )}
           </div>
 
-          {/* Password */}
+
           <div className='relative w-full'>
             <Label
               htmlFor='password'
@@ -120,7 +127,6 @@ const SignUp: React.FC = () => {
             )}
           </div>
 
-          {/* Confirm Password */}
           <div>
             <Label
               htmlFor='confirmPassword'
@@ -129,7 +135,7 @@ const SignUp: React.FC = () => {
               Confirm Password
             </Label>
             <Input
-              type='text'
+              type={show ? "text" : "password"}
               name='confirmPassword'
               id='confirmPassword'
               className={
@@ -146,25 +152,34 @@ const SignUp: React.FC = () => {
             )}
           </div>
 
-          {/* Buttons */}
+          {apiError && (
+            <div className="text-red-600 bg-red-100 border border-red-400 p-3 rounded-md mt-4 text-sm" role="alert">
+              {apiError}
+            </div>
+          )}
+
           <div className='flex flex-col justify-center items-center gap-3'>
             <Button
               type='submit'
-              className='bg-sky-500 text-white w-full py-2 text-lg font-semibold'
+              className='bg-sky-500 hover:bg-blue-500 transition text-white w-full py-2 text-lg font-semibold'
+              disabled={isLoading}
             >
-              Sign Up
-            </Button>
-            <Button className='bg-white text-black w-full py-2 text-lg font-semibold border border-gray-300'>
-              Sign in with Google
+              {isLoading ? (
+                <>
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                  Signing Up...
+                </>
+              ) : (
+                "Sign Up"
+              )}
             </Button>
           </div>
 
-          {/* Footer */}
           <p className='text-center text-[#595959] font-normal mt-4'>
             Have an account?
             <span
               className='text-blue-600 cursor-pointer ml-1'
-              onClick={() => router.push("/login")}
+              onClick={() => router.push("/signin")}
             >
               Sign in!
             </span>

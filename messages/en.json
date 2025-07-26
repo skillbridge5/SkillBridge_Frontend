@@ -1,99 +1,109 @@
 {
-   "faq": {
-      "faqTitle": "Frequently Asked Questions",
-      "faqSubtitle": "We are here to help!",
-      "FaqDescription": "Have more questions? We understand that every situation is unique.If your concern wasn't addressed in the FAQs, feel free to get in touch—we're always here to provide the support you need.",
-      "faqList": [
-         {
-            "question": "What are the technical requirements for learning at SkillBridge?",
-            "answer": "To use SkillBridge, you need a smartphone or computer and internet access. For registration, access to one of the supported digital payment methods is required."
-         },
-         {
-            "question": "How do I get started with SkillBridge?",
-            "answer": "Sign up on our website, choose your course, and follow the instructions to begin learning."
-         },
-         {
-            "question": "Do you give certificates after completion?",
-            "answer": "Yes, you will receive a certificate after successfully completing your course."
-         },
-         {
-            "question": "Does SkillBridge provide job opportunities?",
-            "answer": "We connect top-performing students with partner companies and job opportunities where available."
-         },
-         {
-            "question": "Who can learn your courses?",
-            "answer": "Anyone with a passion for tech and willingness to learn can join our courses."
-         },
-         {
-            "question": "In what language are you providing the courses?",
-            "answer": "Our courses are primarily in English, but we are working to add more languages."
-         },
-         {
-            "question": "When do we start learning the courses?",
-            "answer": "You can start learning immediately after enrolling in a course."
-         },
-         {
-            "question": "What can I do if I forget my password on website registration?",
-            "answer": "Use the 'Forgot Password' link on the login page to reset your password."
-         },
-         {
-            "question": "Can I get registered via email?",
-            "answer": "Yes, you can register using your email address on our sign-up page."
-         },
-         {
-            "question": "Is it an online class or online course?",
-            "answer": "SkillBridge offers both live online classes and self-paced online courses to fit your schedule."
-         }
-      ]
-   },
-   "navbar": {
-      "navbarItems": [
-         {
-            "name": "Home",
-            "path": "/",
-            "type": "link"
-         },
-         {
-            "name": "About us",
-            "path": "/about",
-            "type": "link"
-         },
-         {
-            "name": "Courses",
-            "path": "/courses",
-            "type": "link"
-         },
-         {
-            "name": "Contact Us",
-            "path": "/contact",
-            "type": "link"
-         }
-      ],
-      "searchPlaceholder": "What do you want to learn?",
-      "getStarted": "Get Started"
-   },
-   "hero": {
-      "span1": "Your",
-      "span2": "Future",
-      "span3": "Begins With",
-      "span4": "One Click",
-      "heroSubtitle": "Bridging Gaps, Building Skills, Transforming Futures",
-      "getStarted": "Get Started",
-      "freeTrial": "Get Free Trial",
-      "statCards": [
-         {
-            "title": "Online Courses",
-            "value": "10+"
-         },
-         {
-            "title": "Video Courses",
-            "value": "30+"
-         },
-         {
-            "title": "Tutors",
-            "value": "250+"
-         }
-         
-      ]
-   }
+  "Home": "Home",
+  "About us": "About us",
+  "Courses": "Courses",
+  "Contact Us": "Contact Us",
+  "10+": "10+",
+  "Online Courses": "Online Courses",
+  "30+": "30+",
+  "Video Courses": "Video Courses",
+  "250+": "250+",
+  "Tutors": "Tutors",
+  
+  "faq": {
+    "faqTitle": "Frequently Asked Questions",
+    "faqSubtitle": "We are here to help!",
+    "FaqDescription": "Have more questions? We understand that every situation is unique.If your concern wasn't addressed in the FAQs, feel free to get in touch—we're always here to provide the support you need.",
+    "faqList": [
+      {
+        "question": "What are the technical requirements for learning at SkillBridge?",
+        "answer": "To use SkillBridge, you need a smartphone or computer and internet access. For registration, access to one of the supported digital payment methods is required."
+      },
+      {
+        "question": "How do I get started with SkillBridge?",
+        "answer": "Sign up on our website, choose your course, and follow the instructions to begin learning."
+      },
+      {
+        "question": "Do you give certificates after completion?",
+        "answer": "Yes, you will receive a certificate after successfully completing your course."
+      },
+      {
+        "question": "Does SkillBridge provide job opportunities?",
+        "answer": "We connect top-performing students with partner companies and job opportunities where available."
+      },
+      {
+        "question": "Who can learn your courses?",
+        "answer": "Anyone with a passion for tech and willingness to learn can join our courses."
+      },
+      {
+        "question": "In what language are you providing the courses?",
+        "answer": "Our courses are primarily in English, but we are working to add more languages."
+      },
+      {
+        "question": "When do we start learning the courses?",
+        "answer": "You can start learning immediately after enrolling in a course."
+      },
+      {
+        "question": "What can I do if I forget my password on website registration?",
+        "answer": "Use the 'Forgot Password' link on the login page to reset your password."
+      },
+      {
+        "question": "Can I get registered via email?",
+        "answer": "Yes, you can register using your email address on our sign-up page."
+      },
+      {
+        "question": "Is it an online class or online course?",
+        "answer": "SkillBridge offers both live online classes and self-paced online courses to fit your schedule."
+      }
+    ]
+  },
+  "navbar": {
+    "navbarItems": [
+      {
+        "name": "Home",
+        "path": "/",
+        "type": "link"
+      },
+      {
+        "name": "About us",
+        "path": "/./about",
+        "type": "link"
+      },
+      {
+        "name": "Courses",
+        "path": "/./courses",
+        "type": "link"
+      },
+      {
+        "name": "Contact Us",
+        "path": "/./Contact",
+        "type": "link"
+      }
+    ],
+    "searchPlaceholder": "What do you want to learn?",
+    "getStarted": "Get Started"
+  },
+  "hero": {
+    "span1": "Your",
+    "span2": "Future",
+    "span3": "Begins With",
+    "span4": "One Click",
+    "heroSubtitle": "Bridging Gaps, Building Skills, Transforming Futures",
+    "getStarted": "Get Started",
+    "freeTrial": "Get Free Trial",
+    "statCards": [
+      {
+        "title": "Online Courses",
+        "value": "10+"
+      },
+      {
+        "title": "Video Courses",
+        "value": "30+"
+      },
+      {
+        "title": "Tutors",
+        "value": "250+"
+      }
+    ]
+  }
 }

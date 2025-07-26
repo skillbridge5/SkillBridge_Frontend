@@ -1,65 +1,117 @@
-"use client"
-
+"use client";
 import { useState } from "react";
-import { SignUpProps } from "../interface";
+import { useRouter } from "next/navigation";
 
-const useSignUp=(
-    initalValue:SignUpProps={
-        fullName:"",
-        email:"",
-        password:"",
-    confirmPassword:"",
-    }
-)=>{
-const[values,setValues]=useState<SignUpProps>(initalValue)
-const[errors,setErrors]=useState<Partial<SignUpProps>>({})
-
-//Error Validations
-const validateError=(values:SignUpProps)=>{
-const errors:Partial<SignUpProps>={}
-
-if(!values.fullName) errors.firstName="full Name  is Required"
-if(!values.email) errors.email="Email is Required"
-if(!values.password) errors.password="Password is Required"
-if(values.password!==values.confirmPassword) errors.confirmPassword="Password Doesnt Match"
-
-return errors
+interface SignUpProps {
+    fullName: string; 
+    email: string;
+    password: string;
+    confirmPassword: string;
 }
 
-//Function to handle Input Value Changes
-const handleChange=(e:React.ChangeEvent<HTMLInputElement>)=>{
-    const{name,value}=e.target;
-    setValues((preValues: SignUpProps) => ({ ...preValues, [name]: value }));
-    
+const useSignUp = (
+    initalValue: SignUpProps = {
+        fullName: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
     }
-    
-       //Function to Reset Form Values
-       const resetForm=()=>{
-        setValues(initalValue)
-        setErrors({})
-    }
+) => {
+    const [values, setValues] = useState<SignUpProps>(initalValue);
+    const [errors, setErrors] = useState<Partial<SignUpProps>>({});
+    const [isLoading, setIsLoading] = useState(false);
+    const [apiError, setApiError] = useState<string | null>(null);
 
-    //Function to handle After Form is Submitted
-    const handleSubmit=(e?:React.FormEvent<HTMLFormElement>)=>{
-        e?.preventDefault()
-        const validationErrors=validateError(values)
-    setErrors(validationErrors)
-    if(Object.keys(validationErrors).length===0) {
-        alert("User Registered Sucessfuuly")
-        resetForm()
-    }
-    else{
-        alert("Invalid Submisson, Try Again")
-    }
-   
-    }
-    
- 
-    
-    return{
-        handleChange,errors,values,resetForm,handleSubmit
-    }
-    
+    const router = useRouter();
+
+    const validateError = (values: SignUpProps) => {
+        const errors: Partial<SignUpProps> = {};
+
+        if (!values.fullName) errors.fullName = "Full Name is Required";
+        if (!values.email) errors.email = "Email is Required";
+        if (!values.password) errors.password = "Password is Required";
+        if (values.password !== values.confirmPassword) errors.confirmPassword = "Password Does Not Match";
+
+        return errors;
+    };
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setValues((preValues: SignUpProps) => ({ ...preValues, [name]: value }));
+        if (errors[name as keyof SignUpProps]) {
+            setErrors(prevErrors => {
+                const newErrors = { ...prevErrors };
+                delete newErrors[name as keyof SignUpProps];
+                return newErrors;
+            });
         }
-       
-export default useSignUp
+        setApiError(null);
+    };
+
+    const resetForm = () => {
+        setValues(initalValue);
+        setErrors({});
+        setApiError(null);
+    };
+
+    const handleSubmit = async (e?: React.FormEvent<HTMLFormElement>) => {
+        e?.preventDefault();
+        setApiError(null);
+
+        const validationErrors = validateError(values);
+        setErrors(validationErrors);
+
+        if (Object.keys(validationErrors).length === 0) {
+            setIsLoading(true);
+            try {
+                const response = await fetch('https://skillbridge-backend-w2s4.onrender.com/api/auth/register-student', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name: values.fullName,
+                        email: values.email,
+                        password: values.password,
+                    }),
+                });
+
+                const responseData = await response.json(); 
+
+                if (response.ok) { 
+                    router.push('/signin');
+                    resetForm();
+                } else {
+                    let errorMessage = 'Registration failed. Please try again.';
+                    if (response.status === 409) {
+                        errorMessage = responseData.message || 'User with this email already exists.';
+                    } else if (response.status === 400) {
+                        errorMessage = responseData.message || 'Validation error. Please check your inputs.';
+                    } else if (responseData.message) {
+                        errorMessage = responseData.message;
+                    }
+                    setApiError(errorMessage);
+                }
+            } catch (error) {
+                console.error("Error during registration:", error);
+                setApiError("An unexpected error occurred. Please check your network and try again.");
+            } finally {
+                setIsLoading(false);
+            }
+        } else {
+            setApiError("Invalid Submission: Please correct the errors and try again.");
+        }
+    };
+
+    return {
+        handleChange,
+        errors,
+        values,
+        resetForm,
+        handleSubmit,
+        isLoading,
+        apiError
+    };
+};
+
+export default useSignUp;
