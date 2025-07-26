@@ -1,4 +1,16 @@
 {
+  "Home": "Home",
+  "About us": "About us",
+  "Courses": "Courses",
+  "Contact Us": "Contact Us",
+  "10+": "10+",
+  "Online Courses": "Online Courses",
+  "30+": "30+",
+  "Video Courses": "Video Courses",
+  "250+": "250+",
+  "Tutors": "Tutors",
+  
+
    "faq": {
       "faqTitle": "Frequently Asked",
       "faqQues": "Questions",
@@ -66,7 +78,7 @@
          },
          {
             "name": "Contact Us",
-            "path": "/contact",
+            "path": "/Contact",
             "type": "link"
          }
       ],
