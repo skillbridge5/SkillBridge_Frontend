@@ -5,6 +5,10 @@ export const imagePaths = {
    hero: {
      studentsLearning: "/images/hero/students-learning.jpg",
    },
+
+   faqBanner: {
+    banner: "/images/help-image.png"
+   },
  
    // Course images
    courses: {

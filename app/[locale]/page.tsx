@@ -5,7 +5,6 @@ import { CoursesSection } from "@/app/[locale]/components/courses-section";
 import { InstructorsSection } from "@/app/[locale]/components/instructors-section";
 import { TestimonialsSection } from "@/app/[locale]/components/testimonials-section";
 import { SuccessSection } from "@/app/[locale]/components/success-section";
-import { servicesData } from "@/app/[locale]/data/services";
 import Footer from "@/app/[locale]/components/footer";
 
 export default function Home() {
@@ -13,7 +12,7 @@ export default function Home() {
     <div className='min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300 font-montserrat'>
       <Navbar />
       <HeroSection />
-      <ServicesSection services={servicesData} />
+      <ServicesSection />
       <CoursesSection />
       <InstructorsSection />
       <TestimonialsSection />

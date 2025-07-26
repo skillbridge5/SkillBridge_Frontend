@@ -8,31 +8,54 @@ import {
 } from "@/app/[locale]/components/ui/card";
 import { Badge } from "@/app/[locale]/components/ui/badge";
 import { ArrowUpRight, Clock } from "lucide-react";
-import { courses } from "@/lib/course-data";
 import { AnimatedCard } from "@/app/[locale]/components/ui/animated-card";
 import { SectionHeading } from "./ui/section-heading";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { coursesConfig } from "@/lib/courses-config";
 
 export function CoursesSection() {
+  const t = useTranslations();
+
+  // Get raw courses data from translations
+  const coursesData = t.raw("courses") as Record<string, any>;
+
+  // Merge config with translations
+  const courses = coursesConfig.map((config) => {
+    const translation = coursesData[config.key] || {};
+    return {
+      ...config,
+      ...translation,
+      id: config.key, // Or use actual ID from your data
+      enrollmentYear: translation.enrollmentYear || 2025, // Default value
+    };
+  });
+
   // Get top 3 courses by student enrollment
-  const topCourses = [...courses]
-    .sort((a, b) => b.students - a.students)
-    .slice(0, 3);
+  const topCourses = [...courses].sort((a, b) => {
+    
+    if (b.reviews !== a.reviews) {
+      return b.reviews - a.reviews;
+    }
+    return b.rating - a.rating;
+
+  }).slice(0,3);
+
 
   return (
     <section className='py-16 dark:bg-gray-950'>
       <div className=' mx-auto px-4'>
         <SectionHeading
-          title='Top Courses'
-          subtitle="Join thousands of students in our most popular courses. Real world value you can't miss!"
+          title={t("topCoursesHeading.title")}
+          subtitle={t("topCoursesHeading.subtitle")}
           center={true}
         />
 
         <div className='w-full mb-8'>
-          <div className='grid min-[840px]:grid-cols-3 gap-8 xl:gap-12 2xl:gap-16 min-[1710px]:gap-20  lg:px-4 xl:px-8 2xl:px-12 '>
+          <div className='grid min-[840px]:grid-cols-3 gap-8 xl:gap-12 2xl:gap-16 min-[1710px]:gap-32  lg:px-4 xl:px-10 2xl:px-20 '>
             {topCourses.map((course, index) => (
               <AnimatedCard key={course.id} delay={0.1 * index}>
-                <Card className='flex overflow-hidden border-none shadow-[2px_2px_15px_rgba(0,0,0,0.3)] dark:bg-gray-900/40 transition-all duration-300 hover:shadow-xl gap-2 h-full '>
+                <Card className='flex overflow-hidden border-none shadow-[2px_2px_15px_rgba(0,0,0,0.2)] dark:bg-gray-900/40 transition-all duration-300 hover:shadow-xl gap-2 h-full  '>
                   <CardHeader className='px-4'>
                     <div className='relative'>
                       <img
@@ -66,7 +89,7 @@ export function CoursesSection() {
                     </div>
 
                     {/* Description */}
-                    <p className='text-gray-600 mb-4 dark:text-gray-400 text-sm md:text-base lg:text-lg 2xl:text-xl'>
+                    <p className='text-gray-600 mb-4 dark:text-gray-400 text-sm md:text-base 2xl:text-lg'>
                       {course.description}
                     </p>
 
@@ -112,7 +135,8 @@ export function CoursesSection() {
                           {course.instructor}
                         </p>
                         <p className='text-sm text-gray-500'>
-                          {course.enrollmentYear} Enrolled
+                          {course.enrollmentYear}{" "}
+                          {t("topCoursesHeading.enrolled")}
                         </p>
                       </div>
                     </div>
@@ -120,7 +144,7 @@ export function CoursesSection() {
                     {/* Price */}
                     <span className='text-sky-500 font-bold md:text-xl'>
                       <Link href={`/courses/${course.slug}`}>
-                        View Details &gt;
+                        {t("topCoursesHeading.details")} &gt;
                       </Link>
                     </span>
                   </CardFooter>

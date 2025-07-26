@@ -57,8 +57,9 @@ export function HeroSection() {
             <Button
               variant='outline'
               className='bg-[#B5C4E6] text-[#2196F3] border-blue-100 hover:bg-blue-100 hover:text-blue-500 h-11 px-8 dark:bg-blue-800/20 dark:border-blue-800/30 dark:text-blue-400 dark:hover:bg-blue-700/30 transition-transform hover:scale-105 scale-96 sm:scale-100 2xl:scale-110 min-[1710px]:h-14 min-[1710px]:text-lg'
-            >
-              {t("hero.freeTrial")}
+              // make the button as a link
+              asChild>
+              <Link href='/contact'>{t("hero.contact")}</Link>
             </Button>
           </motion.div>
         </div>
@@ -92,10 +93,10 @@ export function HeroSection() {
               ></div>
             </div>
             <h3 className='md:text-xl lg:text-2xl 2xl:text-3xl font-bold text-gray-900 dark:text-white'>
-              {t(stats[0].value)}
+              {stats[0].value}
             </h3>
             <p className='text-gray-500 dark:text-gray-400 !text-[10px] lg:text-sm 2xl:text-base text-center'>
-              {t(stats[0].title)}
+              {stats[0].title}
             </p>
           </motion.div>
 
@@ -115,10 +116,10 @@ export function HeroSection() {
             </div>
             <div>
               <div className='md:text-xl lg:text-2xl 2xl:text-3xl font-bold text-gray-800 dark:text-white'>
-                {t(stats[1].value)}
+                {stats[1].value}
               </div>
               <div className='text-gray-500 dark:text-gray-400 !text-[10px] lg:text-sm 2xl:text-base'>
-                {t(stats[1].title)}
+                {stats[1].title}
               </div>
             </div>
           </motion.div>
@@ -170,10 +171,10 @@ export function HeroSection() {
             </div>
             <div>
               <div className='md:text-xl lg:text-2xl 2xl:text-3xl font-bold text-gray-800 dark:text-white'>
-                {t(stats[2].value)}
+                {stats[2].value}
               </div>
               <div className='text-gray-500 dark:text-gray-400 !text-[10px] lg:text-sm 2xl:text-base'>
-                {t(stats[2].title)}
+                {stats[2].title}
               </div>
             </div>
           </motion.div>

@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import Link from "next/link"
+import Link from "next/link";
 import {
   Facebook,
   Twitter,
@@ -8,32 +8,36 @@ import {
   Linkedin,
   Mail,
   Phone,
-  HelpCircle
-} from "lucide-react"
-import { motion } from "framer-motion"
+  HelpCircle,
+} from "lucide-react";
+import { motion, Variants } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 const container = {
   hidden: {},
   show: {
     transition: {
-      staggerChildren: 0.2
-    }
-  }
-}
+      staggerChildren: 0.2,
+    },
+  },
+};
 
-const fadeInUp = {
+const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
   show: {
     opacity: 1,
     y: 0,
     transition: {
       duration: 0.6,
-      ease: "easeOut" // use a string value for ease
-    }
-  }
-}
+      ease: "easeOut",
+    },
+  },
+};
 
 export default function Footer() {
+  const t = useTranslations();
+  const footer = t.raw("footer") as any;
+
   return (
     <footer className="bg-blue-400 text-white dark:bg-[#2196f3]/40">
       <div className="container mx-auto px-4 py-12">
@@ -44,15 +48,22 @@ export default function Footer() {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
         >
-          <motion.div variants={fadeInUp} className="lg:mr-2 xl:mr-4 2xl:mr-10 min-[1710px]:mr-16">
-            <h3 className="text-lg font-bold mb-4">About SkillBirdge</h3>
+          {/* About */}
+          <motion.div
+            variants={fadeInUp}
+            className="lg:mr-2 xl:mr-4 2xl:mr-10 min-[1710px]:mr-16"
+          >
+            <h3 className="text-lg font-bold mb-4">{footer.title}</h3>
             <p className="text-xs md:text-[14px] text-white/90 mb-4">
-              Bridging Gaps, Building Skills, Transforming Futures. We provide high-quality online courses to help you
-              advance your career.
+              {footer.description}
             </p>
             <div className="flex space-x-4">
               {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
-                <motion.div key={i} whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>
+                <motion.div
+                  key={i}
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.9 }}
+                >
                   <Link href="#" className="hover:text-white/80">
                     <Icon size={20} />
                   </Link>
@@ -61,75 +72,71 @@ export default function Footer() {
             </div>
           </motion.div>
 
-            <motion.div variants={fadeInUp}>
-            <h3 className="text-lg font-bold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              {[
-                { href: "/courses", label: "All Courses" },
-                { href: "/about", label: "About Us" },
-                { href: "/instructors", label: "Instructors" },
-                { href: "/Contact", label: "Contact Us" },
-                { href: "/FAQs", label: "FAQ" }
-
-              ].map((link, i) => (
-              <li key={i}>
-                <Link href={link.href} className="hover:text-white/80">
-                {link.label}
-                </Link>
-              </li>
-              ))}
-            </ul>
-            </motion.div>
-
+          {/* Quick Links */}
           <motion.div variants={fadeInUp}>
-            <h3 className="text-lg font-bold mb-4">Popular Categories</h3>
+            <h3 className="text-lg font-bold mb-4">
+              {footer.quickLinks.title}
+            </h3>
             <ul className="space-y-2">
-              {[
-                { href: "/courses/development", label: "Development" },
-                { href: "/courses/business", label: "Business" },
-                { href: "/courses/design", label: "Design" },
-                { href: "/courses/ai", label: "Artificial Intelligence" },
-                { href: "/courses/blockchain", label: "Blockchain" }
-              ].map((link, i) => (
-                <li key={i}>
-                  <Link href={link.href} className="hover:text-white/80">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+              {footer.quickLinks.links.map(
+                (link: { href: string; label: string }, i: number) => (
+                  <li key={i}>
+                    <Link href={link.href} className="hover:text-white/80">
+                      {link.label}
+                    </Link>
+                  </li>
+                )
+              )}
             </ul>
           </motion.div>
 
+          {/* Popular Categories */}
+          <motion.div variants={fadeInUp}>
+            <h3 className="text-lg font-bold mb-4">{footer.popular.title}</h3>
+            <ul className="space-y-2">
+              {footer.popular.links.map(
+                (link: { href: string; label: string }, i: number) => (
+                  <li key={i}>
+                    <Link href={link.href} className="hover:text-white/80">
+                      {link.label}
+                    </Link>
+                  </li>
+                )
+              )}
+            </ul>
+          </motion.div>
+
+          {/* Contact & FAQ */}
           <motion.div variants={fadeInUp}>
             <div>
-               <h3 className="text-lg font-bold mb-4">Contact Us</h3>
-            <ul className="space-y-2">
-              <li className="flex items-center gap-2">
-                <Mail size={16} className="text-white" />
-                <a href="mailto:john@gmail.com" className="hover:text-white/80">
-                  john@gmail.com
-                </a>
-              </li>
-              <li className="flex items-center gap-2">
-                <Phone size={16} className="text-white" />
-                <a href="tel:+2512345436" className="hover:text-white/80">
-                  +251 2345 4365
-                </a>
-              </li>
-            
-            </ul>
+              <h3 className="text-lg font-bold mb-4">{footer.contact.title}</h3>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2">
+                  <Mail size={16} className="text-white" />
+                  <a href="mailto:john@gmail.com" className="hover:text-white/80">
+                    john@gmail.com
+                  </a>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Phone size={16} className="text-white" />
+                  <a href="tel:+2512345436" className="hover:text-white/80">
+                    +251 2345 4365
+                  </a>
+                </li>
+              </ul>
             </div>
             <div>
-              {/* faq icon */}
-              <Link href="/faq" className="relative text-white/80 hover:text-white top-6 lg:top-12">
+              <Link
+                href="/faq"
+                className="relative text-white/80 hover:text-white top-6 lg:top-12"
+              >
                 <HelpCircle className="w-8 h-8 md:h-10 md:w-10 lg:w-12 lg:h-12 2xl:h-14 2xl:w-14 text-[#E57C00] hover:text-[#F48000] hover:scale-105" />
               </Link>
             </div>
-           
-
           </motion.div>
         </motion.div>
 
+        {/* Copyright */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -137,9 +144,9 @@ export default function Footer() {
           transition={{ delay: 0.5, duration: 1 }}
           className="border-t border-white/30 mt-8 pt-8 text-center text-white/80 text-sm md:text-base"
         >
-          <p>&copy; {new Date().getFullYear()} SkillBirdge. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} {footer.copyright.text}</p>
         </motion.div>
       </div>
     </footer>
-  )
+  );
 }

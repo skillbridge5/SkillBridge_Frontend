@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
+
 interface SignInProps {
     email: string;
     password: string;
@@ -224,7 +225,7 @@ const useSignIn = (
                     const responseData = await response.json();
 
                     if (!responseData.accessToken || !responseData.refreshToken) {
-                        setApiError("Login successful, but missing tokens. Please contact support.");
+                        setApiError("Login successful, but missing tokens.");
                         return;
                     }
 
