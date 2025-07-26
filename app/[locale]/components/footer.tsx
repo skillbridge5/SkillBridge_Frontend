@@ -63,8 +63,8 @@ export default function Footer() {
             </p>
             <div className="flex space-x-4">
               {[
-                { Icon: Facebook, url: "https://facebook.com" },
-                { Icon: Instagram, url: "https://instagram.com" },
+                { Icon: Facebook, url: "https://www.facebook.com/profile.php?id=61577663002182" },
+                { Icon: Instagram, url: "https://www.instagram.com/skillbridgeinstituteoftech?igsh=a2FlcmhzNnF1aHBu" },
                 { Icon: Linkedin, url: "https://www.linkedin.com/company/skillbridge-institute-of-technology/" },
                 { Icon: SiTelegram, url: "https://t.me/skillbridgeinstituteoftech" },
                 { Icon: SiTiktok, url: "https://tiktok.com" },
