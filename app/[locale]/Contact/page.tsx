@@ -52,8 +52,8 @@ const Contact = () => {
                 <p>+251-901-123-456</p>
               </div>
               <div>
-                <h4 className="font-semibold text-gray-900 dark:text-gray-100">📧 Email address</h4>
-                <p>skillbridgeinstituteoftech@gmail.com</p>
+                <h4 className='font-semibold text-gray-800 dark:text-gray-200'>📧 {t("emailAddress")}</h4>
+                <a href="mailto:skillbridgeinstituteoftech@gmail.com" className="">skillbridgeinstituteoftech@gmail.com</a>
               </div>
               <div>
                 <h4 className="font-semibold text-gray-900 dark:text-gray-100">📍 Office address</h4>

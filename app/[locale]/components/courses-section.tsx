@@ -52,7 +52,7 @@ export function CoursesSection() {
         />
 
         <div className='w-full mb-8'>
-          <div className='grid min-[840px]:grid-cols-3 gap-8 xl:gap-12 2xl:gap-16 min-[1710px]:gap-32  lg:px-4 xl:px-10 2xl:px-20 '>
+          <div className='grid min-[840px]:grid-cols-3 gap-8 xl:gap-10 2xl:gap-12 min-[1710px]:gap-32  lg:px-4 xl:px-10 2xl:px-24 '>
             {topCourses.map((course, index) => (
               <AnimatedCard key={course.id} delay={0.1 * index}>
                 <Card className='flex overflow-hidden border-none shadow-[2px_2px_15px_rgba(0,0,0,0.2)] dark:bg-gray-900/40 transition-all duration-300 hover:shadow-xl gap-2 h-full  '>
@@ -142,7 +142,7 @@ export function CoursesSection() {
                     </div>
 
                     {/* Price */}
-                    <span className='text-sky-500 font-bold md:text-xl'>
+                    <span className='text-sky-500 font-bold md:text-lg'>
                       <Link href={`/courses/${course.slug}`}>
                         {t("topCoursesHeading.details")} &gt;
                       </Link>

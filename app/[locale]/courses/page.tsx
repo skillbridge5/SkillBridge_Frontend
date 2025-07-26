@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import {
   Card,
   CardContent,
@@ -208,7 +207,7 @@ const filteredCourses = mergedCourses.filter((course: any) => {
                               className='w-10 h-10 rounded-full object-cover mr-3'
                             />
                             <div>
-                              <p className='font-medium text-gray-800 dark:text-gray-200'>
+                              <p className='font-medium text-gray-800 dark:text-gray-200 text-sm whitespace-pre-wrap w-[80%]'>
                                 {course.instructor}
                               </p>
                               <p className='text-sm text-gray-500'>
@@ -218,7 +217,7 @@ const filteredCourses = mergedCourses.filter((course: any) => {
                           </div>
 
                           {/* Price */}
-                          <span className='text-sky-500 font-bold md:text-xl'>
+                          <span className='text-sky-500 font-bold text-sm md:text-base -ml-2 whitespace-nowrap'>
                             <Link href={`/courses/${course.slug}`}>
                               {t("topCoursesHeading.details")}{" "} &gt;
                             </Link>

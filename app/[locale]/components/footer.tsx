@@ -3,15 +3,18 @@
 import Link from "next/link";
 import {
   Facebook,
-  Twitter,
   Instagram,
   Linkedin,
   Mail,
   Phone,
   HelpCircle,
 } from "lucide-react";
+import {
+  SiX,SiTiktok, SiTelegram
+} from "react-icons/si";
 import { motion, Variants } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { warmFlightResponse } from "next/dist/server/app-render/app-render";
 
 const container = {
   hidden: {},
@@ -33,6 +36,7 @@ const fadeInUp: Variants = {
     },
   },
 };
+
 
 export default function Footer() {
   const t = useTranslations();
@@ -58,13 +62,20 @@ export default function Footer() {
               {footer.description}
             </p>
             <div className="flex space-x-4">
-              {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
+              {[
+                { Icon: Facebook, url: "https://www.facebook.com/profile.php?id=61577663002182" },
+                { Icon: Instagram, url: "https://www.instagram.com/skillbridgeinstituteoftech?igsh=a2FlcmhzNnF1aHBu" },
+                { Icon: Linkedin, url: "https://www.linkedin.com/company/skillbridge-institute-of-technology/" },
+                { Icon: SiTelegram, url: "https://t.me/skillbridgeinstituteoftech" },
+                { Icon: SiTiktok, url: "https://tiktok.com" },
+                { Icon: SiX, url: "https://x.com" },
+              ].map(({ Icon, url }, i) => (
                 <motion.div
                   key={i}
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <Link href="#" className="hover:text-white/80">
+                  <Link href={url} target="_blank" rel="noopener noreferrer" className="hover:text-white/80 last:w-16">
                     <Icon size={20} />
                   </Link>
                 </motion.div>
@@ -111,16 +122,16 @@ export default function Footer() {
             <div>
               <h3 className="text-lg font-bold mb-4">{footer.contact.title}</h3>
               <ul className="space-y-2">
-                <li className="flex items-center gap-2">
+                <li className="flex items-center gap-2 whitespace-pre-wrap">
                   <Mail size={16} className="text-white" />
-                  <a href="mailto:john@gmail.com" className="hover:text-white/80">
-                    john@gmail.com
+                  <a href="mailto:skillbridgeinstitituteoftech@gmail.com" className="hover:text-white/80 whitespace-pre-wrap" >
+                    Click to email us
                   </a>
                 </li>
                 <li className="flex items-center gap-2">
                   <Phone size={16} className="text-white" />
-                  <a href="tel:+2512345436" className="hover:text-white/80">
-                    +251 2345 4365
+                  <a href="tel:+251955935455" className="hover:text-white/80">
+                    +251 955 9354 55
                   </a>
                 </li>
               </ul>
