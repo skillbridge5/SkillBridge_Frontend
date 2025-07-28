@@ -14,7 +14,6 @@ import {
 } from "react-icons/si";
 import { motion, Variants } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { warmFlightResponse } from "next/dist/server/app-render/app-render";
 
 const container = {
   hidden: {},

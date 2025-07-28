@@ -27,7 +27,6 @@ import { Button } from "../../components/ui/button";
 import { Badge } from "../../components/ui/badge";
 import { courseDetailsConfig } from "@/lib/course-details-config";
 import { Navbar } from "../../components/navbar";
-import { Fragment } from "react";
 
 export default function CourseDetailPage() {
   const t = useTranslations();
