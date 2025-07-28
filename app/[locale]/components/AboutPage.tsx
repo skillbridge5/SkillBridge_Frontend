@@ -39,7 +39,7 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero Section - Optimized for all devices */}
-<section className="text-gray-900 dark:text-white py-12 md:py-16 relative min-h-[500px] md:min-h-[545px] flex items-center bg-[#f8fcff] dark:bg-gray-950 w-full">
+<section className="text-gray-900 dark:text-white py-12 md:py-16 relative min-h-[500px] md:min-h-[580px] flex items-center bg-[#fafcfe] dark:bg-gray-950 w-full">
   <div 
     className="absolute inset-0 bg-[#2196F3]/10 dark:bg-[#2196F3]/5 -z-10"
     style={{
