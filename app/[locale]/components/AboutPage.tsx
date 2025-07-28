@@ -6,7 +6,6 @@ import { useTranslations } from "next-intl"
 import { Button } from "./ui/button"
 import { Card, CardHeader, CardTitle, CardContent } from "./ui/card"
 
-// Icon mapping for the cards
 const iconMap = {
   1: BookOpen,
   2: Users,
@@ -16,22 +15,21 @@ const iconMap = {
   6: Trophy,
 }
 
-// Color mapping for the cards
 const colorMap = {
   1: "rgba(33, 150, 243, 0.1)",
-  2: "rgb(220, 252, 231)", // green-100
-  3: "rgb(243, 232, 255)", // purple-100
-  4: "rgb(255, 237, 213)", // orange-100
-  5: "rgb(254, 226, 226)", // red-100
-  6: "rgb(204, 251, 241)", // teal-100
+  2: "rgb(220, 252, 231)",
+  3: "rgb(243, 232, 255)",
+  4: "rgb(255, 237, 213)",
+  5: "rgb(254, 226, 226)",
+  6: "rgb(204, 251, 241)",
 }
 
 const darkColorMap = {
-  2: "rgb(20, 83, 45)", // green-900
-  3: "rgb(88, 28, 135)", // purple-900
-  4: "rgb(154, 52, 18)", // orange-900
-  5: "rgb(127, 29, 29)", // red-900
-  6: "rgb(19, 78, 74)", // teal-900
+  2: "rgb(20, 83, 45)",
+  3: "rgb(88, 28, 135)",
+  4: "rgb(154, 52, 18)",
+  5: "rgb(127, 29, 29)",
+  6: "rgb(19, 78, 74)",
 }
 
 export default function AboutPage() {
@@ -40,61 +38,73 @@ export default function AboutPage() {
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="text-gray-900 dark:text-white py-16 px-4 relative">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="mb-4">
-                <Button className="text-sm px-3 py-1 text-white border-0" style={{ backgroundColor: "#2196F3" }}>
-                  {aboutPage.title}
-                </Button>
-              </div>
-              <h1 className="text-5xl font-bold mb-6 leading-tight">
-                <span style={{ color: "#2196F3" }}>
-                  {aboutPage.heroText.split(".")[0]}. {aboutPage.heroText.split(".")[1]}.
-                </span>{" "}
-                <span className="text-orange-400">{aboutPage.heroText.split(".")[2]}.</span>
-              </h1>
-              <p className="text-lg mb-8 text-gray-600 dark:text-gray-300 leading-relaxed">{aboutPage.description}</p>
-              <div className="flex gap-8 text-sm">
-                <div className="flex items-center gap-2">
-                  <Star className="w-4 h-4" style={{ color: "#2196F3" }} />
-                  <span style={{ color: "#2196F3" }}>4.8/5 {aboutPage.ratingText}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Trophy className="w-4 h-4" style={{ color: "#2196F3" }} />
-                  <span style={{ color: "#2196F3" }}>{aboutPage.jobText}</span>
-                </div>
-              </div>
+      {/* Hero Section - Optimized for all devices */}
+<section className="text-gray-900 dark:text-white py-12 md:py-16 relative min-h-[500px] md:min-h-[580px] flex items-center bg-[#fafcfe] dark:bg-gray-950 w-full">
+  <div 
+    className="absolute inset-0 bg-[#2196F3]/10 dark:bg-[#2196F3]/5 -z-10"
+    style={{
+      backgroundImage: 'linear-gradient(to bottom, rgba(33, 150, 243, 0.1), rgba(33, 150, 243, 0.05))'
+    }}
+  ></div>
+
+  <div className="w-full px-4 sm:px-6 lg:px-8">
+    <div className="max-w-7xl mx-auto">
+      <div className="grid lg:grid-cols-2 gap-6 md:gap-10 items-center">
+        {/* Text Content */}
+        <div className="min-w-0 order-2 lg:order-1 mt-8 lg:mt-0">
+          <div className="mb-3 md:mb-4">
+            <Button className="text-xs sm:text-sm px-3 py-1 text-white border-0" style={{ backgroundColor: "#61b6fa" }}>
+              {aboutPage.title}
+            </Button>
+          </div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-6 leading-tight whitespace-nowrap">
+            <span style={{ color: "#2196F3" }}>Learn.</span>{' '}
+            <span className="text-orange-400">Launch.</span>{' '}
+            <span style={{ color: "#2196F3" }}>Lead.</span>
+          </h1>
+          <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 md:mb-8 text-sm sm:text-base md:text-lg">
+            SkillBridge Institute of Technology – Empowering future professionals with real-world skills, guided
+            mentorship, and project-based learning that leads to career success.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 text-xs sm:text-sm">
+            <div className="flex items-center gap-2">
+              <Star className="w-3 h-3 sm:w-4 sm:h-4" style={{ color: "#2196F3" }} />
+              <span style={{ color: "#2196F3" }}>4.8/5 {aboutPage.ratingText}</span>
             </div>
-            <div className="flex justify-center">
-              <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 text-center shadow-lg w-80 h-80 flex flex-col justify-center">
-                <div className="w-32 h-32 mx-auto mb-4 relative">
-                  <Image
-                    src="/skills.png?height=128&width=128"
-                    alt="SkillBridge Logo"
-                    width={128}
-                    height={128}
-                    className="rounded-full"
-                  />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">SkillBridge</h3>
-                <p className="text-gray-600 dark:text-gray-400 font-medium">Institute Of Technology</p>
-              </div>
+            <div className="flex items-center gap-2">
+              <Trophy className="w-3 h-3 sm:w-4 sm:h-4" style={{ color: "#2196F3" }} />
+              <span style={{ color: "#2196F3" }}>{aboutPage.jobText}</span>
             </div>
           </div>
         </div>
-      {/* Why Students Choose SkillBridge */}
-      </section>
 
+        {/* Image Content */}
+        <div className="flex justify-center order-1 lg:order-2">
+          <div className="bg-white dark:bg-gray-800 rounded-3xl p-4 sm:p-6 md:p-8 text-center shadow-lg w-full max-w-[280px] sm:max-w-[320px] md:max-w-[350px] h-auto aspect-square flex flex-col justify-center opacity-90">
+            <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 mx-auto mb-3 sm:mb-4 relative">
+              <Image
+                src="/images/about/skills.png"
+                alt="SkillBridge Logo"
+                width={128}
+                height={128}
+                className="rounded-full"
+                priority
+              />
+            </div>
+            <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 dark:text-white mb-1">SkillBridge</h3>
+            <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base font-medium">Institute Of Technology</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
       {/* Our Story Section */}
       <section className="py-20">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">{aboutPage.storyHeading}</h2>
-              <p className="text-lg mb-8 text-gray-600 dark:text-gray-300 leading-relaxed font-semibold">{aboutPage.storySubheading}</p>
               <div className="space-y-6 text-gray-700 dark:text-gray-300 leading-relaxed">
                 <p>{aboutPage.storyText1}</p>
                 <p>{aboutPage.storyText2}</p>
@@ -104,7 +114,7 @@ export default function AboutPage() {
             <div className="relative">
               <div className="aspect-[4/3] bg-gray-200 dark:bg-gray-800 rounded-2xl overflow-hidden">
                 <Image
-                  src="/about_image1.webp?height=400&width=500"
+                  src="/images/about/about_image1.webp"
                   alt="Our Story Image"
                   width={500}
                   height={400}
@@ -156,7 +166,6 @@ export default function AboutPage() {
                 </div>
               </CardContent>
             </Card>
-
             {/* Vision Card */}
             <Card className="border-l-4 border-l-orange-500 shadow-sm h-full dark:bg-gray-800 dark:border-gray-700">
               <CardHeader className="pb-4">
@@ -216,7 +225,7 @@ export default function AboutPage() {
             <div className="relative">
               <div className="aspect-square bg-gray-900 dark:bg-gray-700 rounded-2xl overflow-hidden">
                 <Image
-                  src="/about_image2.jpg?height=500&width=500"
+                  src="/images/about/about_image2.jpg"
                   alt="Learning Methodology"
                   width={500}
                   height={500}
@@ -229,7 +238,7 @@ export default function AboutPage() {
       </section>
 
       {/* Why Students Choose SkillBridge */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900  2xl:-mx-8 px-4 lg:px-8">
+      <section className="py-20 bg-gray-50 dark:bg-gray-900 2xl:-mx-8 px-4 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">{aboutPage.whyUs.title}</h2>
@@ -240,7 +249,6 @@ export default function AboutPage() {
               const IconComponent = iconMap[card.id as keyof typeof iconMap]
               const bgColor = card.id === 1 ? colorMap[1] : colorMap[card.id as keyof typeof colorMap]
               const darkBgColor = card.id === 1 ? colorMap[1] : darkColorMap[card.id as keyof typeof darkColorMap]
-
               return (
                 <Card
                   key={card.id}
@@ -284,7 +292,6 @@ export default function AboutPage() {
                   const isOrange = course.buttonText === "High Demand"
                   const borderColor = isOrange ? "#f97316" : "#2196F3"
                   const badgeColor = isOrange ? "#f97316" : "#2196F3"
-
                   return (
                     <Card
                       key={index}
@@ -317,7 +324,7 @@ export default function AboutPage() {
             <div className="relative">
               <div className="aspect-[4/5] bg-gray-900 dark:bg-gray-700 rounded-2xl overflow-hidden">
                 <Image
-                  src="/about_image3.webp?height=600&width=480"
+                  src="/images/about/about_image3.webp"
                   alt="Complete Learning Paths"
                   width={480}
                   height={600}
@@ -330,7 +337,7 @@ export default function AboutPage() {
       </section>
 
       {/* Ready to Start Your Journey */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900 2xl:-mx-8 px-4 lg:px-8">
+      <section className="py-20 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">{aboutPage.startJourney.title}</h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto">
