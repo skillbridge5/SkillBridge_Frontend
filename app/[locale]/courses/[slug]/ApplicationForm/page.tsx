@@ -7,14 +7,23 @@ import { useTranslations } from 'next-intl'
 import { Navbar } from '@/app/[locale]/components/navbar'
 import Footer from '@/app/[locale]/components/footer'
 
+const slugify = (text: string) => {
+  return text
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-')    
+    .replace(/[^\w-]+/g, '')  
+    .replace(/--+/g, '-');     
+};
+
 const ApplicationForm = () => {
   const t = useTranslations('applicationForm')
   const f = t.raw('fields')
   const pathname = usePathname()
   const slug = decodeURIComponent(pathname.split('/').slice(-2, -1)[0])
   const router = useRouter()
-
-  const mockUser = { fullName: 'John Doe', email: 'john.doe@example.com', loggedIn: true }
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
   const [currentStep, setCurrentStep] = useState(1)
   const [form, setForm] = useState({
@@ -27,7 +36,7 @@ const ApplicationForm = () => {
     telegramHandle: '',
     university: '',
     address: '',
-    courseId: slug,
+    courseId: '',
     paymentMethod: '',
     paymentOption: '',
     receipt: null as File | null,
@@ -38,10 +47,95 @@ const ApplicationForm = () => {
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-
+  const [coursePrice, setCoursePrice] = useState<number | null>(null); 
   useEffect(() => {
-    setForm((prev) => ({ ...prev, courseId: slug }))
-  }, [slug])
+    if (typeof window !== 'undefined') {
+      const currentUserString = sessionStorage.getItem('currentUser');
+      if (currentUserString) {
+        try {
+          const currentUser = JSON.parse(currentUserString);
+          setForm((prev) => ({
+            ...prev,
+            fullName: currentUser.name || prev.fullName,
+            email: currentUser.email || prev.email,
+          }));
+        } catch (error) {
+          console.error("Failed to parse currentUser from sessionStorage:", error);
+        }
+      }
+    }
+  }, []);
+  useEffect(() => {
+    const fetchCourseDetailsBySlug = async () => {
+      if (!slug || !API_BASE_URL) return;
+
+      const accessToken = sessionStorage.getItem('accessToken');
+
+      if (!accessToken) {
+        toast.error("Authentication required to load course details. Please log in.");
+        setCoursePrice(null);
+        return;
+      }
+
+      try {
+        console.log("Attempting to fetch all courses for URL slug:", slug);
+        const response = await fetch(`${API_BASE_URL}/courses`, {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${accessToken}`
+          },
+        });
+
+        if (!response.ok) {
+          let errorMessage = 'Failed to fetch all courses.';
+          try {
+            const errorData = await response.json();
+            errorMessage = errorData.message || errorMessage;
+          } catch (jsonError) {
+            errorMessage = `Failed to fetch all courses: ${response.status} ${response.statusText}`;
+          }
+
+          if (response.status === 401) {
+            toast.error(`Session expired or unauthorized: ${errorMessage}. Please log in again.`);
+          } else {
+            toast.error(errorMessage);
+          }
+          throw new Error(errorMessage);
+        }
+
+        const allCourses = await response.json();
+        console.log("Fetched all courses:", allCourses);
+
+        let foundCourse = null;
+        for (const course of allCourses) {
+          const generatedSlug = slugify(course.title);
+          console.log(`Comparing URL slug "${slug}" with generated slug "${generatedSlug}" from title "${course.title}"`);
+          if (generatedSlug === slug) {
+            foundCourse = course;
+            break;
+          }
+        }
+
+        if (foundCourse) {
+          const priceToUse = foundCourse.priceDiscounted > 0 ? foundCourse.priceDiscounted : foundCourse.priceOriginal;
+          setCoursePrice(priceToUse);
+          setForm((prev) => ({ ...prev, courseId: foundCourse.id }));
+          console.log(`Course found! ID: ${foundCourse.id}, Price: ${priceToUse}`);
+        } else {
+          toast.error(`Course with slug "${slug}" not found. Please ensure the course exists.`);
+          setCoursePrice(null);
+          setForm((prev) => ({ ...prev, courseId: '' }));
+          console.warn(`Course with slug "${slug}" not found in fetched courses.`);
+        }
+
+      } catch (error: any) {
+        console.error("Error fetching course details by slug:", error);
+        toast.error(error.message || "An unexpected error occurred while loading course details.");
+      }
+    };
+    fetchCourseDetailsBySlug();
+  }, [slug, API_BASE_URL]);
+
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -70,7 +164,8 @@ const ApplicationForm = () => {
     if (!form.telegramHandle) errors.push('Telegram Handle is required.');
     if (!form.university) errors.push('University is required.');
     if (!form.address) errors.push('Address is required.');
-
+    if (!form.dateOfBirth) errors.push('Date of Birth is required.');
+    if (!form.gender) errors.push('Gender is required.');
     if (errors.length > 0) {
       toast.error(errors.join(' '));
       return false;
@@ -79,11 +174,13 @@ const ApplicationForm = () => {
   };
   const validateStep2 = () => {
     const errors: string[] = [];
-    if (!form.courseId) errors.push('Course is not selected.');
+    if (!form.courseId) {
+      errors.push('Course ID could not be loaded. Please ensure you navigated from a valid course page.');
+    }
     if (!form.paymentMethod) errors.push('Payment Method is required.');
     if (!form.paymentOption) errors.push('Payment Option is required.');
     if (!form.paymentReference) errors.push('Payment Reference (Transaction ID) is required.');
-    if (form.paymentMethod !== 'cash' && !form.receipt) errors.push('Payment Receipt is required for the selected method. If paying cash, select "Cash Payment".');
+    if (!form.receipt) errors.push('Payment Receipt is required for the selected method.');
 
     if (!form.agreeTerms) errors.push('You must agree to the Terms and Conditions.');
     if (!form.confirmAccuracy) errors.push('You must confirm the accuracy of the information.');
@@ -114,69 +211,54 @@ const ApplicationForm = () => {
     setIsSubmitting(true);
 
     try {
-      const applicationPayload = {
-        courseId: form.courseId,
-        paymentMethod: form.paymentMethod,
-        paymentReference: form.paymentReference,
-        marketingSource: form.marketingSource || 'Direct',
-        fullName: form.fullName,
-        dateOfBirth: form.dateOfBirth ? new Date(form.dateOfBirth).toISOString() : undefined,
-        gender: form.gender || undefined,
-        university: form.university,
-        email: form.email,
-        phone: form.phone,
-        telegramHandle: form.telegramHandle,
-        address: form.address,
-        paymentOption: form.paymentOption,
-      };
+      const formData = new FormData();
 
-      const appCreationResponse = await fetch('https://skillbridge-backend-w2s4.onrender.com/api/applications', {
+      formData.append('courseId', form.courseId);
+      formData.append('paymentMethod', form.paymentMethod);
+      formData.append('paymentReference', form.paymentReference);
+      formData.append('marketingSource', form.marketingSource || 'Direct');
+      formData.append('fullName', form.fullName);
+      if (form.dateOfBirth) {
+        formData.append('dateOfBirth', new Date(form.dateOfBirth).toISOString());
+      }
+      if (form.gender) {
+        formData.append('gender', form.gender);
+      }
+      if (form.nationality) {
+        formData.append('nationality', form.nationality);
+      }
+      formData.append('university', form.university);
+      formData.append('email', form.email);
+      formData.append('phone', form.phone);
+      formData.append('telegramHandle', form.telegramHandle);
+      formData.append('address', form.address);
+      formData.append('paymentOption', form.paymentOption);
+
+      if (form.receipt) {
+        formData.append('receipt', form.receipt);
+      } else {
+        toast.error('Payment receipt is required.');
+        setIsSubmitting(false);
+        return;
+      }
+
+      const response = await fetch(`${API_BASE_URL}/applications/with-receipt`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+          'Authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
         },
-        body: JSON.stringify(applicationPayload),
+        body: formData,
       });
 
-      const appCreationData = await appCreationResponse.json();
+      const responseData = await response.json();
 
-      if (!appCreationResponse.ok) {
-        throw new Error(appCreationData.message || 'Failed to create application.');
-
+      if (!response.ok) {
+        console.error("Application submission failed:", responseData);
+        throw new Error(responseData.message || 'Failed to submit application. Please check your inputs.');
       }
 
-      const applicationId = appCreationData.id;
-      if (!applicationId) {
-        throw new Error('Application created, but no ID received for receipt upload.');
-      }
-
-      if (form.receipt && form.paymentMethod !== 'cash') {
-        const formData = new FormData();
-        formData.append('receipt', form.receipt);
-
-        const receiptUploadResponse = await fetch(`YOUR_RENDER_BACKEND_BASE_URL/api/applications/${applicationId}/receipt`, {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
-          },
-          body: formData,
-        });
-
-        if (!receiptUploadResponse.ok) {
-          const receiptErrorData = await receiptUploadResponse.json();
-          console.error("Receipt upload failed:", receiptErrorData);
-          toast.error('Application created, but receipt upload failed: ' + (receiptErrorData.message || 'Unknown error.'));
-        } else {
-          toast.success('Application & Receipt Submitted Successfully!');
-        }
-      } else if (!form.receipt && form.paymentMethod !== 'cash') {
-        toast('Application submitted, but no receipt was uploaded. Please upload it later if required.');
-      } else {
-        toast.success('Application Submitted Successfully!');
-      }
-
-      console.log("Application Process Completed:", appCreationData);
+      toast.success('Application Submitted Successfully!');
+      console.log("Application Process Completed:", responseData);
       handleReset();
       router.push('/applications/success');
 
@@ -199,7 +281,7 @@ const ApplicationForm = () => {
       telegramHandle: '',
       university: '',
       address: '',
-      courseId: slug,
+      courseId: '', 
       paymentMethod: '',
       paymentOption: '',
       receipt: null,
@@ -211,19 +293,16 @@ const ApplicationForm = () => {
     setCurrentStep(1);
   };
 
-
   const paymentOptions = {
     telebirr: 'to: Ibrahim Ghazali\n0960171717',
     cbe: 'to: Ibrahim Ghazali\n100041753914',
     boa: 'to: Ibrahim Ghazali\nXXXXXXXXXXX',
     awash: 'to: Ibrahim Ghazali\nXXXXXXXXXXX',
-    cash: 'Pay at our office. No receipt upload required for this method.'
   }
 
   return (
-   
-    <> 
-      <Navbar /> 
+    <>
+      <Navbar />
       <div className="bg-white min-h-screen py-10 px-4">
         <Toaster position="top-right" reverseOrder={false} />
         <div className="max-w-4xl mx-auto bg-[#eaf4ff] p-10 rounded-xl shadow-lg border relative">
@@ -255,17 +334,16 @@ const ApplicationForm = () => {
                     <input id="fullName" name="fullName" value={form.fullName} onChange={handleChange} placeholder="John Doe" className="w-full p-3 border rounded-md shadow-sm bg-white" />
                   </div>
                   <div>
-                    <label htmlFor="dateOfBirth" className="block text-sm font-medium mb-1">Date of Birth</label>
+                    <label htmlFor="dateOfBirth" className="block text-sm font-medium mb-1">Date of Birth*</label>
                     <input type="date" id="dateOfBirth" name="dateOfBirth" value={form.dateOfBirth} onChange={handleChange} className="w-full p-3 border rounded-md shadow-sm bg-white" />
                   </div>
 
                   <div className="relative">
-                    <label htmlFor="gender" className="block text-sm font-medium mb-1">Gender</label>
+                    <label htmlFor="gender" className="block text-sm font-medium mb-1">Gender*</label>
                     <select id="gender" name="gender" value={form.gender} onChange={handleChange} className="w-full p-3 border border-gray-300 rounded-md bg-white appearance-none pr-12">
                       <option value="">Select</option>
                       <option value="Male">Male</option>
                       <option value="Female">Female</option>
-                      <option value="Other">Other</option>
                     </select>
                     <ArrowDown className="absolute right-3 top-1/2 -translate-y-1/2 rotate-90 text-gray-400 pointer-events-none w-5 h-5" />
                   </div>
@@ -312,7 +390,7 @@ const ApplicationForm = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="courseId" className="block text-sm font-medium mb-1">Selected Course*</label>
-                    <input id="courseId" name="courseId" value={form.courseId} readOnly className="w-full p-3 border rounded-md bg-gray-100 shadow-sm" />
+                    <input id="courseId" name="courseId" value={slug} readOnly className="w-full p-3 border rounded-md bg-gray-100 shadow-sm" />
                   </div>
                   <div className="relative">
                     <label htmlFor="paymentMethod" className="block text-sm font-medium mb-1">Payment Method Preference*</label>
@@ -322,12 +400,16 @@ const ApplicationForm = () => {
                       <option value="cbe">Commercial Bank of Ethiopia</option>
                       <option value="boa">Bank of Abyssinia</option>
                       <option value="awash">Awash Bank</option>
-                      <option value="cash">Cash Payment</option>
                     </select>
                     <ArrowDown className="absolute right-3 top-1/2 -translate-y-1/2 rotate-90 text-gray-400 pointer-events-none w-5 h-5" />
                     {form.paymentMethod && (
                       <p className="mt-2 text-sm text-gray-700 whitespace-pre-line bg-white border p-3 rounded shadow-sm">
                         {paymentOptions[form.paymentMethod as keyof typeof paymentOptions]}
+                        {coursePrice !== null && (
+                          <span className="block mt-1 font-semibold">
+                            Amount to pay: {coursePrice} ETB
+                          </span>
+                        )}
                       </p>
                     )}
                   </div>
@@ -336,7 +418,7 @@ const ApplicationForm = () => {
                     <select id="paymentOption" name="paymentOption" value={form.paymentOption} onChange={handleChange} className="w-full p-3 border border-gray-300 rounded-md bg-white appearance-none pr-12">
                       <option value="">Select</option>
                       <option value="one-time">One-time Payment</option>
-                      <option value="installment">Installment</option>
+                      <option value="installment">Monthly Subscription </option>
                     </select>
                     <ArrowDown className="absolute right-3 top-1/2 -translate-y-1/2 rotate-90 text-gray-400 pointer-events-none w-5 h-5" />
                   </div>
@@ -354,7 +436,7 @@ const ApplicationForm = () => {
                       />
                       <label
                         htmlFor="uploadReceipt"
-                        className="inline-flex items-center justify-center px-4 py-1.5 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-blue-700 bg-blue-50 hover:bg-blue-100 cursor-pointer transition-colors duration-200"
+                        className={`inline-flex items-center justify-center px-4 py-1.5 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-blue-700 bg-blue-50 hover:bg-blue-100 transition-colors duration-200 cursor-pointer`}
                       >
                         <UploadCloud className="mr-2 h-5 w-5 text-blue-600" />
                         Choose File

@@ -179,7 +179,7 @@ const SignUp: React.FC = () => {
             Have an account?
             <span
               className='text-blue-600 cursor-pointer ml-1'
-              onClick={() => router.push("/signin")}
+              onClick={() => router.push("/login")}
             >
               Sign in!
             </span>
