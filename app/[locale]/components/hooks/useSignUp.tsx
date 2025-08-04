@@ -21,8 +21,9 @@ const useSignUp = (
     const [errors, setErrors] = useState<Partial<SignUpProps>>({});
     const [isLoading, setIsLoading] = useState(false);
     const [apiError, setApiError] = useState<string | null>(null);
-
     const router = useRouter();
+
+    const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
     const validateError = (values: SignUpProps) => {
         const errors: Partial<SignUpProps> = {};
@@ -64,7 +65,7 @@ const useSignUp = (
         if (Object.keys(validationErrors).length === 0) {
             setIsLoading(true);
             try {
-                const response = await fetch('https://skillbridge-backend-w2s4.onrender.com/api/auth/register-student', {
+                const response = await fetch(`${API_BASE_URL}/auth/register-student`, { 
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -79,7 +80,7 @@ const useSignUp = (
                 const responseData = await response.json(); 
 
                 if (response.ok) { 
-                    router.push('/signin');
+                    router.push('/login');
                     resetForm();
                 } else {
                     let errorMessage = 'Registration failed. Please try again.';

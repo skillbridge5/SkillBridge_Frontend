@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-
 interface SignInProps {
     email: string;
     password: string;
@@ -35,6 +34,9 @@ const useSignIn = (
     const [isLoading, setIsLoading] = useState(false);
     const [apiError, setApiError] = useState<string | null>(null);
     const router = useRouter();
+
+    const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+
     const getAccessToken = (): string | null => {
         if (typeof window !== 'undefined') {
             return sessionStorage.getItem('accessToken');
@@ -72,7 +74,7 @@ const useSignIn = (
     const redirectToLogin = (): void => {
         clearAuthData();
         if (typeof window !== 'undefined') {
-            window.location.href = '/auth/signin';
+            router.push('/signin');
         }
     };
 
@@ -118,7 +120,7 @@ const useSignIn = (
                 isRefreshing = true;
 
                 try {
-                    const refreshResponse = await fetch('https://skillbridge-backend-w2s4.onrender.com/api/auth/refresh', {
+                    const refreshResponse = await fetch(`${API_BASE_URL}/auth/refresh`, { 
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -199,7 +201,7 @@ const useSignIn = (
         if (Object.keys(validationErrors).length === 0) {
             setIsLoading(true);
             try {
-                const response = await fetch('https://skillbridge-backend-w2s4.onrender.com/api/auth/login-student', {
+                const response = await fetch(`${API_BASE_URL}/auth/login-student`, { 
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
