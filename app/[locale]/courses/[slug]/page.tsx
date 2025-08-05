@@ -27,37 +27,134 @@ import { Button } from "../../components/ui/button";
 import { Badge } from "../../components/ui/badge";
 import { courseDetailsConfig } from "@/lib/course-details-config";
 import { Navbar } from "../../components/navbar";
+import { useEffect, useState } from "react";
+import { fetchCourses } from "@/lib/apI";
 
 export default function CourseDetailPage() {
   const t = useTranslations();
   const params = useParams();
-  const slug = params.slug as string;
-  const courses = t.raw("courses") as any[];
+  const id = params.slug as string;
+  // const courses = t.raw("courses") as any[];
+  const [course, setCourse] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const courseMessages = t.raw("courseMessages") as any;
 
-  const course = courses.find((c) => c.slug === slug);
-  const courseWithImages = course
-    ? {
-        ...course,
-        ...courseDetailsConfig[slug],
-        image: courseDetailsConfig[slug]?.image || "/default-course.jpg",
-        instructorImage:
-          courseDetailsConfig[slug]?.instructorImage ||
-          "/default-instructor.jpg",
-      }
-    : null;
+  useEffect(() => {
+    const loadCourse = async () => {
+      try {
+        const courses = await fetchCourses();
 
-  if (!courseWithImages) {
+        const foundCourse = courses.find((c: any) => c.id === id);
+        console.log("Found Course:", foundCourse);
+
+        if (!foundCourse) {
+          throw new Error("COURSE_NOT_FOUND");
+        }
+
+        const courseConfig = courseDetailsConfig[id] || {};
+
+        const transformedCourse = foundCourse
+          ? {
+              ...foundCourse,
+              ...courseConfig,
+              image: foundCourse.imageUrl || courseConfig.image,
+              instructorImage:
+                foundCourse.instructor.imageUrl || courseConfig.instructorImage,
+              category: foundCourse.category.name,
+              instructor: foundCourse.instructor.name,
+              description: foundCourse.shortDescription,
+              longDescription: foundCourse.detailedDescription,
+              price: foundCourse.priceOriginal || 0,
+              discount: foundCourse.priceDiscounted || 0,
+              learningOutcomes:
+                foundCourse.learningOutcomes.map((lo: any) => lo.text) || [],
+              prerequisites:
+                foundCourse.prerequisites.map((pre: any) => pre.text) || [],
+              curriculum:
+                foundCourse.modules?.map((module: any) => ({
+                  title: module.title,
+                  duration: module.duration,
+                  lessons:
+                    module.lessons.map((lesson: any) => ({
+                      title: lesson.title,
+                      duration: lesson.duration,
+                    })) || [],
+                })) || [],
+            }
+          : null;
+        setCourse(transformedCourse);
+      } catch (error) {
+        setError("Failed to load course");
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadCourse();
+  }, [id, t]);
+
+  if (loading) {
     return (
       <div className='container mx-auto px-4 py-12 text-center'>
-        <h1 className='text-3xl font-bold mb-4'>{courseMessages.notFound}</h1>
-        <p className='text-gray-600 mb-8'>{courseMessages.message}</p>
+        <p>{t("courseMessages.loading")}</p>
+      </div>
+    );
+  }
+
+  //   if (error) {
+  //   return (
+  //     <div className="container mx-auto px-4 py-12 text-center">
+  //       <h1 className="text-2xl font-bold mb-4">{error}</h1>
+  //       <Button onClick={() => window.location.reload()}>
+  //         {t("courseMessages.error")}
+  //       </Button>
+  //     </div>
+  //   );
+  // }
+
+  // Error states
+  if (error === "COURSE_NOT_FOUND") {
+    return (
+      <div className='container mx-auto px-4 py-12 text-center'>
+        <h1 className='text-3xl font-bold mb-4'>Course Not Found</h1>
+        <p className='text-gray-600 mb-8'>
+          The course you're looking for doesn't exist in our records.
+        </p>
         <Button asChild>
-          <Link href='/courses'>{courseMessages.browse}</Link>
+          <Link href='/courses'>Browse Available Courses</Link>
         </Button>
       </div>
     );
   }
+
+  if (error) {
+    return (
+      <div className='container mx-auto px-4 py-12 text-center'>
+        <h1 className='text-3xl font-bold mb-4'>Error Loading Course</h1>
+        <p className='text-gray-600 mb-8'>
+          We encountered a problem loading this course. Please try again.
+        </p>
+        <div className='flex justify-center gap-4'>
+          <Button onClick={() => window.location.reload()}>Try Again</Button>
+          <Button asChild variant='outline'>
+            <Link href='/courses'>Back to Courses</Link>
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+  // if (!course) {
+  //   return (
+  //     <div className='container mx-auto px-4 py-12 text-center'>
+  //       <h1 className='text-3xl font-bold mb-4'>{courseMessages.notFound}</h1>
+  //       <p className='text-gray-600 mb-8'>{courseMessages.message}</p>
+  //       <Button asChild>
+  //         <Link href='/courses'>{courseMessages.browse}</Link>
+  //       </Button>
+  //     </div>
+  //   );
+  // }
 
   return (
     <>
@@ -116,14 +213,20 @@ export default function CourseDetailPage() {
               </div>
 
               <div className='relative h-[300px] md:h-[400px] w-full rounded-lg overflow-hidden mb-8'>
-                <Image
-                  src={courseWithImages.image}
-                  alt={courseWithImages.title}
-                  width={800}
-                  height={400}
-                  className='w-full h-[300px] md:h-[400px] 2xl:h-[500px] object-cover'
-                  priority
-                />
+                {course?.image ? (
+                  <Image
+                    src={course.image}
+                    alt={course.title || "Course image"}
+                    width={800}
+                    height={400}
+                    className='w-full h-full object-cover'
+                    priority
+                  />
+                ) : (
+                  <div className='w-full h-full flex items-center justify-center text-gray-400'>
+                    <span>No image available</span>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -234,24 +337,24 @@ export default function CourseDetailPage() {
                           <ul className='space-y-2 pt-2'>
                             {module.lessons?.map(
                               (lesson: any, lessonIndex: number) => (
-                                  <li
-                                    key={lessonIndex}
-                                    className='flex items-center justify-between py-2 px-3 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-150'
-                                  >
-                                    <div className='flex items-center gap-3'>
-                                      <span className='text-sm font-medium text-gray-500 dark:text-gray-400'>
-                                        {index + 1}.{lessonIndex + 1}
-                                      </span>
-                                      <span className='text-gray-700 dark:text-gray-300'>
-                                        {lesson.title}
-                                      </span>
-                                    </div>
-                                    {/* {lesson.duration && ( */}
-                                      <span className='text-sm text-gray-500 dark:text-gray-400'>
-                                        {lesson.duration}
-                                      </span>
-                                    {/* )} */}
-                                  </li>
+                                <li
+                                  key={lessonIndex}
+                                  className='flex items-center justify-between py-2 px-3 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-150'
+                                >
+                                  <div className='flex items-center gap-3'>
+                                    <span className='text-sm font-medium text-gray-500 dark:text-gray-400'>
+                                      {index + 1}.{lessonIndex + 1}
+                                    </span>
+                                    <span className='text-gray-700 dark:text-gray-300'>
+                                      {lesson.title}
+                                    </span>
+                                  </div>
+                                  {/* {lesson.duration && ( */}
+                                  <span className='text-sm text-gray-500 dark:text-gray-400'>
+                                    {lesson.duration}
+                                  </span>
+                                  {/* )} */}
+                                </li>
                               )
                             )}
                           </ul>
@@ -266,13 +369,20 @@ export default function CourseDetailPage() {
                 <div className='bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm transition-all hover:shadow-md'>
                   <div className='flex flex-col md:flex-row gap-6'>
                     <div className='relative h-32 w-32 rounded-full overflow-hidden border-4 border-white dark:border-gray-700 shadow-md hover:shadow-lg transition-shadow'>
-                      <Image
-                        src={courseWithImages.instructorImage}
-                        alt={courseWithImages.instructor}
-                        fill
-                        sizes='(max-width: 200px) 100vw, 200px'
-                        className='object-cover hover:scale-105 transition-transform duration-300'
-                      />
+                      {course?.instructorImage ? (
+                        <Image
+                          src={course.instructorImage}
+                          alt={course.instructor || "Instructor image"}
+                          width={800}
+                          height={400}
+                          className='w-full h-full object-cover'
+                          priority
+                        />
+                      ) : (
+                        <div className='w-full h-full flex items-center justify-center text-gray-400'>
+                          <span>No image available</span>
+                        </div>
+                      )}
                     </div>
                     <div className='flex-1'>
                       <h3 className='text-xl font-bold mb-2 text-gray-800 dark:text-white'>
@@ -371,7 +481,7 @@ export default function CourseDetailPage() {
                     </RadioGroup>
                   </div>
                   <Button asChild className='w-full mb-4' size='lg'>
-                    <Link href={`/courses/${slug}/ApplicationForm`}>
+                    <Link href={`/courses/${id}/ApplicationForm`}>
                       {courseMessages.tabContent.enroll}
                     </Link>
                   </Button>

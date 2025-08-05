@@ -13,34 +13,62 @@ import { SectionHeading } from "./ui/section-heading";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { coursesConfig } from "@/lib/courses-config";
+import { Button } from "./ui/button";
+import { useEffect, useState } from "react";
+import { fetchCourses } from "@/lib/apI";
 
 export function CoursesSection() {
   const t = useTranslations();
 
   // Get raw courses data from translations
-  const coursesData = t.raw("courses") as Record<string, any>;
+  // const coursesData = t.raw("courses") as Record<string, any>;
+  const [courses, setCourses] = useState<any[]>([]);
 
   // Merge config with translations
-  const courses = coursesConfig.map((config) => {
-    const translation = coursesData[config.key] || {};
-    return {
-      ...config,
-      ...translation,
-      id: config.key, // Or use actual ID from your data
-      enrollmentYear: translation.enrollmentYear || 2025, // Default value
+  // const courses = coursesConfig.map((config) => {
+  //   const translation = coursesData[config.key] || {};
+  //   return {
+  //     ...config,
+  //     ...translation,
+  //     id: config.key, // Or use actual ID from your data
+  //     enrollmentYear: translation.enrollmentYear || 2025, // Default value
+  //   };
+  // });
+
+  useEffect(() => {
+    const loadCourses = async () => {
+      try {
+        const data = await fetchCourses();
+        const transformedCourses = data.map((course: any) => ({
+          ...course,
+          ...coursesConfig[course.id], // Merging with coursesConfig for images
+          categoryName: course.category.name,
+          description: course.shortDescription,
+          rating: course.rating || 0,
+          reviews: course.reviews || 0,
+          instructor: course.instructor?.name,
+          image: course.imageUrl || coursesConfig[course.id]?.image,
+          instructorImage:
+            course.instructor.imageUrl ||
+            coursesConfig[course.id]?.instructorImage,
+        }));
+        setCourses(transformedCourses);
+      } catch (error) {
+        console.error("Error fetching courses:", error);
+      }
     };
-  });
+    loadCourses();
+  }, [t]);
 
   // Get top 3 courses by student enrollment
-  const topCourses = [...courses].sort((a, b) => {
-    
-    if (b.reviews !== a.reviews) {
-      return b.reviews - a.reviews;
-    }
-    return b.rating - a.rating;
-
-  }).slice(0,3);
-
+  const topCourses = [...courses]
+    .sort((a, b) => {
+      if (b.reviews !== a.reviews) {
+        return b.reviews - a.reviews;
+      }
+      return b.rating - a.rating;
+    })
+    .slice(0, 3);
 
   return (
     <section className='py-16 dark:bg-gray-950'>
@@ -77,7 +105,7 @@ export function CoursesSection() {
                   <CardContent className='px-4'>
                     {/* Category */}
                     <p className='text-sky-500 font-medium text-xs md:text-sm lg:text-base  2xl:text-lg mb-1'>
-                      {course.category}
+                      {course.categoryName}
                     </p>
 
                     {/* Title with Arrow */}
@@ -122,31 +150,24 @@ export function CoursesSection() {
                     </div>
                   </CardContent>
 
-                  <CardFooter className='px-4 flex justify-between items-center'>
-                    {/* Instructor Info */}
-                    <div className='flex items-center'>
-                      <img
-                        src={course.instructorImage}
-                        alt={course.instructor}
-                        className='w-10 h-10 rounded-full object-cover mr-3'
-                      />
-                      <div>
-                        <p className='font-medium text-gray-800 dark:text-gray-200'>
-                          {course.instructor}
-                        </p>
-                        <p className='text-sm text-gray-500'>
-                          {course.enrollmentYear}{" "}
-                          {t("topCoursesHeading.enrolled")}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Price */}
-                    <span className='text-sky-500 font-bold md:text-lg'>
-                      <Link href={`/courses/${course.slug}`}>
-                        {t("topCoursesHeading.details")} &gt;
+                  <CardFooter className='px-4 py-4 flex gap-3'>
+                    {/* View Details Button */}
+                    <Button
+                      variant='outline'
+                      className='flex-1 border-2 border-cyan-400 text-cyan-500 hover:bg-cyan-50 hover:text-cyan-600 font-medium rounded-full bg-transparent'
+                      asChild
+                    >
+                      <Link href={`/courses/${course.id}`}>
+                        {t("topCoursesHeading.details")}
                       </Link>
-                    </span>
+                    </Button>
+
+                    {/* Enroll Now Button */}
+                    <Button className='flex-1 bg-green-500 hover:bg-green-600 text-white font-medium rounded-full'>
+                      <Link href={`/courses/${course.id}/ApplicationForm`}>
+                        {t("topCoursesHeading.enrollNow")}
+                      </Link>
+                    </Button>
                   </CardFooter>
                 </Card>
               </AnimatedCard>

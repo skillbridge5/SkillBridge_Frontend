@@ -73,16 +73,6 @@ export const fetchCourses = async (): Promise<Course[]> => {
   }
 };
 
-export const fetchCourseById = async (id: string): Promise<Course> => {
-  try {
-    const response = await api.get(`/courses/${id}`);
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching course by ID:', error);
-    throw new Error('Failed to fetch course');
-  }
-};
-
 export const fetchCategories = async (): Promise<any[]> => {
   try {
     const response = await api.get('/categories/navbar');
