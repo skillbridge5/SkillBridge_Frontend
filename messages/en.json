@@ -131,7 +131,8 @@
       "title": "Top Courses",
       "subtitle": "Join thousands of students in our most popular courses. Real world value you can't miss!",
       "enrolled": "Enrolled",
-      "details": "View Details"
+      "details": "View Details",
+      "enrollNow": "Enroll Now"
    },
    "coursePage": {
       "explore": "Explore Our Courses",
@@ -152,7 +153,10 @@
       "noCourse": "No courses found. Try adjusting your search criteria.",
       "filter": "Filter",
       "sort": "Most Popular",
-      "newest": "Newest"
+      "newest": "Newest",
+      "loading": "Loading courses...",
+      "fetchError": "Error fetching courses. Please try again later.",
+      "retry": "Retry"
    },
    "courses": [
       {
@@ -4478,6 +4482,9 @@
       "award": "Certificate of completion",
       "lessons": "lessons",
       "students": "students",
+      "error": "Error",
+      "retry": "Retry",
+      "loading": "Loading",
       "tabLists": {
          "about": "About",
          "curriculum": "Curriculum",
