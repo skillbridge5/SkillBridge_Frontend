@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import {
   Card,
@@ -25,37 +25,84 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/app/[locale]/components/ui/select";
-// import { courses } from "@/lib/course-data";
 import { Navbar } from "../components/navbar";
 import { AnimatedCard } from "@/app/[locale]/components/ui/animated-card";
 import Footer from "@/app/[locale]/components/footer";
 import { useTranslations } from "next-intl"; // or your i18n library
 import { coursesConfig } from "@/lib/course-config-for-course-page";
+import { fetchCategories, fetchCourses } from "@/lib/apI";
 
 export default function CoursesPage() {
   const t = useTranslations();
-  const coursePage = t.raw("courses") as any;
+  // const coursePage = t.raw("courses") as any;
   const courseCategory = t.raw("coursePage") as any;
-  const categories = courseCategory.categories;
+  // const categories = courseCategory.categories;
 
-  const [activeCategory, setActiveCategory] = useState(t("coursePage.allCategory"));
+  const [courses, setCourses] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [categories, setCategories] = useState<string[]>([]);
+  const [error, setError] = useState<string | null>(null);
+
+  const [activeCategory, setActiveCategory] = useState(
+    t("coursePage.allCategory")
+  );
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("popular");
 
- const mergedCourses = coursePage.map((course: any) => ({
-  ...course,
-  ...coursesConfig[course.id], // This adds image and instructorImage
-}));
+  useEffect(() => {
+    const loadingCourses = async () => {
+      try {
+        const data = await fetchCourses();
+        const mergedCourses = data.map((course: any) => ({
+          ...course,
+          ...coursesConfig[course.id], // Merging with coursesConfig for images
+          categoryName: course.category.name,
+          description: course.shortDescription,
+          rating: course.rating || 0,
+          reviews: course.reviews || 0,
 
-// Then use mergedCourses instead of coursePage in your filtering/sorting:
-const filteredCourses = mergedCourses.filter((course: any) => {
-  const matchesCategory =
-    activeCategory === "ሁሉም" || activeCategory === "All" || course.category === activeCategory;
-  const matchesSearch =
-    course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    course.description.toLowerCase().includes(searchQuery.toLowerCase());
-  return matchesCategory && matchesSearch;
-});
+          instructor: course.instructor?.name,
+          image: course.imageUrl || coursesConfig[course.id]?.image,
+          instructorImage:
+            course.instructor.imageUrl ||
+            coursesConfig[course.id]?.instructorImage,
+        }));
+        setCourses(mergedCourses);
+
+        const uniqueCategories = [
+          ...new Set(data.map((course: any) => course.category.name)),
+        ];
+        setCategories([t("coursePage.allCategory"), ...uniqueCategories]);
+
+        // const categoriesData = await fetchCategories();
+        // const categoryNames = categoriesData.map((category: any) => category.name);
+        // setCategories(categoryNames);
+      } catch (coursesError) {
+        setError(t("coursePage.fetchError"));
+        console.log("Error fetching courses:", error);
+        setError(
+          coursesError instanceof Error
+            ? coursesError.message
+            : t("coursePage.fetchError")
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadingCourses();
+  }, [t]);
+
+  // Then use mergedCourses instead of coursePage in your filtering/sorting:
+  const filteredCourses = courses.filter((course: any) => {
+    const matchesCategory =
+      activeCategory === "ሁሉም" ||
+      activeCategory === "All" ||
+      course.categoryName === activeCategory;
+    const matchesSearch =
+      course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      course.description.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
 
   // Sort courses based on selected option
   const sortedCourses = [...filteredCourses].sort((a, b) => {
@@ -66,11 +113,40 @@ const filteredCourses = mergedCourses.filter((course: any) => {
     return 0;
   });
 
-  
+  if (loading) {
+    return (
+      <div className='container mx-auto px-4 py-12'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+          {[...Array(6)].map((_, i) => (
+            <Card key={i} className='animate-pulse'>
+              <div className='h-48 bg-gray-200 rounded-t-lg'></div>
+              <CardContent className='space-y-4 pt-4'>
+                <div className='h-4 bg-gray-200 rounded w-3/4'></div>
+                <div className='h-4 bg-gray-200 rounded'></div>
+                <div className='h-4 bg-gray-200 rounded w-5/6'></div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className='container mx-auto px-4 py-12 text-center'>
+        <h1 className='text-2xl font-bold mb-4'>{error}</h1>
+        <Button onClick={() => window.location.reload()}>
+          {t("coursePage.retry")}
+        </Button>
+      </div>
+    );
+  }
 
   return (
     <>
       <Navbar />
+
       <div className='container mx-auto px-4 md:px-6 lg:px-8 xl:px-10 2xl:px-16 py-12 2xl:pb-20'>
         <div className=' mb-8'>
           <h1 className='text-3xl font-bold mb-4'>{courseCategory.explore}</h1>
@@ -153,7 +229,7 @@ const filteredCourses = mergedCourses.filter((course: any) => {
                         <CardContent className='px-4'>
                           {/* Category */}
                           <p className='text-sky-500 font-medium text-xs md:text-sm lg:text-base  2xl:text-lg mb-1'>
-                            {course.category}
+                            {course.categoryName}
                           </p>
 
                           {/* Title with Arrow */}
@@ -198,30 +274,26 @@ const filteredCourses = mergedCourses.filter((course: any) => {
                           </div>
                         </CardContent>
 
-                        <CardFooter className='px-4 flex justify-between items-center'>
-                          {/* Instructor Info */}
-                          <div className='flex items-center'>
-                            <img
-                              src={course.instructorImage}
-                              alt={course.instructor}
-                              className='w-10 h-10 rounded-full object-cover mr-3'
-                            />
-                            <div>
-                              <p className='font-medium text-gray-800 dark:text-gray-200 text-sm whitespace-pre-wrap w-[80%]'>
-                                {course.instructor}
-                              </p>
-                              <p className='text-sm text-gray-500'>
-                                {course.enrollmentYear} {" "} {t("topCoursesHeading.enrolled")}
-                              </p>
-                            </div>
-                          </div>
-
-                          {/* Price */}
-                          <span className='text-sky-500 font-bold text-sm md:text-base -ml-2 whitespace-nowrap'>
-                            <Link href={`/courses/${course.slug}`}>
-                              {t("topCoursesHeading.details")}{" "} &gt;
+                        <CardFooter className='px-4 py-4 flex gap-3'>
+                          {/* View Details Button */}
+                          <Button
+                            variant='outline'
+                            className='flex-1 border-2 border-cyan-400 text-cyan-500 hover:bg-cyan-50 hover:text-cyan-600 font-medium rounded-full bg-transparent'
+                            asChild
+                          >
+                            <Link href={`/courses/${course.id}`}>
+                              {t("topCoursesHeading.details")}
                             </Link>
-                          </span>
+                          </Button>
+
+                          {/* Enroll Now Button */}
+                          <Button className='flex-1 bg-green-500 hover:bg-green-600 text-white font-medium rounded-full'>
+                            <Link
+                              href={`/courses/${course.id}/ApplicationForm`}
+                            >
+                              {t("topCoursesHeading.enrollNow")}
+                            </Link>
+                          </Button>
                         </CardFooter>
                       </Card>
                     </AnimatedCard>
@@ -229,9 +301,7 @@ const filteredCourses = mergedCourses.filter((course: any) => {
                 </div>
               ) : (
                 <div className='text-center py-12'>
-                  <p className='text-gray-500'>
-                    {t("coursePage.noCourse")}
-                  </p>
+                  <p className='text-gray-500'>{t("coursePage.noCourse")}</p>
                 </div>
               )}
             </TabsContent>

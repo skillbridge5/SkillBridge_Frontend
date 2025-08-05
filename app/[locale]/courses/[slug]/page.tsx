@@ -27,37 +27,200 @@ import { Button } from "../../components/ui/button";
 import { Badge } from "../../components/ui/badge";
 import { courseDetailsConfig } from "@/lib/course-details-config";
 import { Navbar } from "../../components/navbar";
+import { useEffect, useState } from "react";
+import { fetchCourses } from "@/lib/apI";
 
 export default function CourseDetailPage() {
   const t = useTranslations();
   const params = useParams();
-  const slug = params.slug as string;
-  const courses = t.raw("courses") as any[];
+  const id = params.slug as string;
+  // const courses = t.raw("courses") as any[];
+  const [course, setCourse] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const courseMessages = t.raw("courseMessages") as any;
 
-  const course = courses.find((c) => c.slug === slug);
-  const courseWithImages = course
-    ? {
-        ...course,
-        ...courseDetailsConfig[slug],
-        image: courseDetailsConfig[slug]?.image || "/default-course.jpg",
-        instructorImage:
-          courseDetailsConfig[slug]?.instructorImage ||
-          "/default-instructor.jpg",
-      }
-    : null;
+  useEffect(() => {
+    const loadCourse = async () => {
+      try {
+        const courses = await fetchCourses();
 
-  if (!courseWithImages) {
+        const foundCourse = courses.find((c: any) => c.id === id);
+        console.log("Found Course:", foundCourse);
+
+        if (!foundCourse) {
+          throw new Error("COURSE_NOT_FOUND");
+        }
+
+        const courseConfig = courseDetailsConfig[id] || {};
+
+        const transformedCourse = foundCourse
+          ? {
+              ...foundCourse,
+              ...courseConfig,
+              image: foundCourse.imageUrl || courseConfig.image,
+              instructorImage:
+                foundCourse.instructor.imageUrl || courseConfig.instructorImage,
+              category: foundCourse.category.name,
+              instructor: foundCourse.instructor.name,
+              description: foundCourse.shortDescription,
+              longDescription: foundCourse.detailedDescription,
+              price: foundCourse.priceOriginal || 0,
+              discount: foundCourse.priceDiscounted || 0,
+              learningOutcomes:
+                foundCourse.learningOutcomes.map((lo: any) => lo.text) || [],
+              prerequisites:
+                foundCourse.prerequisites.map((pre: any) => pre.text) || [],
+              curriculum:
+                foundCourse.modules?.map((module: any) => ({
+                  title: module.title,
+                  duration: module.duration,
+                  lessons:
+                    module.lessons.map((lesson: any) => ({
+                      title: lesson.title,
+                      duration: lesson.duration,
+                    })) || [],
+                })) || [],
+            }
+          : null;
+        setCourse(transformedCourse);
+      } catch (error) {
+        setError("Failed to load course");
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadCourse();
+  }, [id, t]);
+
+if (loading) {
+  return (
+    <>
+      <Navbar />
+      <div className="container mx-auto px-4 py-12">
+        {/* Back button skeleton */}
+        <div className="flex items-center mb-6 w-fit">
+          <div className="w-5 h-5 bg-gray-200 dark:bg-gray-700 rounded-full mr-2"></div>
+          <div className="h-5 w-24 bg-gray-200 dark:bg-gray-700 rounded"></div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Main content skeleton */}
+          <div className="lg:col-span-2">
+            {/* Badges and rating skeleton */}
+            <div className="flex flex-wrap gap-2 mb-4">
+              <div className="h-6 w-16 bg-gray-200 dark:bg-gray-700 rounded-full"></div>
+              <div className="h-6 w-16 bg-gray-200 dark:bg-gray-700 rounded-full"></div>
+              <div className="h-6 w-24 bg-gray-200 dark:bg-gray-700 rounded ml-auto"></div>
+            </div>
+
+            {/* Title skeleton */}
+            <div className="h-8 w-3/4 bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
+
+            {/* Description skeleton */}
+            <div className="space-y-2 mb-6">
+              <div className="h-4 w-full bg-gray-200 dark:bg-gray-700 rounded"></div>
+              <div className="h-4 w-5/6 bg-gray-200 dark:bg-gray-700 rounded"></div>
+              <div className="h-4 w-4/5 bg-gray-200 dark:bg-gray-700 rounded"></div>
+            </div>
+
+            {/* Stats skeleton */}
+            <div className="flex flex-wrap gap-6 mb-6">
+              {[...Array(4)].map((_, i) => (
+                <div key={i} className="flex items-center gap-2">
+                  <div className="w-5 h-5 bg-gray-200 dark:bg-gray-700 rounded-full"></div>
+                  <div className="h-4 w-16 bg-gray-200 dark:bg-gray-700 rounded"></div>
+                </div>
+              ))}
+            </div>
+
+            {/* Image skeleton */}
+            <div className="relative h-[300px] md:h-[400px] w-full rounded-lg overflow-hidden mb-8 bg-gray-200 dark:bg-gray-700 animate-pulse"></div>
+
+            {/* Tabs skeleton */}
+            <div className="mb-12">
+              <div className="grid grid-cols-3 gap-2 p-1 bg-gray-100 dark:bg-gray-800 rounded-lg mb-6">
+                {[...Array(3)].map((_, i) => (
+                  <div key={i} className="h-10 bg-gray-200 dark:bg-gray-700 rounded-md"></div>
+                ))}
+              </div>
+
+              {/* Tab content skeleton */}
+              <div className="space-y-8">
+                {[...Array(3)].map((_, i) => (
+                  <div key={i} className="bg-white dark:bg-gray-800 p-6 rounded-lg">
+                    <div className="h-6 w-1/3 bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
+                    <div className="space-y-2">
+                      {[...Array(4)].map((_, j) => (
+                        <div key={j} className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-full"></div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Sidebar skeleton */}
+          <div className="lg:col-span-1">
+            <div className="sticky top-24 border rounded-lg overflow-hidden shadow-sm">
+              <div className="p-6">
+                {/* Price skeleton */}
+                <div className="flex items-baseline gap-2 mb-4">
+                  <div className="h-8 w-16 bg-gray-200 dark:bg-gray-700 rounded"></div>
+                  <div className="h-6 w-12 bg-gray-200 dark:bg-gray-700 rounded ml-auto"></div>
+                </div>
+
+                {/* Payment options skeleton */}
+                <div className="space-y-4 mb-6">
+                  <div className="h-5 w-1/3 bg-gray-200 dark:bg-gray-700 rounded"></div>
+                  {[...Array(2)].map((_, i) => (
+                    <div key={i} className="flex items-center space-x-2">
+                      <div className="w-4 h-4 bg-gray-200 dark:bg-gray-700 rounded-full"></div>
+                      <div className="h-4 w-3/4 bg-gray-200 dark:bg-gray-700 rounded"></div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Button skeleton */}
+                <div className="h-12 w-full bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
+
+                {/* Features skeleton */}
+                <div className="space-y-3">
+                  {[...Array(3)].map((_, i) => (
+                    <div key={i} className="flex items-center gap-2">
+                      <div className="w-4 h-4 bg-gray-200 dark:bg-gray-700 rounded-full"></div>
+                      <div className="h-3 w-3/4 bg-gray-200 dark:bg-gray-700 rounded"></div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+
+  if (error) {
     return (
       <div className='container mx-auto px-4 py-12 text-center'>
-        <h1 className='text-3xl font-bold mb-4'>{courseMessages.notFound}</h1>
-        <p className='text-gray-600 mb-8'>{courseMessages.message}</p>
-        <Button asChild>
-          <Link href='/courses'>{courseMessages.browse}</Link>
-        </Button>
+        <h1 className='text-3xl font-bold mb-4'>Error Loading Course</h1>
+        <p className='text-gray-600 mb-8'>
+          We encountered a problem loading this course. Please try again.
+        </p>
+        <div className='flex justify-center gap-4'>
+          <Button onClick={() => window.location.reload()}>Try Again</Button>
+          <Button asChild variant='outline'>
+            <Link href='/courses'>Back to Courses</Link>
+          </Button>
+        </div>
       </div>
     );
   }
+
 
   return (
     <>
@@ -116,14 +279,20 @@ export default function CourseDetailPage() {
               </div>
 
               <div className='relative h-[300px] md:h-[400px] w-full rounded-lg overflow-hidden mb-8'>
-                <Image
-                  src={courseWithImages.image}
-                  alt={courseWithImages.title}
-                  width={800}
-                  height={400}
-                  className='w-full h-[300px] md:h-[400px] 2xl:h-[500px] object-cover'
-                  priority
-                />
+                {course?.image ? (
+                  <Image
+                    src={course.image}
+                    alt={course.title || "Course image"}
+                    width={800}
+                    height={400}
+                    className='w-full h-full object-cover'
+                    priority
+                  />
+                ) : (
+                  <div className='w-full h-full flex items-center justify-center text-gray-400'>
+                    <span>No image available</span>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -234,24 +403,24 @@ export default function CourseDetailPage() {
                           <ul className='space-y-2 pt-2'>
                             {module.lessons?.map(
                               (lesson: any, lessonIndex: number) => (
-                                  <li
-                                    key={lessonIndex}
-                                    className='flex items-center justify-between py-2 px-3 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-150'
-                                  >
-                                    <div className='flex items-center gap-3'>
-                                      <span className='text-sm font-medium text-gray-500 dark:text-gray-400'>
-                                        {index + 1}.{lessonIndex + 1}
-                                      </span>
-                                      <span className='text-gray-700 dark:text-gray-300'>
-                                        {lesson.title}
-                                      </span>
-                                    </div>
-                                    {/* {lesson.duration && ( */}
-                                      <span className='text-sm text-gray-500 dark:text-gray-400'>
-                                        {lesson.duration}
-                                      </span>
-                                    {/* )} */}
-                                  </li>
+                                <li
+                                  key={lessonIndex}
+                                  className='flex items-center justify-between py-2 px-3 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-150'
+                                >
+                                  <div className='flex items-center gap-3'>
+                                    <span className='text-sm font-medium text-gray-500 dark:text-gray-400'>
+                                      {index + 1}.{lessonIndex + 1}
+                                    </span>
+                                    <span className='text-gray-700 dark:text-gray-300'>
+                                      {lesson.title}
+                                    </span>
+                                  </div>
+                                  {/* {lesson.duration && ( */}
+                                  <span className='text-sm text-gray-500 dark:text-gray-400'>
+                                    {lesson.duration}
+                                  </span>
+                                  {/* )} */}
+                                </li>
                               )
                             )}
                           </ul>
@@ -266,13 +435,20 @@ export default function CourseDetailPage() {
                 <div className='bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm transition-all hover:shadow-md'>
                   <div className='flex flex-col md:flex-row gap-6'>
                     <div className='relative h-32 w-32 rounded-full overflow-hidden border-4 border-white dark:border-gray-700 shadow-md hover:shadow-lg transition-shadow'>
-                      <Image
-                        src={courseWithImages.instructorImage}
-                        alt={courseWithImages.instructor}
-                        fill
-                        sizes='(max-width: 200px) 100vw, 200px'
-                        className='object-cover hover:scale-105 transition-transform duration-300'
-                      />
+                      {course?.instructorImage ? (
+                        <Image
+                          src={course.instructorImage}
+                          alt={course.instructor || "Instructor image"}
+                          width={800}
+                          height={400}
+                          className='w-full h-full object-cover'
+                          priority
+                        />
+                      ) : (
+                        <div className='w-full h-full flex items-center justify-center text-gray-400'>
+                          <span>No image available</span>
+                        </div>
+                      )}
                     </div>
                     <div className='flex-1'>
                       <h3 className='text-xl font-bold mb-2 text-gray-800 dark:text-white'>
@@ -371,7 +547,7 @@ export default function CourseDetailPage() {
                     </RadioGroup>
                   </div>
                   <Button asChild className='w-full mb-4' size='lg'>
-                    <Link href={`/courses/${slug}/ApplicationForm`}>
+                    <Link href={`/courses/${id}/ApplicationForm`}>
                       {courseMessages.tabContent.enroll}
                     </Link>
                   </Button>
