@@ -93,39 +93,116 @@ export default function CourseDetailPage() {
     loadCourse();
   }, [id, t]);
 
-  if (loading) {
-    return (
-      <div className='container mx-auto px-4 py-12 text-center'>
-        <p>{t("courseMessages.loading")}</p>
-      </div>
-    );
-  }
+if (loading) {
+  return (
+    <>
+      <Navbar />
+      <div className="container mx-auto px-4 py-12">
+        {/* Back button skeleton */}
+        <div className="flex items-center mb-6 w-fit">
+          <div className="w-5 h-5 bg-gray-200 dark:bg-gray-700 rounded-full mr-2"></div>
+          <div className="h-5 w-24 bg-gray-200 dark:bg-gray-700 rounded"></div>
+        </div>
 
-  //   if (error) {
-  //   return (
-  //     <div className="container mx-auto px-4 py-12 text-center">
-  //       <h1 className="text-2xl font-bold mb-4">{error}</h1>
-  //       <Button onClick={() => window.location.reload()}>
-  //         {t("courseMessages.error")}
-  //       </Button>
-  //     </div>
-  //   );
-  // }
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Main content skeleton */}
+          <div className="lg:col-span-2">
+            {/* Badges and rating skeleton */}
+            <div className="flex flex-wrap gap-2 mb-4">
+              <div className="h-6 w-16 bg-gray-200 dark:bg-gray-700 rounded-full"></div>
+              <div className="h-6 w-16 bg-gray-200 dark:bg-gray-700 rounded-full"></div>
+              <div className="h-6 w-24 bg-gray-200 dark:bg-gray-700 rounded ml-auto"></div>
+            </div>
 
-  // Error states
-  if (error === "COURSE_NOT_FOUND") {
-    return (
-      <div className='container mx-auto px-4 py-12 text-center'>
-        <h1 className='text-3xl font-bold mb-4'>Course Not Found</h1>
-        <p className='text-gray-600 mb-8'>
-          The course you're looking for doesn't exist in our records.
-        </p>
-        <Button asChild>
-          <Link href='/courses'>Browse Available Courses</Link>
-        </Button>
+            {/* Title skeleton */}
+            <div className="h-8 w-3/4 bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
+
+            {/* Description skeleton */}
+            <div className="space-y-2 mb-6">
+              <div className="h-4 w-full bg-gray-200 dark:bg-gray-700 rounded"></div>
+              <div className="h-4 w-5/6 bg-gray-200 dark:bg-gray-700 rounded"></div>
+              <div className="h-4 w-4/5 bg-gray-200 dark:bg-gray-700 rounded"></div>
+            </div>
+
+            {/* Stats skeleton */}
+            <div className="flex flex-wrap gap-6 mb-6">
+              {[...Array(4)].map((_, i) => (
+                <div key={i} className="flex items-center gap-2">
+                  <div className="w-5 h-5 bg-gray-200 dark:bg-gray-700 rounded-full"></div>
+                  <div className="h-4 w-16 bg-gray-200 dark:bg-gray-700 rounded"></div>
+                </div>
+              ))}
+            </div>
+
+            {/* Image skeleton */}
+            <div className="relative h-[300px] md:h-[400px] w-full rounded-lg overflow-hidden mb-8 bg-gray-200 dark:bg-gray-700 animate-pulse"></div>
+
+            {/* Tabs skeleton */}
+            <div className="mb-12">
+              <div className="grid grid-cols-3 gap-2 p-1 bg-gray-100 dark:bg-gray-800 rounded-lg mb-6">
+                {[...Array(3)].map((_, i) => (
+                  <div key={i} className="h-10 bg-gray-200 dark:bg-gray-700 rounded-md"></div>
+                ))}
+              </div>
+
+              {/* Tab content skeleton */}
+              <div className="space-y-8">
+                {[...Array(3)].map((_, i) => (
+                  <div key={i} className="bg-white dark:bg-gray-800 p-6 rounded-lg">
+                    <div className="h-6 w-1/3 bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
+                    <div className="space-y-2">
+                      {[...Array(4)].map((_, j) => (
+                        <div key={j} className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-full"></div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Sidebar skeleton */}
+          <div className="lg:col-span-1">
+            <div className="sticky top-24 border rounded-lg overflow-hidden shadow-sm">
+              <div className="p-6">
+                {/* Price skeleton */}
+                <div className="flex items-baseline gap-2 mb-4">
+                  <div className="h-8 w-16 bg-gray-200 dark:bg-gray-700 rounded"></div>
+                  <div className="h-6 w-12 bg-gray-200 dark:bg-gray-700 rounded ml-auto"></div>
+                </div>
+
+                {/* Payment options skeleton */}
+                <div className="space-y-4 mb-6">
+                  <div className="h-5 w-1/3 bg-gray-200 dark:bg-gray-700 rounded"></div>
+                  {[...Array(2)].map((_, i) => (
+                    <div key={i} className="flex items-center space-x-2">
+                      <div className="w-4 h-4 bg-gray-200 dark:bg-gray-700 rounded-full"></div>
+                      <div className="h-4 w-3/4 bg-gray-200 dark:bg-gray-700 rounded"></div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Button skeleton */}
+                <div className="h-12 w-full bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
+
+                {/* Features skeleton */}
+                <div className="space-y-3">
+                  {[...Array(3)].map((_, i) => (
+                    <div key={i} className="flex items-center gap-2">
+                      <div className="w-4 h-4 bg-gray-200 dark:bg-gray-700 rounded-full"></div>
+                      <div className="h-3 w-3/4 bg-gray-200 dark:bg-gray-700 rounded"></div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    );
-  }
+    </>
+  );
+}
+
 
   if (error) {
     return (
@@ -144,17 +221,6 @@ export default function CourseDetailPage() {
     );
   }
 
-  // if (!course) {
-  //   return (
-  //     <div className='container mx-auto px-4 py-12 text-center'>
-  //       <h1 className='text-3xl font-bold mb-4'>{courseMessages.notFound}</h1>
-  //       <p className='text-gray-600 mb-8'>{courseMessages.message}</p>
-  //       <Button asChild>
-  //         <Link href='/courses'>{courseMessages.browse}</Link>
-  //       </Button>
-  //     </div>
-  //   );
-  // }
 
   return (
     <>
