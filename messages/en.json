@@ -1,16 +1,4 @@
 {
-  "Home": "Home",
-  "About us": "About us",
-  "Courses": "Courses",
-  "Contact Us": "Contact Us",
-  "10+": "10+",
-  "Online Courses": "Online Courses",
-  "30+": "30+",
-  "Video Courses": "Video Courses",
-  "250+": "250+",
-  "Tutors": "Tutors",
-  
-
    "faq": {
       "faqTitle": "Frequently Asked",
       "faqQues": "Questions",
@@ -4816,10 +4804,23 @@
    },
    "applicationForm": {
       "title": "Application Form",
+      "step": "Step {current} of {total}",
       "userInfo": "User Information",
       "billingInfo": "Billing / Service Details",
+      "next": "Next",
       "submit": "Submit Application",
+      "submitting": "Submitting...",
       "reset": "Reset Form",
+      "backButton": "Go back to previous step",
+      "select": "Select",
+      "selectPaymentMethod": "Select payment method",
+      "cashPayment": "Cash Payment",
+      "installment": "Installment",
+      "chooseFile": "Choose File",
+      "noFileChosen": "No file chosen",
+      "choose": "Choose",
+      "other": "Other",
+      "instagram": "Instagram",
       "alert": {
          "required": "Please fill in the required field: ",
          "terms": "Please agree to the terms and confirm the accuracy.",
@@ -4855,6 +4856,12 @@
             "label": "Telegram Handle*",
             "placeholder": "@username"
          },
+         "university": {
+            "label": "University*"
+         },
+         "address": {
+            "label": "Address*"
+         },
          "course": {
             "label": "Selected Course*"
          },
@@ -4865,27 +4872,20 @@
                "cbe": "Commercial Bank of Ethiopia",
                "boa": "Bank of Abyssinia",
                "awash": "Awash Bank"
-            },
-            "details": {
-               "telebirr": "to: Ibrahim Ghazali\\n0960171717",
-               "cbe": "to: Ibrahim Ghazali\\n100041753914",
-               "boa": "to: Ibrahim Ghazali\\nXXXXXXXXXXX",
-               "awash": "to: Ibrahim Ghazali\\nXXXXXXXXXXX"
             }
          },
          "paymentOption": {
             "label": "Payment Option*",
             "options": {
-               "one-time": "One-time Payment",
-               "monthly": "Monthly Subscription"
+               "one-time": "One-time Payment"
             }
          },
          "receipt": {
             "label": "Upload Receipt*"
          },
          "transactionId": {
-            "label": "Transaction ID*",
-            "placeholder": "Transaction reference"
+            "label": "Payment Reference (Transaction ID)*",
+            "placeholder": "TRX123456"
          },
          "referral": {
             "label": "How did you hear about us?",
@@ -4896,7 +4896,9 @@
                "search": "Google Search"
             }
          },
-         "agreeTerms": "I agree to the Terms and Conditions and Privacy Policy.",
+         "agreeTermsfirst": "I agree to the ",
+         "terms": "Terms and Conditions",
+         "agreeTermslast": " and Privacy Policy.",
          "confirmAccuracy": "I confirm all information is accurate and true."
       }
    }

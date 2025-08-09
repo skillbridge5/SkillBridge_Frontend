@@ -80,7 +80,7 @@
       "span4": "ይጀምሩ!",
       "heroSubtitle": "እንከኖችን ማጥፋት ፣ ክህሎቶችን መገንባት ፣ ወደፊቶን መቀየር",
       "getStarted": "ጀምር",
-      "freeTrial": "ነፃ ሙከራ ያግኙ",
+      "contact": "እኛን ያግኙ",
       "statCards": [
          {
             "title": "ኦንላይን ኮርሶች",
@@ -533,17 +533,18 @@
       "span1": "እኛን",
       "span2": " ",
       "span3": "ያግኙን",
-      "description": "ለማንኛውም ጥያቄ፣ አስተያየት ወይም ድጋፍ፣ እኛን ያግኙ—ደስ ይልናል!",
+      "description": "ለማንኛውም ጥያቄ፣ አስተያየት ወይም ድጋፍ፣ እኛን ያግኙ—ለናግዞት ደስተኞችች ነን!",
       "phoneLabel": "የስልክ ቁጥር",
       "emailAddress": "የኢሜይል አድራሻ",
       "office": "የቢሮው አድራሻ",
-      "office_info": "አዲስ አበባ፣ ኢትዮጵያ",
+      "office_info": "አዲስ አበባ ፣ ኢትዮጵያ",
       "telegram": "ቴሌግራም",
-      "message": "መልድ ይላኩልን",
+      "message": "መልዕክት ይላኩልን",
       "namePlaceholder": "የእርስዎ ስም",
       "emailPlaceholder": "ኢሜይል",
-      "meessagePlaceholder": "የእርስዎ መልድ",
-      "messageButton": "መልድ ላክ",
+      "phonePlaceholder": "የስልክ ቁጥር",
+      "messagePlaceholder": "የእርስዎ መልዕክት",
+      "messageButton": "መልዕክት ላክ",
       "mapTitle": "በካርታ ላይ ያግኙን"
    },
    "aboutPage": {
@@ -673,26 +674,39 @@
       }
    },
    "applicationForm": {
-      "title": "የማመዝገቢያ ቅፅ",
+      "title": "የመመዝገቢያ ፎርም",
+      "step": "ደረጃ {current} ከ {total}",
       "userInfo": "የተጠቃሚ መረጃ",
-      "billingInfo": "የክፍያ/አገልግሎት ዝርዝር",
-      "submit": "ማመዝግብ",
-      "reset": "ቅፅ ዳግም ለመጀመር",
+      "billingInfo": "የክፍያ / አገልግሎት ዝርዝሮች",
+      "next": "ቀጣይ",
+      "submit": "መመዝገቢያ አስገባ",
+      "submitting": "በማስገባት ላይ...",
+      "reset": "ፎርም ዳግም አስጀምር",
+      "backButton": "ወደ ቀዳሚው ደረጃ ተመለስ",
+      "select": "ምረጥ",
+      "selectPaymentMethod": "የክፍያ ዘዴ ምረጥ",
+      "cashPayment": "በጥሬ ገንዘብ ክፍያ",
+      "installment": "በክፍያ",
+      "chooseFile": "ፋይል ምረጥ",
+      "noFileChosen": "ምንም ፋይል አልተመረጠም",
+      "choose": "ምረጥ",
+      "other": "ሌላ",
+      "instagram": "ኢንስታግራም",
       "alert": {
-         "required": "እባክዎ የታወቀውን ክፍል ይሙሉ፦ ",
-         "terms": "እባክዎ ውሎታዎችን ይስማሙ እና መረጃው እውነት እንደሆነ ያረጋግጡ።",
-         "success": "መተውጥበት ተሳክቷል!"
+         "required": "እባክዎን የሚያስፈልገውን መስክ ይሙሉ: ",
+         "terms": "እባክዎን ውሎችን ይቀበሉ እና ትክክለኛነቱን ያረጋግጡ።",
+         "success": "መመዝገቢያው ተላልፏል!"
       },
       "fields": {
          "name": {
             "label": "ሙሉ ስም*",
-            "placeholder": "John Doe"
+            "placeholder": "ሙሉ ስም"
          },
          "dob": {
-            "label": "የልዩ ቀን"
+            "label": "የልደት ቀን"
          },
          "gender": {
-            "label": "ወንድ/ሴት",
+            "label": "ጾታ",
             "options": {
                "male": "ወንድ",
                "female": "ሴት"
@@ -703,59 +717,60 @@
             "placeholder": "ኢትዮጵያዊ"
          },
          "email": {
-            "label": "የኢሜይል አድራሻ*"
+            "label": "የኢሜል አድራሻ*"
          },
          "phone": {
             "label": "የስልክ ቁጥር*",
             "placeholder": "+251 9XX XXX XXX"
          },
          "telegram": {
-            "label": "የቴሌግራም ሲጥል*",
-            "placeholder": "@username"
+            "label": "የቴሌግራም ሁንድል*",
+            "placeholder": "@የተጠቃሚ ስም"
+         },
+         "university": {
+            "label": "ዩኒቨርሲቲ*"
+         },
+         "address": {
+            "label": "አድራሻ*"
          },
          "course": {
             "label": "የተመረጠ ኮርስ*"
          },
          "paymentMethod": {
-            "label": "የክፍያ ዘዴ*",
+            "label": "የተመረጠ �ክፍያ ዘዴ*",
             "options": {
                "telebirr": "ቴሌብር",
-               "cbe": "የንግድ ባንክ ኢትዮጵያ",
-               "boa": "የአቢሲኒያ ባንክ",
+               "cbe": "ኮሜርሻል ባንክ ኦቭ ኢትዮጵያ",
+               "boa": "ባንክ ኦቭ አቢሲኒያ",
                "awash": "አዋሽ ባንክ"
-            },
-            "details": {
-               "telebirr": "ለ: ኢብራሂም ግሃዛኣሊ\\n0960171717",
-               "cbe": "ለ: ኢብራሂም ግሃዛኣሊ\\n100041753914",
-               "boa": "ለ: ኢብራሂም ግሃዛኣሊ\\nXXXXXXXXXXX",
-               "awash": "ለ: ኢብራሂም ግሃዛኣሊ\\nXXXXXXXXXXX"
             }
          },
          "paymentOption": {
             "label": "የክፍያ አማራጭ*",
             "options": {
-               "one-time": "አንድ ጊዜ ክፍያ",
-               "monthly": "ወርሃዊ ስርዓት"
+               "one-time": "አንድ ጊዜ ክፍያ"
             }
          },
          "receipt": {
-            "label": "የአጥፍት ደረሰኝ ማስገባት*"
+            "label": "የክፍያ ደረሰኝ ጫን*"
          },
          "transactionId": {
-            "label": "የንግድ መለያ*",
-            "placeholder": "የሪፈራንስ መለያ"
+            "label": "የትራንዛክሽን መለያ ቁጥር*",
+            "placeholder": "TRX123456"
          },
          "referral": {
-            "label": "ከየት ደረሳል?",
+            "label": "ስለ እኛ ከየት አወቁ?",
             "options": {
-               "facebook": "Facebook",
-               "telegram": "Telegram",
+               "facebook": "ፌስቡክ",
+               "telegram": "ቴሌግራም",
                "friend": "ወዳጅ",
-               "search": "Google ፍለጋ"
+               "search": "ጎግል ፍለጋ"
             }
          },
-         "agreeTerms": "የውሎታና የግላዊ ፖሊሲ በመስማር እባክዎ ይስማሙ።",
-         "confirmAccuracy": "የመረጃዎቹ ትክክነትና እውነትነት እንደሆነ እገናኝ።"
+         "agreeTermsfirst": "ከ ",
+         "terms": " ውሎች እና ሁኔታዎች ",
+         "agreeTermslast": " እና የግላዊነት ፖሊሲ ጋር እስማማለሁ።",
+         "confirmAccuracy": "ሁሉም መረጃ ትክክል እና እውነተኛ መሆኑን አረጋግጣለሁ።"
       }
    }
 }
