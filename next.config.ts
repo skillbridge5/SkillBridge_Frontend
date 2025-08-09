@@ -24,6 +24,14 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: "/api/:path*", // Frontend path (e.g., /api/auth/register-student)
+        destination: "https://skillbridge-backend-w2s4.onrender.com/api/:path*", // Backend URL
+      },
+    ];
+  },
 };
 
 const withNextIntl = createNextIntlPlugin();

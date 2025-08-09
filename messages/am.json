@@ -367,44 +367,44 @@
       "title": "ወደ አርዳዎቻችን ተገናኝ",
       "subtitle": "የመሪ አስተማሪዎቻችን ፍጥነት፣ የፍጥረት ብልህነት እና ቴክኒካዊ እውቀት በተመሳሳይ መድብ፣ የእውነተኛ ዓለም ክህሎቶች ያቀርባሉ፣ የመርህ መድሪያዎትን ይቀይሩ።",
       "instructors": {
-         "tafara-makaza": {
-            "id": "tafara-makaza",
-            "name": "ታፋራ ማቃዛ",
-            "title": "የምርትና ስርዓቶች ተናጋሪ",
-            "description": "ቀድሞ የUI ዲዛይነር በApple፣ AAA የተጀመረ",
+         "biniyam-tamrat": {
+            "id": "biniyam-tamrat",
+            "name": "ቢንያም ታምራት",
+            "title": "ሙሉ-ስታክ ዲቨሎፐር",
+            "description": "ቀደምት ዲቨሎፐር በኢትታ፣ የትሪፕል ኤ ብቸኛ የተማሪ",
             "socialLinks": {
-               "twitter": "https://twitter.com/tafaramakaza",
-               "linkedin": "https://linkedin.com/in/tafaramakaza"
+               "twitter": "https://twitter.com/biniyamtamrat1",
+               "linkedin": "https://linkedin.com/in/biniyam-tamrat2025"
             }
          },
-         "ange-mannah": {
-            "id": "ange-mannah",
-            "name": "ዶ/ር አንጅ ማናህ",
-            "title": "የዳታ ሳይንስ ስፔሻሊስት",
-            "description": "የCI ዋና ባለሙያ በData Space፣ ትንበያና ማስተዳደር",
+         "amare-tilaye": {
+            "id": "amare-tilaye",
+            "name": "አቶ አማረ ጥላዬ",
+            "title": "ኦዱ ዲቨሎፐር",
+            "description": "የኢኢአርፒ ሊድ ዲቨሎፐር በዴታ ስፔስ፣ አናሊቲክስ እና ፕላኒንግ ኩባንያ",
             "socialLinks": {
-               "twitter": "https://twitter.com/angemannah",
-               "linkedin": "https://linkedin.com/in/angemannah"
+               "twitter": "https://twitter.com/amaretilaye",
+               "linkedin": "https://linkedin.com/in/amare-tilaye2025"
             }
          },
-         "eke-agulu": {
-            "id": "eke-agulu",
-            "name": "ኤኬ አጉሉ",
-            "title": "የሙያ አስተማሪ እና ደራሲ",
-            "description": "ቀድሞ PM በLambda ትምህርት ቤት",
+         "dagemawi-bekele": {
+            "id": "dagemawi-bekele",
+            "name": "ዳግማዊ በቀለ",
+            "title": "የዳታ መዋቅር እና አልጎሪዝም ባለሙያ",
+            "description": "ቀደምት አስተማሪ በላምዳ ትምህርት ቤት",
             "socialLinks": {
-               "twitter": "https://twitter.com/ekeagulu",
-               "linkedin": "https://linkedin.com/in/ekeagulu"
+               "twitter": "https://twitter.com/dagemawibekele",
+               "linkedin": "https://linkedin.com/in/dagemawi-bekele2025"
             }
          },
-         "mike-mahlangu": {
-            "id": "mike-mahlangu",
-            "name": "ማይክ ማልላንጉ",
-            "title": "የደመና እና የመረጃ ፕሮግራሞች እና ኦፕሬሽን አስተዳደር ስራ አስኪያጅ",
-            "description": "ቀድሞ ስፔሻሊስት በISTG",
+         "nathenael-adinew": {
+            "id": "nathenael-adinew",
+            "name": "ናትናኤል አድነው",
+            "title": "ዩኤክስ/ዩአይ ዲዛይነር",
+            "description": "ቀደምት ዩአይ/ዩኤክስ ባለሙያ በአይኤስቲጂ",
             "socialLinks": {
-               "twitter": "https://twitter.com/mikemahlangu",
-               "linkedin": "https://linkedin.com/in/mikemahlangu"
+               "twitter": "https://twitter.com/nathenaeladinew",
+               "linkedin": "https://linkedin.com/in/nathenaeladinew"
             }
          }
       }
@@ -413,41 +413,41 @@
       "title": "የተማሪዎቻችን አስተያየቶች",
       "subtitle": "",
       "testimonies": {
-         "daniel-semach": {
-            "id": "daniel-semach",
-            "name": "ዳንኤል ስማኝ",
-            "title": "የሶፍትዌር ባለሙያ፣ Gigasystems",
-            "testimonial": "“ኮርሶቹ እዚህ በእውነት አልተኛውን ልዩ አድርገው የስራዬን ሙያ አስቀድሞ ተፈጥሯል። በጣም የሚመከሩ!”"
+         "nahom-bekele": {
+            "id": "nahom-bekele",
+            "name": "ናሆም በቀለ",
+            "title": "ኦዱ ፈንክሽናል ኮንሳልታንት",
+            "testimonial": "የኦዱ ፈንክሽናል ቡትካምፕ እውነተኛ የኢኢአርፒ አተገባበርን የማስተዳደር ተግባራዊ ክህሎቶችን ሰጥቶኛል። አሁን የደንበኞችን ፕሮጀክቶች በእምነት እያስመራሁ ነው!"
          },
-         "debora-resimul": {
-            "id": "debora-resimul",
-            "name": "ዴቦራ ረሲሙል",
-            "title": "የዳታ አናሊስት",
-            "testimonial": "“የእነርሱ ልዩ ኮርስ መገናኛ ለእኔ ተለዋዋጭ ሆነ። ዳታ አናሊስት ለመቆም የያዘውን ክህሎት ሰጥቻል።”"
+         "kalkidan-yifru": {
+            "id": "kalkidan-yifru",
+            "name": "ቃልኪዳን ይፍሩ",
+            "title": "የኦዱ ቴክኒካል ዲቨሎፐር",
+            "testimonial": "ከዜሮ የኦዱ እውቀት እስከ �የኛ �ብድሎች መስራት ድረስ — ይህ ቡትካምፕ ለሙያዬ ሙሉ ለውጥ አምጥቶልኛል።"
          },
-         "lualawit-abera": {
-            "id": "lualawit-abera",
-            "name": "ሉባልዊት አበራ",
-            "title": "ልማት ባለሙያ",
-            "testimonial": "“አስተማሪዎቹ ብልህናን እና ማስተማር ችሎታዎቻቸውን በትክክል አሳዩኝ።”"
+         "melat-abebe": {
+            "id": "melat-abebe",
+            "name": "ሜላት አበበ",
+            "title": "ዩአይ/ዩክስ ዲዛይነር",
+            "testimonial": "የዩአይ/ዩክስ ዲዛይን ቡትካምፕ አስደናቂ፣ በተጠቃሚ ላይ የተመሰረቱ ዲዛይኖችን እንድፈጥር አስተምሮኛል። የእኔ ፖርትፎሊዮ የመጀመሪያዬን ትልቅ ደንበኛ አግኝቶልኛል!"
          },
-         "bereket-tadesse": {
-            "id": "bereket-tadesse",
-            "name": "በረከት ታደሰ",
-            "title": "የሶፍትዌር ባለሙያ፣ Gigasystems",
-            "testimonial": "“ኮርሶቹ እዚህ በእውነት ልዩ ልዩ አድርገው የስራዬን ሙያ በፍጥነት ያደጉ። በጣም የሚመከሩ!”"
+         "getahun-lemma": {
+            "id": "getahun-lemma",
+            "name": "ጌታሁን ለማ",
+            "title": "የሞባይል አፕ ዲቨሎፐር",
+            "testimonial": "የሞባይል አፕ ዲቨሎፕመንት ቡትካምፕ አንድሮይድ እና አይኦኤስ መተግበሪያዎችን ከመሠረቱ ለመገንባት ክህሎቶችን ሰጥቶኛል። አሁን ለእውነተኛ ደንበኞች መተግበሪያዎችን እየሰራሁ ነው።"
          },
-         "mahlet-sahle": {
-            "id": "mahlet-sahle",
-            "name": "ማህሌት ሳህሌ",
-            "title": "የዳታ አናሊስት",
-            "testimonial": "“የእነርሱ ልዩ ኮርስ መገናኛ ለእኔ ተለዋዋጭ ሆነ። ዳታ አናሊስት ለመቆም የያዘውን ክህሎት ሰጥቻል።”"
+         "muluwork-tesfaye": {
+            "id": "muluwork-tesfaye",
+            "name": "ሙሉወርቅ ተስፋዬ",
+            "title": "ፓይዘን ዲቨሎፐር",
+            "testimonial": "የእነሱ ልዩ ኮርስ ለእኔ ሙሉ �ውጥ አምጥቶልኛል። እንደ ዳታ አናላይስት ሙያዬን ለመጀመር የሚያስፈልጉትን ክህሎቶች ሰጥቶኛል።"
          },
-         "solomon-belay": {
-            "id": "solomon-belay",
-            "name": "ሰሎሞን በላይ",
-            "title": "ልማት ባለሙያ",
-            "testimonial": "“አስተማሪዎቹ ብልህናን እና ማስተማር ችሎታዎቻቸውን በትክክል አሳዩኝ።”"
+         "yohannes-asfaw": {
+            "id": "yohannes-asfaw",
+            "name": "ዮሐንስ አስፋው",
+            "title": "ሙሉ-ስታክ ዲቨሎፐር",
+            "testimonial": "የሙሉ-ስታክ ቡትካምፕ ሁለቱንም ቴክኒካዊ ጥልቀት እና እውነተኛ የፕሮጀክት ልምድ ሰጥቶኛል። በሙያዬ ላይ �ለው ከሁሉ ጥሩ ኢንቨስትመንት ነበር!"
          }
       }
    },
@@ -456,19 +456,19 @@
       "subtitle": "ዓለም አቀፍ የመማር ማህበር ጋር ተቀላቀሉ እና ሙያዎን በኢንዱስትሪ የተለየ ኮርሶች ያበረክቱ።",
       "successMetrics": [
          {
-            "value": "51,000+",
+            "value": "2,000+",
             "label": "ተማሪዎች"
          },
          {
-            "value": "301+",
+            "value": "21+",
             "label": "ኮርሶች"
          },
          {
-            "value": "251+",
+            "value": "51+",
             "label": "የስራ ስፍራ ቦታዎች"
          },
          {
-            "value": "15,000+",
+            "value": "2,500+",
             "label": "የይዘት ሰዓታት"
          }
       ]
