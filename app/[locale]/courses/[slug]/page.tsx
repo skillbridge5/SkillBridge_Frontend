@@ -242,9 +242,9 @@ if (loading) {
                 <Badge variant='outline'>{course.level}</Badge>
                 <div className='flex items-center ml-auto'>
                   <Star className='h-4 w-4 fill-yellow-400 text-yellow-400 mr-1' />
-                  <span className='font-medium'>{course.rating}</span>
+                  <span className='font-medium'>{course.rating || 0}</span>
                   <span className='text-gray-500 ml-1'>
-                    ({course.reviews} {courseMessages.reviews})
+                    ({course.reviews} {courseMessages.reviews || 0})
                   </span>
                 </div>
               </div>

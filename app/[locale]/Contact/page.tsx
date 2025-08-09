@@ -40,15 +40,14 @@ const Contact = () => {
         <div className="flex flex-col lg:flex-row gap-8">
           <div className="flex-1 space-y-6 shadow-md p-8 rounded-lg bg-white dark:bg-gray-800 transition-colors duration-300">
             <h1 className="text-4xl font-bold text-[#2196F3] dark:text-blue-400">
-              Get <span className="text-orange-500 dark:text-orange-400">In Touch</span> With Us
+              {t('span1')} <span className="text-orange-500 dark:text-orange-400">{t('span2')}</span> {t('span3')}
             </h1>
             <p>
-              We're happy to help! Reach out to us for any questions, feedback,
-              or support.
+              {t("description")}
             </p>
             <div className="space-y-4">
               <div>
-                <h4 className="font-semibold text-gray-900 dark:text-gray-100">📞 Phone number</h4>
+                <h4 className="font-semibold text-gray-900 dark:text-gray-100">📞 {t("phoneLabel")}</h4>
                 <p>+251-901-123-456</p>
               </div>
               <div>
@@ -56,11 +55,11 @@ const Contact = () => {
                 <a href="mailto:skillbridgeinstituteoftech@gmail.com" className="">skillbridgeinstituteoftech@gmail.com</a>
               </div>
               <div>
-                <h4 className="font-semibold text-gray-900 dark:text-gray-100">📍 Office address</h4>
-                <p>Addis Ababa, Ethiopia</p>
+                <h4 className="font-semibold text-gray-900 dark:text-gray-100">📍 {t("office")}</h4>
+                <p>{t("office_info")}</p>
               </div>
               <div>
-                <h4 className="font-semibold text-gray-900 dark:text-gray-100">📨 Telegram</h4>
+                <h4 className="font-semibold text-gray-900 dark:text-gray-100">📨 {t("telegram")}</h4>
 
                 <p>@skillbridgesupport2</p>
               </div>
@@ -72,11 +71,11 @@ const Contact = () => {
 
             className="flex-1 shadow-md p-8 rounded-lg bg-white dark:bg-gray-800 space-y-4 transition-colors duration-300"
           >
-            <h2 className="text-2xl font-bold mb-2 text-gray-900 dark:text-gray-100">Send Us a Message</h2>
+            <h2 className="text-2xl font-bold mb-2 text-gray-900 dark:text-gray-100">{t("message")}</h2>
             <input
               name="name"
               type="text"
-              placeholder="Your Name"
+              placeholder={t("namePlaceholder")}
               className="w-full border px-4 py-2 rounded dark:bg-gray-700 dark:text-gray-50 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={form.name}
               onChange={handleChange}
@@ -86,7 +85,7 @@ const Contact = () => {
 
               name="email"
               type="email"
-              placeholder="Email"
+              placeholder={t("emailPlaceholder")}
               className="w-full border px-4 py-2 rounded dark:bg-gray-700 dark:text-gray-50 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={form.email}
               onChange={handleChange}
@@ -95,7 +94,7 @@ const Contact = () => {
             <input
               name="phone"
               type="text"
-              placeholder="Phone"
+              placeholder={t("phonePlaceholder")}
               className="w-full border px-4 py-2 rounded dark:bg-gray-700 dark:text-gray-50 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
 
               value={form.phone}
@@ -103,7 +102,7 @@ const Contact = () => {
             />
             <textarea
               name="message"
-              placeholder="Your Message"
+              placeholder= {t("messagePlaceholder")}
               className="w-full border px-4 py-2 rounded h-32 dark:bg-gray-700 dark:text-gray-50 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
 
               value={form.message}
@@ -123,7 +122,7 @@ const Contact = () => {
 
         <div className="mt-16">
           <h2 className="text-xl font-semibold text-center mb-4 text-gray-900 dark:text-gray-100">
-            Find Us On the Map
+            {t("mapTitle")}
           </h2>
           <div className="w-full h-96 rounded-lg overflow-hidden border dark:border-gray-700">
 
