@@ -117,8 +117,7 @@ export function TestimonialsSection() {
                           <Avatar className='w-10 h-10 md:w-14 md:h-14 xl:w-16 xl:h-16 2xl:w-20 2xl:h-20 -mt-8 mb-4'>
                             <AvatarImage
                               src={
-                                testimonial.image ||
-                                imagePaths.placeholders.avatar
+                                imagePaths.placeholders.avatar || testimonial.image
                               }
                               alt={testimonial.name}
                             />

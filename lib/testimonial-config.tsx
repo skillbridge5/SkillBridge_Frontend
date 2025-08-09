@@ -2,28 +2,28 @@ import { imagePaths } from "@/app/[locale]/data/image-paths";
 import { TestimonialConfig } from "@/types";
 
 export const TestimonialsConfig: TestimonialConfig[] = [{
-   key: "daniel-semach",
+   key: "nahom-bekele",
    image: imagePaths.testimonials.danielSemagn,
 
 },
 {
-   key: "debora-resimul",
+   key: "kalkidan-yifru",
    image: imagePaths.testimonials.deboraResimul,
 },
 {
-   key: "lualawit-abera",
+   key: "melat-abebe",
    image: imagePaths.testimonials.lualawitAbera,
 },
 {
-   key: "bereket-tadesse",
+   key: "getahun-lemma",
    image: imagePaths.testimonials.danielSemagn,
 },
 {
-   key: "mahlet-sahle",
+   key: "muluwork-tesfaye",
    image: imagePaths.testimonials.deboraResimul,
 },
 {
-   key: "solomon-belay",
-   image: imagePaths.testimonials.lualawitAbera,
+   key: "yohannes-asfaw",
+   image: imagePaths.testimonials.danielSemagn,
 }
 ]
