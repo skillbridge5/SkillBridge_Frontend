@@ -78,7 +78,7 @@
          },
          {
             "name": "Contact Us",
-            "path": "/Contact",
+            "path": "/contact",
             "type": "link"
          }
       ],

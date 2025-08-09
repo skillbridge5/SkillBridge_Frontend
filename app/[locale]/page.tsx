@@ -6,12 +6,12 @@ import { InstructorsSection } from "@/app/[locale]/components/instructors-sectio
 import { TestimonialsSection } from "@/app/[locale]/components/testimonials-section";
 import { SuccessSection } from "@/app/[locale]/components/success-section";
 import Footer from "@/app/[locale]/components/footer";
-import { Helmet } from "react-helmet";
+import Head from "next/head";
 
 export default function Home() {
   return (
     <>
-    <Helmet>
+    <Head>
       <title>SkillBridge | Upskill with Expert-Led Courses & Training</title>
       <meta
         name="description"
@@ -28,8 +28,9 @@ export default function Home() {
       <meta property="og:image" content="https://i.ibb.co/ZRYfMLWK/skills.png" />
       <meta property="og:url" content="https://skill-bridge-iot.vercel.app/" />
       <meta name="google-site-verification" content="tK8jg7pTludPfa4R8AfjqPslodhRAJbKY1AYdI_z70g" />
+      
 
-    </Helmet>
+    </Head>
     <div className='min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300 font-montserrat'>
       <Navbar />
       <HeroSection />
