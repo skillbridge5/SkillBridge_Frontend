@@ -89,7 +89,7 @@ export function CoursesSection() {
                       <img
                         src={course.image}
                         alt={course.title}
-                        className='w-full h-[200px] 2xl:h-[250px] object-cover rounded-sm'
+                        className='w-full h-[180px] 2xl:h-[220px] object-cover rounded-sm'
                       />
                       <div className='absolute bottom-4 left-4'>
                         <Badge
@@ -150,7 +150,7 @@ export function CoursesSection() {
                     </div>
                   </CardContent>
 
-                  <CardFooter className='px-4 py-4 flex gap-3'>
+                  <CardFooter className='px-4 flex gap-3'>
                     {/* View Details Button */}
                     <Button
                       variant='outline'

@@ -72,7 +72,7 @@ export default function AboutPage() {
               <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 text-center shadow-lg w-80 h-80 flex flex-col justify-center">
                 <div className="w-32 h-32 mx-auto mb-4 relative">
                   <Image
-                    src="/skills.png?height=128&width=128"
+                    src="https://i.ibb.co/ZRYfMLWK/skills.png?height=128&width=128"
                     alt="SkillBridge Logo"
                     width={128}
                     height={128}
@@ -103,8 +103,9 @@ export default function AboutPage() {
             </div>
             <div className="relative">
               <div className="aspect-[4/3] bg-gray-200 dark:bg-gray-800 rounded-2xl overflow-hidden">
+              
                 <Image
-                  src="/about_image1.webp?height=400&width=500"
+                  src="https://i.ibb.co/whBnS4Nh/about_image1.webp?height=400&width=500"
                   alt="Our Story Image"
                   width={500}
                   height={400}
@@ -215,8 +216,9 @@ export default function AboutPage() {
             </div>
             <div className="relative">
               <div className="aspect-square bg-gray-900 dark:bg-gray-700 rounded-2xl overflow-hidden">
+
                 <Image
-                  src="/about_image2.jpg?height=500&width=500"
+                  src="https://i.ibb.co/gZjJvXrd/about_image2.jpg?height=500&width=500"
                   alt="Learning Methodology"
                   width={500}
                   height={500}
@@ -316,8 +318,9 @@ export default function AboutPage() {
             </div>
             <div className="relative">
               <div className="aspect-[4/5] bg-gray-900 dark:bg-gray-700 rounded-2xl overflow-hidden">
+              
                 <Image
-                  src="/about_image3.webp?height=600&width=480"
+                  src="https://i.ibb.co/mryqG1PX/about-image3.webp?height=600&width=480"
                   alt="Complete Learning Paths"
                   width={480}
                   height={600}
