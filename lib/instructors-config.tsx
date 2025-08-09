@@ -2,19 +2,19 @@ import { InstructorsConfig } from '@/types';
 import { imagePaths } from '../app/[locale]/data/image-paths';
 export const instructorsConfig: InstructorsConfig[] = [
    {
-      key: "tafara-makaza",
+      key: "biniyam-tamrat",
       image: imagePaths.instructors.tafaraMakaza,
    },
    {
-      key: "ange-mannah",
+      key: "amare-tilaye",
       image: imagePaths.instructors.angeMannah,
    },
    {
-      key: "eke-agulu",
+      key: "dagemawi-bekele",
       image: imagePaths.instructors.ekeAgulu
    },
    {
-      key: "mike-mahlangu",
+      key: "nathenael-adinew",
       image: imagePaths.instructors.mikeMahlangu
    }
 ]

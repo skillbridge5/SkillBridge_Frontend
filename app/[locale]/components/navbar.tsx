@@ -137,8 +137,9 @@ export function Navbar() {
         >
           <div className='flex justify-between items-center p-4 border-b'>
             <div className='flex items-center gap-2'>
+              
               <Image
-                src='/skills.png'
+                src='https://i.ibb.co/ZRYfMLWK/skills.png'
                 alt='Skill Bridge Mobile Logo'
                 width={36}
                 height={36}

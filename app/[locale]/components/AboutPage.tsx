@@ -71,30 +71,21 @@ export default function AboutPage() {
               <Star className="w-3 h-3 sm:w-4 sm:h-4" style={{ color: "#2196F3" }} />
               <span style={{ color: "#2196F3" }}>4.8/5 {aboutPage.ratingText}</span>
             </div>
-            <div className="flex items-center gap-2">
-              <Trophy className="w-3 h-3 sm:w-4 sm:h-4" style={{ color: "#2196F3" }} />
-              <span style={{ color: "#2196F3" }}>{aboutPage.jobText}</span>
-            </div>
+            <div className="flex justify-center">
+              <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 text-center shadow-lg w-80 h-80 flex flex-col justify-center">
+                <div className="w-32 h-32 mx-auto mb-4 relative">
+                  <Image
+                    src="https://i.ibb.co/ZRYfMLWK/skills.png?height=128&width=128"
+                    alt="SkillBridge Logo"
+                    width={128}
+                    height={128}
+                    className="rounded-full"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">SkillBridge</h3>
+                <p className="text-gray-600 dark:text-gray-400 font-medium">Institute Of Technology</p>
+              </div>
           </div>
-        </div>
-
-        {/* Image Content */}
-        <div className="flex justify-center order-1 lg:order-2">
-          <div className="bg-white dark:bg-gray-800 rounded-3xl p-4 sm:p-6 md:p-8 text-center shadow-lg w-full max-w-[280px] sm:max-w-[320px] md:max-w-[350px] h-auto aspect-square flex flex-col justify-center opacity-90">
-            <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 mx-auto mb-3 sm:mb-4 relative">
-              <Image
-                src="/images/about/skills.png"
-                alt="SkillBridge Logo"
-                width={128}
-                height={128}
-                className="rounded-full"
-                priority
-              />
-            </div>
-            <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 dark:text-white mb-1">SkillBridge</h3>
-            <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base font-medium">Institute Of Technology</p>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -113,8 +104,10 @@ export default function AboutPage() {
             </div>
             <div className="relative">
               <div className="aspect-[4/3] bg-gray-200 dark:bg-gray-800 rounded-2xl overflow-hidden">
+              
                 <Image
-                  src="/images/about/about_image1.webp"
+                  src="https://i.ibb.co/whBnS4Nh/about_image1.webp?height=400&width=500"
+
                   alt="Our Story Image"
                   width={500}
                   height={400}
@@ -224,8 +217,9 @@ export default function AboutPage() {
             </div>
             <div className="relative">
               <div className="aspect-square bg-gray-900 dark:bg-gray-700 rounded-2xl overflow-hidden">
+
                 <Image
-                  src="/images/about/about_image2.jpg"
+                  src="https://i.ibb.co/gZjJvXrd/about_image2.jpg?height=500&width=500"
                   alt="Learning Methodology"
                   width={500}
                   height={500}
@@ -323,8 +317,9 @@ export default function AboutPage() {
             </div>
             <div className="relative">
               <div className="aspect-[4/5] bg-gray-900 dark:bg-gray-700 rounded-2xl overflow-hidden">
+              
                 <Image
-                  src="/images/about/about_image3.webp"
+                  src="https://i.ibb.co/mryqG1PX/about-image3.webp?height=600&width=480"
                   alt="Complete Learning Paths"
                   width={480}
                   height={600}

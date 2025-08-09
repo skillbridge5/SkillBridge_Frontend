@@ -57,7 +57,7 @@ export function InstructorsSection() {
                       <Avatar className='w-32 h-32'>
                         <AvatarImage
                           src={
-                            instructor.image || imagePaths.placeholders.avatar
+                            imagePaths.placeholders.avatar || instructor.image
                           }
                           alt={instructor.name}
                           className='w-full h-full object-cover transition-transform duration-500 hover:scale-110'
