@@ -475,12 +475,12 @@ if (loading) {
                 <div className='p-6'>
                   <div className='flex items-baseline gap-2 mb-4'>
                     <span className='text-3xl font-bold'>
-                      ${course.discount > 0 ? course.discount : course.price}
+                      {course.discount > 0 ? course.discount : course.price} <span className="text-sm">{"ETB"}</span>
                     </span>
 
                     {course.discount > 0 ? (
                       <span className='text-lg text-gray-500 line-through'>
-                        ${course.price}
+                        {course.price} <span className="text-xs">{" ETB"}</span>
                       </span>
                     ) : null}
                     <Badge className='ml-auto bg-green-500'>
@@ -502,15 +502,15 @@ if (loading) {
                       <div className='flex items-center space-x-2'>
                         <RadioGroupItem value='one-time' id='one-time' />
                         <Label htmlFor='one-time'>
-                          {courseMessages.tabContent.otp} ($
-                          {course.discount > 0 ? course.discount : course.price}
+                          {courseMessages.tabContent.otp} (
+                          {course.discount > 0 ? course.discount : course.price } <span className="text-sm">{" ETB"} </span>
                           )
                         </Label>
                       </div>
                       <div className='flex items-center space-x-2'>
                         <RadioGroupItem value='monthly' id='monthly' />
                         <Label htmlFor='monthly'>
-                          {courseMessages.tabContent.subscription} ($
+                          {courseMessages.tabContent.subscription} (
                           {(() => {
                             // Extract number and unit from duration string (e.g., "12 week")
                             const match =
@@ -533,7 +533,7 @@ if (loading) {
                                 ? course.discount
                                 : course.price;
                             return Math.round(price / months);
-                          })()}
+                          })()} <span className="text-sm">{" ETB"}</span> 
                           {courseMessages.tabContent.perMonth}{" "}
                           {(() => {
                             const match =
