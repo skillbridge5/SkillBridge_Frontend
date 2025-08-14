@@ -56,7 +56,7 @@ export function HeroSection() {
             </Button>
             <Button
               variant='outline'
-              className='bg-[#F57C00] text-[#121618] border-blue-100 hover:bg-orange-500 hover:text-blue-800 h-11 px-8 dark:bg-orange-800/20 dark:border-blue-800/30 dark:text-orange-400 dark:hover:bg-orange-700/30 transition-transform hover:scale-105 scale-96 sm:scale-100 2xl:scale-110 min-[1710px]:h-14 min-[1710px]:text-lg'
+              className='bg-[#F57C00] text-white border-blue-100 hover:bg-orange-500 hover:text-white h-11 px-8 dark:bg-[#F57C00] dark:border-blue-800/30 dark:text-white dark:hover:bg-orange-500 transition-transform hover:scale-105 scale-96 sm:scale-100 2xl:scale-110 min-[1710px]:h-14 min-[1710px]:text-lg'
               // make the button as a link
               asChild>
               <Link href='/contact'>{t("hero.contact")}</Link>

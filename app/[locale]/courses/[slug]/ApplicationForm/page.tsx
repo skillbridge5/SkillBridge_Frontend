@@ -56,6 +56,7 @@ const ApplicationForm = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [coursePrice, setCoursePrice] = useState<number | null>(null); 
+  const [courseName, setCourseName] = useState<string>('');
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const currentUserString = sessionStorage.getItem('currentUser');
@@ -128,6 +129,7 @@ const ApplicationForm = () => {
           const priceToUse = foundCourse.priceDiscounted > 0 ? foundCourse.priceDiscounted : foundCourse.priceOriginal;
           setCoursePrice(priceToUse);
           setForm((prev) => ({ ...prev, courseId: foundCourse.id }));
+          setCourseName(foundCourse.title);
           console.log(`Course found! ID: ${foundCourse.id}, Price: ${priceToUse}`);
         } else {
           toast.error(`Course with slug "${slug}" not found. Please ensure the course exists.`);
@@ -312,6 +314,7 @@ const ApplicationForm = () => {
       agreeTerms: false,
       confirmAccuracy: false,
     });
+    setCourseName('');
     setCurrentStep(1);
   };
 
@@ -535,15 +538,24 @@ const ApplicationForm = () => {
                       htmlFor='courseId'
                       className='block text-sm font-medium mb-1 dark:text-gray-200'
                     >
-                      {t("fields.course.label")}
+                      Selected Course*
                     </label>
                     <input
                       id='courseId'
                       name='courseId'
-                      value={form.courseId}
+                      value={courseName || 'Loading course...'}
                       readOnly
-                      className='w-full p-3 border border-gray-300 dark:border-gray-700 rounded-md bg-gray-100 dark:bg-gray-700 shadow-sm dark:text-gray-100 transition-colors duration-300'
+                      className={`w-full p-3 border rounded-md bg-gray-100 dark:bg-gray-700 shadow-sm dark:text-gray-100 transition-colors duration-300 ${
+                        courseName 
+                          ? 'border-green-500 dark:border-green-400' 
+                          : 'border-gray-300 dark:border-gray-700'
+                      }`}
                     />
+                    {coursePrice && courseName && (
+                      <p className="mt-1 text-sm text-green-600 dark:text-green-400 font-medium">
+                        Price: ${coursePrice}
+                      </p>
+                    )}
                   </div>
                   <div className='relative'>
                     <label

@@ -89,7 +89,7 @@ export function InstructorsSection() {
                         <p className='text-xs text-gray-500 dark:text-gray-400'>
                           {instructor.description}
                         </p>
-                        <div className='flex items-center pt-2'>
+                        {/* <div className='flex items-center pt-2'>
                           {instructor.socialLinks?.twitter && (
                             <Link
                               href={instructor.socialLinks.twitter}
@@ -106,7 +106,7 @@ export function InstructorsSection() {
                               <Linkedin size={14} />
                             </Link>
                           )}
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   </HoverCardContent>
@@ -120,7 +120,7 @@ export function InstructorsSection() {
                 <p className='text-gray-600 dark:text-gray-400 text-sm mb-3'>
                   {instructor.description}
                 </p>
-                <div className='flex justify-center gap-3'>
+                {/* <div className='flex justify-center gap-3'>
                   {instructor.socialLinks?.twitter && (
                     <Link
                       href={instructor.socialLinks.twitter}
@@ -137,7 +137,7 @@ export function InstructorsSection() {
                       <Linkedin size={16} />
                     </Link>
                   )}
-                </div>
+                </div> */}
               </div>
             </AnimatedCard>
           ))}
