@@ -18,35 +18,33 @@ const slugify = (text: string) => {
     .toString()
     .toLowerCase()
     .trim()
-    .replace(/\s+/g, '-')    
-    .replace(/[^\w-]+/g, '')  
-    .replace(/--+/g, '-');     
+    .replace(/\s+/g, "-")
+    .replace(/[^\w-]+/g, "")
+    .replace(/--+/g, "-");
 };
 
 const ApplicationForm = () => {
-
-  const t = useTranslations('applicationForm')
-  const f = t.raw('fields')
-  const pathname = usePathname()
-  const slug = decodeURIComponent(pathname.split('/').slice(-2, -1)[0])
-  const router = useRouter()
+  const t = useTranslations("applicationForm");
+  const f = t.raw("fields");
+  const pathname = usePathname();
+  const slug = decodeURIComponent(pathname.split("/").slice(-2, -1)[0]);
+  const router = useRouter();
   const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
-
 
   const [currentStep, setCurrentStep] = useState(1);
   const [form, setForm] = useState({
-    fullName: '',
-    dateOfBirth: '',
-    gender: '',
-    nationality: '',
-    email: '',
-    phone: '',
-    telegramHandle: '',
-    university: '',
-    address: '',
-    courseId: '',
-    paymentMethod: '',
-    paymentOption: '',
+    fullName: "",
+    dateOfBirth: "",
+    gender: "",
+    nationality: "",
+    email: "",
+    phone: "",
+    telegramHandle: "",
+    university: "",
+    address: "",
+    courseId: slug ? slug : "",
+    paymentMethod: "",
+    paymentOption: "",
     receipt: null as File | null,
     paymentReference: "",
     marketingSource: "",
@@ -55,11 +53,11 @@ const ApplicationForm = () => {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [coursePrice, setCoursePrice] = useState<number | null>(null); 
-  const [courseName, setCourseName] = useState<string>('');
+  const [coursePrice, setCoursePrice] = useState<number | null>(null);
+  const [courseName, setCourseName] = useState<string>("");
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const currentUserString = sessionStorage.getItem('currentUser');
+    if (typeof window !== "undefined") {
+      const currentUserString = sessionStorage.getItem("currentUser");
       if (currentUserString) {
         try {
           const currentUser = JSON.parse(currentUserString);
@@ -69,7 +67,10 @@ const ApplicationForm = () => {
             email: currentUser.email || prev.email,
           }));
         } catch (error) {
-          console.error("Failed to parse currentUser from sessionStorage:", error);
+          console.error(
+            "Failed to parse currentUser from sessionStorage:",
+            error
+          );
         }
       }
     }
@@ -78,10 +79,12 @@ const ApplicationForm = () => {
     const fetchCourseDetailsBySlug = async () => {
       if (!slug || !API_BASE_URL) return;
 
-      const accessToken = sessionStorage.getItem('accessToken');
+      const accessToken = sessionStorage.getItem("accessToken");
 
       if (!accessToken) {
-        toast.error("Authentication required to load course details. Please log in.");
+        toast.error(
+          "Authentication required to load course details. Please log in."
+        );
         setCoursePrice(null);
         return;
       }
@@ -89,14 +92,14 @@ const ApplicationForm = () => {
       try {
         console.log("Attempting to fetch all courses for URL slug:", slug);
         const response = await fetch(`${API_BASE_URL}/courses`, {
-          method: 'GET',
+          method: "GET",
           headers: {
-            'Authorization': `Bearer ${accessToken}`
+            Authorization: `Bearer ${accessToken}`,
           },
         });
 
         if (!response.ok) {
-          let errorMessage = 'Failed to fetch all courses.';
+          let errorMessage = "Failed to fetch all courses.";
           try {
             const errorData = await response.json();
             errorMessage = errorData.message || errorMessage;
@@ -105,7 +108,9 @@ const ApplicationForm = () => {
           }
 
           if (response.status === 401) {
-            toast.error(`Session expired or unauthorized: ${errorMessage}. Please log in again.`);
+            toast.error(
+              `Session expired or unauthorized: ${errorMessage}. Please log in again.`
+            );
           } else {
             toast.error(errorMessage);
           }
@@ -117,8 +122,10 @@ const ApplicationForm = () => {
 
         let foundCourse = null;
         for (const course of allCourses) {
-          const generatedSlug = slugify(course.title);
-          console.log(`Comparing URL slug "${slug}" with generated slug "${generatedSlug}" from title "${course.title}"`);
+          const generatedSlug = slugify(course.id);
+          console.log(
+            `Comparing URL slug "${slug}" with generated slug "${generatedSlug}" from title "${course.title}"`
+          );
           if (generatedSlug === slug) {
             foundCourse = course;
             break;
@@ -126,26 +133,36 @@ const ApplicationForm = () => {
         }
 
         if (foundCourse) {
-          const priceToUse = foundCourse.priceDiscounted > 0 ? foundCourse.priceDiscounted : foundCourse.priceOriginal;
+          const priceToUse =
+            foundCourse.priceDiscounted > 0
+              ? foundCourse.priceDiscounted
+              : foundCourse.priceOriginal;
           setCoursePrice(priceToUse);
           setForm((prev) => ({ ...prev, courseId: foundCourse.id }));
           setCourseName(foundCourse.title);
-          console.log(`Course found! ID: ${foundCourse.id}, Price: ${priceToUse}`);
+          console.log(
+            `Course found! ID: ${foundCourse.id}, Price: ${priceToUse}`
+          );
         } else {
-          toast.error(`Course with slug "${slug}" not found. Please ensure the course exists.`);
+          toast.error(
+            `Course with slug "${slug}" not found. Please ensure the course exists.`
+          );
           setCoursePrice(null);
-          setForm((prev) => ({ ...prev, courseId: '' }));
-          console.warn(`Course with slug "${slug}" not found in fetched courses.`);
+          setForm((prev) => ({ ...prev, courseId: "" }));
+          console.warn(
+            `Course with slug "${slug}" not found in fetched courses.`
+          );
         }
-
       } catch (error: any) {
         console.error("Error fetching course details by slug:", error);
-        toast.error(error.message || "An unexpected error occurred while loading course details.");
+        toast.error(
+          error.message ||
+            "An unexpected error occurred while loading course details."
+        );
       }
     };
     fetchCourseDetailsBySlug();
   }, [slug, API_BASE_URL]);
-
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -173,15 +190,16 @@ const ApplicationForm = () => {
   const validateStep1 = () => {
     const errors: string[] = [];
 
-    if (!form.fullName) errors.push('Full Name is required.');
-    if (!form.email) errors.push('Email Address is required.');
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) errors.push('Invalid Email Address.');
-    if (!form.phone) errors.push('Phone Number is required.');
-    if (!form.telegramHandle) errors.push('Telegram Handle is required.');
-    if (!form.university) errors.push('University is required.');
-    if (!form.address) errors.push('Address is required.');
-    if (!form.dateOfBirth) errors.push('Date of Birth is required.');
-    if (!form.gender) errors.push('Gender is required.');
+    if (!form.fullName) errors.push("Full Name is required.");
+    if (!form.email) errors.push("Email Address is required.");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
+      errors.push("Invalid Email Address.");
+    if (!form.phone) errors.push("Phone Number is required.");
+    if (!form.telegramHandle) errors.push("Telegram Handle is required.");
+    if (!form.university) errors.push("University is required.");
+    if (!form.address) errors.push("Address is required.");
+    if (!form.dateOfBirth) errors.push("Date of Birth is required.");
+    if (!form.gender) errors.push("Gender is required.");
 
     if (errors.length > 0) {
       toast.error(errors.join(" "));
@@ -207,7 +225,6 @@ const ApplicationForm = () => {
     if (!form.confirmAccuracy)
       errors.push("You must confirm the accuracy of the information.");
 
-
     if (errors.length > 0) {
       toast.error(errors.join(" "));
       return false;
@@ -231,59 +248,89 @@ const ApplicationForm = () => {
       return;
     }
 
+     // Store course data before submission
+  if (form.courseId && courseName) {
+    const basicCourseInfo = {
+      id: form.courseId,
+      title: courseName,
+      price: coursePrice,
+      // Add other basic info you want to preserve
+    };
+    
+    sessionStorage.setItem('lastEnrolledCourse', JSON.stringify(basicCourseInfo));
+    localStorage.setItem(`course-${form.courseId}`, JSON.stringify(basicCourseInfo));
+  }
     setIsSubmitting(true);
 
     try {
       const formData = new FormData();
 
-      formData.append('courseId', form.courseId);
-      formData.append('paymentMethod', form.paymentMethod);
-      formData.append('paymentReference', form.paymentReference);
-      formData.append('marketingSource', form.marketingSource || 'Direct');
-      formData.append('fullName', form.fullName);
+      formData.append("courseId", form.courseId);
+      formData.append("paymentMethod", form.paymentMethod);
+      formData.append("paymentReference", form.paymentReference);
+      formData.append("marketingSource", form.marketingSource || "Direct");
+      formData.append("fullName", form.fullName);
       if (form.dateOfBirth) {
-        formData.append('dateOfBirth', new Date(form.dateOfBirth).toISOString());
+        formData.append(
+          "dateOfBirth",
+          new Date(form.dateOfBirth).toISOString()
+        );
       }
       if (form.gender) {
-        formData.append('gender', form.gender);
+        formData.append("gender", form.gender);
       }
       if (form.nationality) {
-        formData.append('nationality', form.nationality);
+        formData.append("nationality", form.nationality);
       }
-      formData.append('university', form.university);
-      formData.append('email', form.email);
-      formData.append('phone', form.phone);
-      formData.append('telegramHandle', form.telegramHandle);
-      formData.append('address', form.address);
-      formData.append('paymentOption', form.paymentOption);
+      formData.append("university", form.university);
+      formData.append("email", form.email);
+      formData.append("phone", form.phone);
+      formData.append("telegramHandle", form.telegramHandle);
+      formData.append("address", form.address);
+      formData.append("paymentOption", form.paymentOption);
 
       if (form.receipt) {
-        formData.append('receipt', form.receipt);
+        formData.append("receipt", form.receipt);
       } else {
-        toast.error('Payment receipt is required.');
+        toast.error("Payment receipt is required.");
         setIsSubmitting(false);
         return;
       }
 
-      const response = await fetch(`${API_BASE_URL}/applications/with-receipt`, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
-        },
-        body: formData,
-      });
+      const response = await fetch(
+        `${API_BASE_URL}/applications/with-receipt`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
+          },
+          body: formData,
+        }
+      );
 
       const responseData = await response.json();
 
       if (!response.ok) {
         console.error("Application submission failed:", responseData);
-        throw new Error(responseData.message || 'Failed to submit application. Please check your inputs.');
+        throw new Error(
+          responseData.message ||
+            "Failed to submit application. Please check your inputs."
+        );
       }
 
-      toast.success('Application Submitted Successfully!');
+      toast.success("Application Submitted Successfully!");
       console.log("Application Process Completed:", responseData);
       handleReset();
-      router.push("/applications/success");
+
+
+      // Redirect with proper parameters
+      const params = new URLSearchParams();
+      params.set("courseId", form.courseId);
+      if (responseData.id) {
+        params.set("applicationId", responseData.id);
+      }
+
+      router.push(`/applications/success?${params.toString()}`);
     } catch (error: any) {
       console.error("Application submission error:", error);
       toast.error(
@@ -296,25 +343,25 @@ const ApplicationForm = () => {
 
   const handleReset = () => {
     setForm({
-      fullName: '',
-      dateOfBirth: '',
-      gender: '',
-      nationality: '',
-      email: '',
-      phone: '',
-      telegramHandle: '',
-      university: '',
-      address: '',
-      courseId: '', 
-      paymentMethod: '',
-      paymentOption: '',
+      fullName: "",
+      dateOfBirth: "",
+      gender: "",
+      nationality: "",
+      email: "",
+      phone: "",
+      telegramHandle: "",
+      university: "",
+      address: "",
+      courseId: "",
+      paymentMethod: "",
+      paymentOption: "",
       receipt: null,
       paymentReference: "",
       marketingSource: "",
       agreeTerms: false,
       confirmAccuracy: false,
     });
-    setCourseName('');
+    setCourseName("");
     setCurrentStep(1);
   };
 
@@ -325,8 +372,6 @@ const ApplicationForm = () => {
     awash: "to: Ibrahim Ghazali\nXXXXXXXXXXX",
     cash: "Pay at our office. No receipt upload required for this method.",
   };
-
-
 
   return (
     <>
@@ -543,16 +588,16 @@ const ApplicationForm = () => {
                     <input
                       id='courseId'
                       name='courseId'
-                      value={courseName || 'Loading course...'}
+                      value={courseName || "Loading course..."}
                       readOnly
                       className={`w-full p-3 border rounded-md bg-gray-100 dark:bg-gray-700 shadow-sm dark:text-gray-100 transition-colors duration-300 ${
-                        courseName 
-                          ? 'border-green-500 dark:border-green-400' 
-                          : 'border-gray-300 dark:border-gray-700'
+                        courseName
+                          ? "border-green-500 dark:border-green-400"
+                          : "border-gray-300 dark:border-gray-700"
                       }`}
                     />
                     {coursePrice && courseName && (
-                      <p className="mt-1 text-sm text-green-600 dark:text-green-400 font-medium">
+                      <p className='mt-1 text-sm text-green-600 dark:text-green-400 font-medium'>
                         Price: ${coursePrice}
                       </p>
                     )}
@@ -588,7 +633,6 @@ const ApplicationForm = () => {
                     </select>
                     <ArrowDown className='absolute right-3 top-1/2 -translate-y-1/2 rotate-90 text-gray-400 dark:text-gray-500 pointer-events-none w-5 h-5' />
                     {form.paymentMethod && (
-
                       <p className='mt-2 text-sm text-gray-700 dark:text-gray-200 whitespace-pre-line bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 p-3 rounded shadow-sm transition-colors duration-300'>
                         {
                           paymentOptions[
@@ -777,6 +821,4 @@ const ApplicationForm = () => {
   );
 };
 
-
 export default ApplicationForm;
-
