@@ -60,6 +60,7 @@ export default function CoursesPage() {
           description: course.shortDescription,
           rating: course.rating || 0,
           reviews: course.reviews || 0,
+          startDate: course.startDate || "",
 
           instructor: course.instructor?.name,
           image: course.imageUrl || coursesConfig[course.id]?.image,
@@ -228,9 +229,14 @@ export default function CoursesPage() {
                         </CardHeader>
                         <CardContent className='px-4'>
                           {/* Category */}
+                          <div className="mb-1 flex items-center justify-between">
+
                           <p className='text-sky-500 font-medium text-xs md:text-sm lg:text-base  2xl:text-lg mb-1'>
                             {course.categoryName}
                           </p>
+
+                          <p><span className='font-semibold'>{t("coursePage.startDate")}:</span> {course.startDate}</p>
+                          </div>
 
                           {/* Title with Arrow */}
                           <div className='flex justify-between items-start my-2'>

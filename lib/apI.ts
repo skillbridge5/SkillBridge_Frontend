@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'https://skillbridge-backend2.onrender.com/api';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://skillbridge-backend2.onrender.com/api';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -24,6 +24,7 @@ interface Course {
   imageUrl: string;
   reviews: number;
   rating: number;
+  startDate: string;
   studentsEnrolled: number;
   categoryId: string;
   instructorId: string;
