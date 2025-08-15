@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Button } from "@/app/[locale]/components/ui/button";
 import { Search, Menu, X, Globe } from "lucide-react";
 import { ThemeToggle } from "@/app/[locale]/components/theme-toggle";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import "./styles/style.css";
@@ -16,6 +16,21 @@ export function Navbar() {
   const [openStates, setOpenStates] = useState<Record<string, boolean>>({});
   const [isOpen, setIsOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [user, setUser] = useState<any>(null);
+
+  useEffect(() => {
+    // Check if user is logged in
+    if (typeof window !== 'undefined') {
+      const userData = localStorage.getItem('currentUser');
+      if (userData) {
+        try {
+          setUser(JSON.parse(userData));
+        } catch (error) {
+          console.error("Error parsing user data:", error);
+        }
+      }
+    }
+  }, []);
 
   const isActive = (path: string) => {
     return pathname === path || (path !== "/" && pathname.startsWith(path));
@@ -31,6 +46,13 @@ export function Navbar() {
     const locale = e.target.value;
     const newPath = `/${locale}${pathname?.replace(/^\/[a-z]{2}/, "")}`;
     router.push(newPath);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('currentUser');
+    localStorage.removeItem('accessToken');
+    setUser(null);
+    router.push('/');
   };
 
   const t = useTranslations();
@@ -70,29 +92,6 @@ export function Navbar() {
               </div>
               <div className='flex max-[375px]:gap-3 min-[375px]:gap-6 sm:gap-10 min-[1760px]:gap-16 items-center justify-between'>
 
-                {/* //? Search Bar : this will be implemented with full functionality later */ }
-                {/* <div className='search_bar flex items-center border border-gray-200 dark:border-gray-700 rounded-full pl-4 pr-2 py-0.5 sm:py-1.5 lg:py-1 xl:py-1.5 2xl:py-2 2xl:pl-8 2xl:pr-3 w-[220px] min-[500px]:w-[260px] sm:w-[280px] md:w-[240px] lg:w-[180px] xl:w-[280px] 2xl:w-[320px] max-[375px]:mr-1 min-[375px]:mr-4 min-[500px]:mr-7 sm:mr-4 md:mr-16 min-[920px]:mr-8 lg:mr-4 xl:mr-1'>
-                  <input
-                    type='text'
-                    placeholder={t("navbar.searchPlaceholder")}
-                    className='bg-transparent outline-none text-xs sm:text-sm lg:text-xs xl:text-sm 2xl:text-lg w-full dark:text-white'
-                  />
-                  <Button
-                    size='icon'
-                    variant='ghost'
-                    className='h-7 w-7 rounded-full'
-                  >
-                    <Search size={16} className='text-[#2196F3]' />
-                  </Button>
-                </div> */}
-                <Button
-                  size='sm'
-                  className='hidden md:block bg-[#2196F3] hover:bg-blue-500 h-9 2xl:h-12 px-5'
-                >
-                  <Link href='/login' className='text-base 2xl:text-lg'>
-                    {t("navbar.getStarted")}
-                  </Link>
-                </Button>
                 <div className='flex gap-2 items-center justify-center'>
                   <label htmlFor='lang'>
                     <Globe className='h-5 w-5 text-gray-700 dark:text-gray-300 hover:text-[#2196F3] cursor-pointer' />
@@ -111,6 +110,52 @@ export function Navbar() {
                 <div className='hidden md:block'>
                   <ThemeToggle />
                 </div>
+
+                {user ? (
+                  <div className="relative group">
+                    <button 
+                      className="flex items-center gap-2"
+                      onClick={() => router.push('/profile')}
+                    >
+                      <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white">
+                        {user.name.charAt(0).toUpperCase()}
+                      </div>
+                      <span className="hidden md:inline text-sm font-medium">
+                        {user.name.split(' ')[0]}
+                      </span>
+                    </button>
+                    <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 z-50 hidden group-hover:block">
+                      <Link
+                        href="/profile"
+                        className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                      >
+                        {t('navbar.profile')}
+                      </Link>
+                      <Link
+                        href="/my-courses"
+                        className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                      >
+                        {t('navbar.myCourses')}
+                      </Link>
+                      <button
+                        onClick={handleLogout}
+                        className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-700"
+                      >
+                        {t('navbar.logout')}
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <Button
+                    size='sm'
+                    className='hidden md:block bg-[#2196F3] hover:bg-blue-500 h-9 2xl:h-12 px-5'
+                  >
+                    <Link href='/login' className='text-base 2xl:text-lg'>
+                      {t("navbar.getStarted")}
+                    </Link>
+                  </Button>
+                )}
+
                 <button
                   className='lg:hidden rounded-md py-2 sm:p-2 hover:bg-gray-100 dark:hover:bg-gray-800'
                   onClick={() => setIsOpen(true)}
@@ -122,6 +167,7 @@ export function Navbar() {
         </section>
       </header>
 
+      {/* Mobile Menu */}
       <div className='lg:hidden'>
         {isOpen && (
           <div
@@ -137,7 +183,6 @@ export function Navbar() {
         >
           <div className='flex justify-between items-center p-4 border-b'>
             <div className='flex items-center gap-2'>
-              
               <Image
                 src='https://i.ibb.co/ZRYfMLWK/skills.png'
                 alt='Skill Bridge Mobile Logo'
@@ -163,12 +208,29 @@ export function Navbar() {
               <div className='block md:hidden'>
                 <ThemeToggle />
               </div>
-              <Button
-                size='sm'
-                className='block md:hidden bg-[#2196F3] hover:bg-blue-500 h-9 px-5'
-              >
-                <Link href='/login'>{t("navbar.getStarted")}</Link>
-              </Button>
+              {user ? (
+                <div className="flex items-center gap-2">
+                  <div 
+                    className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white cursor-pointer"
+                    onClick={() => {
+                      router.push('/profile');
+                      setIsOpen(false);
+                    }}
+                  >
+                    {user.name.charAt(0).toUpperCase()}
+                  </div>
+                  <span className="text-sm font-medium">
+                    {user.name.split(' ')[0]}
+                  </span>
+                </div>
+              ) : (
+                <Button
+                  size='sm'
+                  className='block md:hidden bg-[#2196F3] hover:bg-blue-500 h-9 px-5'
+                >
+                  <Link href='/login'>{t("navbar.getStarted")}</Link>
+                </Button>
+              )}
             </div>
 
             <nav className='space-y-4'>
@@ -190,6 +252,40 @@ export function Navbar() {
                   </Link>
                 </div>
               ))}
+
+              {user && (
+                <>
+                  <div className='border-b border-gray-100 dark:border-gray-800'>
+                    <Link
+                      href="/profile"
+                      className="block py-2 font-medium font-inter text-gray-700 dark:text-gray-300 hover:text-[#2196F3]"
+                      onClick={closeMobileMenu}
+                    >
+                      {t('navbar.profile')}
+                    </Link>
+                  </div>
+                  <div className='border-b border-gray-100 dark:border-gray-800'>
+                    <Link
+                      href="/my-courses"
+                      className="block py-2 font-medium font-inter text-gray-700 dark:text-gray-300 hover:text-[#2196F3]"
+                      onClick={closeMobileMenu}
+                    >
+                      {t('navbar.myCourses')}
+                    </Link>
+                  </div>
+                  <div className='border-b border-gray-100 dark:border-gray-800'>
+                    <button
+                      onClick={() => {
+                        handleLogout();
+                        closeMobileMenu();
+                      }}
+                      className="block py-2 font-medium font-inter text-red-600 hover:text-red-700 w-full text-left"
+                    >
+                      {t('navbar.logout')}
+                    </button>
+                  </div>
+                </>
+              )}
             </nav>
           </div>
         </div>
