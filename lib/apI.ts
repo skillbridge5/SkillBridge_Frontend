@@ -11,7 +11,7 @@ const api = axios.create({
 });
 
 
-interface Course {
+export interface Course {
   id: string;
   title: string;
   shortDescription: string;
