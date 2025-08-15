@@ -71,7 +71,10 @@
          }
       ],
       "searchPlaceholder": "What do you want to learn?",
-      "getStarted": "Get Started"
+      "getStarted": "Get Started",
+      "profile": "My Profile",
+      "myCourses": "My Courses",
+      "logout": "Log Out"
    },
    "hero": {
       "span1": "Your",
@@ -4902,5 +4905,38 @@
          "agreeTermslast": " and Privacy Policy.",
          "confirmAccuracy": "I confirm all information is accurate and true."
       }
+   },
+   "SuccessPage": {
+      "noCourseId": "No course specified",
+      "courseFetchError": "Couldn't load course details",
+      "unknownError": "An unexpected error occurred",
+      "courseNotFound": "Course not found",
+      "timeoutError": "Request timed out",
+      "loading": "Loading your enrollment details...",
+      "tryAgain": "Try Again",
+      "browseCourses": "Browse Courses",
+      "enrollmentSuccess": "Enrollment Successful!",
+      "toBeAnnounced": "To be announced",
+      "notSpecified": "Not specified",
+      "unknownInstructor": "Unknown instructor",
+      "courseDetails": "Course Details",
+      "startDate": "Start Date",
+      "duration": "Duration",
+      "instructor": "Instructor",
+      "level": "Level",
+      "paymentDetails": "Payment Details",
+      "amountPaid": "Amount Paid",
+      "paymentMethod": "Payment Method",
+      "reference": "Reference",
+      "confirmationMessage": "Thank you for your enrollment! You'll receive a confirmation email shortly.",
+      "additionalInstructions": "We'll notify you when the course starts with further instructions.",
+      "nextSteps": "Next Steps",
+      "step1": "Application submitted",
+      "step2": "Payment processed",
+      "step3": "Wait for course start notification",
+      "viewCourse": "View Course Details",
+      "myCourses": "Go to My Courses",
+      "backToHome": "Back to Home",
+      "goBack": "Go Back"
    }
 }

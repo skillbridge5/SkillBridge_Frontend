@@ -71,7 +71,11 @@
          }
       ],
       "searchPlaceholder": "ምን መማር ይፈልጋሉ ? ",
-      "getStarted": "ጀምር"
+      "getStarted": "ጀምር",
+      "profile": "የእኔ ፕሮፋይል",
+      "myCourses": "የእኔ ኮርሶች",
+      "logout": "ውጣ"
+
    },
    "hero": {
       "span1": "የእርስዎን",
@@ -143,6 +147,7 @@
       "sort": "በተወዳጅነት",
       "newest": "አዲስ",
       "startDate": "የመጀመሪያ ቀን"
+
    },
    "courses": [
       {
@@ -773,5 +778,38 @@
          "agreeTermslast": " እና የግላዊነት ፖሊሲ ጋር እስማማለሁ።",
          "confirmAccuracy": "ሁሉም መረጃ ትክክል እና እውነተኛ መሆኑን አረጋግጣለሁ።"
       }
+   },
+   "SuccessPage": {
+      "noCourseId": "ኮርስ አልተገለጸም",
+      "courseFetchError": "የኮርስ ዝርዝሮችን መጫን አልተቻለም",
+      "unknownError": "ያልተጠበቀ እንደግጠም ተከስቷል",
+      "courseNotFound": "ኮርስ አልተገኘም",
+      "timeoutError": "ጥያቄው ጊዜ ዝግይቷል",
+      "loading": "የእርስዎን የመመዝገቢያ ዝርዝሮች እየጫነ ነው...",
+      "tryAgain": "እንደገና ይሞክሩ",
+      "browseCourses": "ኮርሶችን ያስሱ",
+      "enrollmentSuccess": "መመዝገቢያ ተሳክቷል!",
+      "toBeAnnounced": "ይፋ የሚደረግ",
+      "notSpecified": "አልተገለጸም",
+      "unknownInstructor": "ያልታወቀ አስተማሪ",
+      "courseDetails": "የኮርስ ዝርዝሮች",
+      "startDate": "የመጀመሪያ ቀን",
+      "duration": "ቆይታ",
+      "instructor": "አስተማሪ",
+      "level": "ደረጃ",
+      "paymentDetails": "የክፍያ ዝርዝሮች",
+      "amountPaid": "የተከፈለ መጠን",
+      "paymentMethod": "የክፍያ ዘዴ",
+      "reference": "ማጣቀሻ",
+      "confirmationMessage": "ለመመዝገብዎ አመሰግናለን! የማረጋገጫ ኢሜል በቅርቡ ይደርስዎታል።",
+      "additionalInstructions": "ኮርሱ ሲጀመር ተጨማሪ መመሪያዎችን እናሳውቅዎታለን።",
+      "nextSteps": "ቀጣይ እርምጃዎች",
+      "step1": "ምዝገባ ጨርሰዋል",
+      "step2": "ክፍያ ተከናውኗል",
+      "step3": "ለኮርስ መጀመር ማሳወቂያ ይጠብቁ",
+      "viewCourse": "የኮርስ ዝርዝሮችን ይመልከቱ",
+      "myCourses": "ወደ ኮርሶቼ ይሂዱ",
+      "backToHome": "ወደ መነሻ ተመለስ",
+      "goBack": "ተመለስ"
    }
 }
