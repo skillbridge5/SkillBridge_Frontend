@@ -144,7 +144,8 @@
       "newest": "Newest",
       "loading": "Loading courses...",
       "fetchError": "Error fetching courses. Please try again later.",
-      "retry": "Retry"
+      "retry": "Retry",
+      "startDate": "Start Date"
    },
    "courses": [
       {
