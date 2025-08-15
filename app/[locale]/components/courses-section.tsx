@@ -20,20 +20,7 @@ import { fetchCourses } from "@/lib/apI";
 export function CoursesSection() {
   const t = useTranslations();
 
-  // Get raw courses data from translations
-  // const coursesData = t.raw("courses") as Record<string, any>;
   const [courses, setCourses] = useState<any[]>([]);
-
-  // Merge config with translations
-  // const courses = coursesConfig.map((config) => {
-  //   const translation = coursesData[config.key] || {};
-  //   return {
-  //     ...config,
-  //     ...translation,
-  //     id: config.key, // Or use actual ID from your data
-  //     enrollmentYear: translation.enrollmentYear || 2025, // Default value
-  //   };
-  // });
 
   useEffect(() => {
     const loadCourses = async () => {
