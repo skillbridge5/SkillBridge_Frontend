@@ -48,7 +48,7 @@ export default function AboutPage() {
           }}
         ></div>
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-30">
           <div className="grid lg:grid-cols-2 gap-6 md:gap-10 items-center">
             {/* Text Content */}
             <div className="min-w-0 order-2 lg:order-1 mt-8 lg:mt-0">
@@ -269,12 +269,12 @@ export default function AboutPage() {
                 >
                   <CardHeader className="pb-3 flex-shrink-0">
                     <div
-                      className="mx-auto w-6 h-6 rounded-lg flex items-center justify-center mb-3"
+                      className="mx-auto w-12 h-12 rounded-lg flex items-center justify-center mb-3"
                       style={{ backgroundColor: bgColor }}
                     >
-                      <IconComponent className="w-3 h-3" style={{ color: "#2196F3" }} />
+                      <IconComponent className="w-6 h-6" style={{ color: "#2196F3" }} />
                     </div>
-                    <CardTitle className="text-base font-semibold text-gray-900 dark:text-white mb-2">
+                    <CardTitle className="text-base font-semibold text-gray-900 dark:text-white">
                       {card.title}
                     </CardTitle>
                   </CardHeader>
@@ -313,8 +313,8 @@ export default function AboutPage() {
                       className="hover:shadow-lg transition-shadow bg-white dark:bg-gray-800 border-l-4 h-full dark:border-gray-700"
                       style={{ borderLeftColor: borderColor }}
                     >
-                      <CardContent className="p-4 md:p-6">
-                        <div className="flex items-center justify-between mb-3">
+                      <CardContent className="p-4 md:p-3">
+                        <div className="flex items-center justify-between mb-2">
                           <h4 className="font-semibold text-base md:text-lg text-gray-900 dark:text-white">
                             {course.courseTitle}
                           </h4>
@@ -325,7 +325,7 @@ export default function AboutPage() {
                             {course.buttonText}
                           </Button>
                         </div>
-                        <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm leading-relaxed">
+                        <p className="text-gray-600 dark:text-gray-400 mb-3 text-sm leading-relaxed">
                           {course.description}
                         </p>
                         <div className="flex items-center text-xs text-gray-500 dark:text-gray-500">
@@ -338,18 +338,18 @@ export default function AboutPage() {
                 })}
               </div>
             </div>
-            <div className="relative">
-              <div className="aspect-[4/5] bg-gray-900 dark:bg-gray-700 rounded-2xl overflow-hidden">
+         <div className="relative">
+              <div className="aspect-square bg-gray-900 dark:bg-gray-700 rounded-2xl overflow-hidden mt-20">
                 <Image
-                  src="/images/about/about_image3.webp"
-                  alt="Complete Learning Paths"
-                  width={480}
+                  src="/images/about/about_image2.jpg"
+                  alt="Learning Methodology"
+                  width={500}
                   height={500}
                   className="w-full h-full object-cover"
                 />
-              </div>
             </div>
-          </div>
+            </div>
+            </div>
         </div>
       </section>
 
