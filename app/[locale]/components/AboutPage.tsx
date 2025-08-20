@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl"
 import { Button } from "./ui/button"
 import { Card, CardHeader, CardTitle, CardContent } from "./ui/card"
 
+// Icon mapping for the cards
 const iconMap = {
   1: BookOpen,
   2: Users,
@@ -15,6 +16,7 @@ const iconMap = {
   6: Trophy,
 }
 
+// Color mapping for the cards
 const colorMap = {
   1: "rgba(33, 150, 243, 0.1)",
   2: "rgba(33, 150, 243, 0.1)",
@@ -48,7 +50,7 @@ export default function AboutPage() {
           }}
         ></div>
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-30">
+        <div className="container mx-auto px-6 sm:px-8 lg:px-12 xl:px-16">
           <div className="grid lg:grid-cols-2 gap-6 md:gap-10 items-center">
             {/* Text Content */}
             <div className="min-w-0 order-2 lg:order-1 mt-8 lg:mt-0">
@@ -104,7 +106,7 @@ export default function AboutPage() {
 
       {/* Our Story Section */}
       <section className="py-12 md:py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+        <div className="container mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 max-w-7xl">
           <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6 md:mb-8">
@@ -119,7 +121,7 @@ export default function AboutPage() {
             <div className="relative">
               <div className="aspect-[4/3] bg-gray-200 dark:bg-gray-800 rounded-2xl overflow-hidden">
                 <Image
-                  src="/images/about/about_image1.webp"
+                  src="https://i.ibb.co/whBnS4Nh/about_image1.webp?height=400&width=500"
                   alt="Our Story Image"
                   width={500}
                   height={400}
@@ -133,7 +135,7 @@ export default function AboutPage() {
 
       {/* Our Purpose Section */}
       <section className="py-12 md:py-20 bg-gray-50 dark:bg-gray-900">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+        <div className="container mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 max-w-7xl">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
               {aboutPage.purpose.title}
@@ -175,6 +177,7 @@ export default function AboutPage() {
                 </div>
               </CardContent>
             </Card>
+
             {/* Vision Card */}
             <Card className="border-l-4 border-l-orange-500 shadow-sm h-full dark:bg-gray-800 dark:border-gray-700">
               <CardHeader className="pb-4">
@@ -207,7 +210,7 @@ export default function AboutPage() {
 
       {/* Our Learning Methodology */}
       <section className="py-12 md:py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+        <div className="container mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 max-w-7xl">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
               {aboutPage.methodology.title}
@@ -236,7 +239,7 @@ export default function AboutPage() {
             <div className="relative">
               <div className="aspect-square bg-gray-900 dark:bg-gray-700 rounded-2xl overflow-hidden">
                 <Image
-                  src="/images/about/about_image2.jpg"
+                  src="https://i.ibb.co/gZjJvXrd/about_image2.jpg?height=500&width=500"
                   alt="Learning Methodology"
                   width={500}
                   height={500}
@@ -250,7 +253,7 @@ export default function AboutPage() {
 
       {/* Why Students Choose SkillBridge */}
       <section className="py-12 md:py-20 bg-gray-50 dark:bg-gray-900">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+        <div className="container mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 max-w-7xl">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
               {aboutPage.whyUs.title}
@@ -269,12 +272,12 @@ export default function AboutPage() {
                 >
                   <CardHeader className="pb-3 flex-shrink-0">
                     <div
-                      className="mx-auto w-12 h-12 rounded-lg flex items-center justify-center mb-3"
+                      className="mx-auto w-20 h-20 rounded-lg flex items-center justify-center mb-3"
                       style={{ backgroundColor: bgColor }}
                     >
-                      <IconComponent className="w-6 h-6" style={{ color: "#2196F3" }} />
+                      <IconComponent className="w-8 h-8" style={{ color: "#2196F3" }} />
                     </div>
-                    <CardTitle className="text-base font-semibold text-gray-900 dark:text-white">
+                    <CardTitle className="text-base font-semibold text-gray-900 dark:text-white mb-0">
                       {card.title}
                     </CardTitle>
                   </CardHeader>
@@ -290,7 +293,7 @@ export default function AboutPage() {
 
       {/* Complete Learning Paths */}
       <section className="py-12 md:py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+        <div className="container mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 max-w-7xl">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
               {aboutPage.learningPaths.title}
@@ -307,6 +310,7 @@ export default function AboutPage() {
                   const isOrange = course.buttonText === "High Demand"
                   const borderColor = isOrange ? "#f97316" : "#2196F3"
                   const badgeColor = isOrange ? "#f97316" : "#2196F3"
+
                   return (
                     <Card
                       key={index}
@@ -325,7 +329,7 @@ export default function AboutPage() {
                             {course.buttonText}
                           </Button>
                         </div>
-                        <p className="text-gray-600 dark:text-gray-400 mb-3 text-sm leading-relaxed">
+                        <p className="text-gray-700 dark:text-gray-300 mb-4 text-sm leading-relaxed">
                           {course.description}
                         </p>
                         <div className="flex items-center text-xs text-gray-500 dark:text-gray-500">
@@ -338,24 +342,24 @@ export default function AboutPage() {
                 })}
               </div>
             </div>
-         <div className="relative">
-              <div className="aspect-square bg-gray-900 dark:bg-gray-700 rounded-2xl overflow-hidden mt-20">
+            <div className="relative">
+              <div className="aspect-[4/4] bg-gray-900 dark:bg-gray-700 rounded-2xl overflow-hidden mt-23">
                 <Image
-                  src="/images/about/about_image2.jpg"
-                  alt="Learning Methodology"
-                  width={500}
-                  height={500}
+                  src="https://i.ibb.co/mryqG1PX/about-image3.webp?height=450&width=480"
+                  alt="Complete Learning Paths"
+                  width={480}
+                  height={450}
                   className="w-full h-full object-cover"
                 />
+              </div>
             </div>
-            </div>
-            </div>
+          </div>
         </div>
       </section>
 
       {/* Ready to Start Your Journey */}
       <section className="py-12 md:py-20 bg-gray-50 dark:bg-gray-900">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+        <div className="container mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 max-w-7xl">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
               {aboutPage.startJourney.title}
