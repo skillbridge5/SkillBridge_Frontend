@@ -84,7 +84,7 @@ export default function AboutPage() {
               <div className="bg-white dark:bg-gray-800 rounded-3xl p-4 sm:p-6 md:p-8 text-center shadow-lg w-full max-w-[280px] sm:max-w-[320px] md:max-w-[350px] h-auto aspect-square flex flex-col justify-center opacity-90">
                 <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 mx-auto mb-3 sm:mb-4 relative">
                   <Image
-                    src="/images/about/skills.png"
+                    src="https://i.ibb.co/ZRYfMLWK/skills.png?height=128&width=128"
                     alt="SkillBridge Logo"
                     width={128}
                     height={128}
